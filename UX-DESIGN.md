@@ -13,7 +13,7 @@ Instructions:
 
 Loading Screen
 The purpose of this screen is to visualize what users will see when the app initially loads in or when users are moving between screens that require longer loading times.
-![Loading Screen](/Users/juleskho/Desktop/Agile_Software_DevOps/final-project-tripplanner/ux-design/prototype/Login.png)
+![Loading Screen](Login.png)
 
 Sign In Prompt
 The purpose of this screen is to visualize what users will see after the app initially loads. Users will have to become a member in order to further utilize the app. 
