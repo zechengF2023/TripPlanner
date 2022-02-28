@@ -1,9 +1,24 @@
-# Project Repository
+# TripPlanner
+*The TripPlanner app aims to generate trip plans based on user inputs. The user inputs will include dates, preferred locations, and optionally the user is able to put preferences for activities (e.g. sightseeing, going to restaurants, nightlife etc.) It will then enable users to modify or save the generated results.*
 
-This repository will be used for team projects.
+# Members: 
+- [JewelsCo](https://github.com/JewelsCo18)
+- [ZCGuoo](https://github.com/ZCGuoo)
+- [ave235](https://github.com/ave235)
 
-Several sets of instructions are included in this repository. They should each be treated as separate assignments with their own due dates and sets of requirements.
+# Project Origins
 
+# How to Contribute
+To contribute to the project please see the following [page](final-project-tripplanner/CONTRIBUTING.md)
+
+# Building & Testing
+To be completed as the project is built
+
+# Resources
+To be completed as the project is built 
+*links to any additional Markdown documents or web pages that may be relevant reading about the project*
+
+# Project Instructions
 1. See the [App Map & Wireframes](instructions-0a-app-map-wireframes.md) and [Prototyping](./instructions-0b-prototyping.md) instructions for the requirements of the initial user experience design of the app.
 
 1. Delete the contents of this file and replace with the contents of a proper README.md, as described in the [project setup instructions](./instructions-0c-project-setup.md)
