@@ -28,3 +28,19 @@ Forking workflow.
 -The current scrum master and product owners take on the additional work that the positions entail.
 
 
+### Instructions for Setting Up Work Environment:
+
+-Work environment will be discussed at a team meeting so that everyone is on the same page and updates will be published here.
+
+-Figma:
+
+-Create figma account.
+
+-Download figma software.
+
+- Contact group to be added to the project.
+
+### Instructions for Building the Project:
+
+-TBA
+
