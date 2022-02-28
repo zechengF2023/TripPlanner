@@ -5,6 +5,8 @@
 - [JewelsCo](https://github.com/JewelsCo18)
 - [ZCGuoo](https://github.com/ZCGuoo)
 - [ave235](https://github.com/ave235)
+- [cel-hu](https://github.com/cel-hu)
+- [ailaaamir](https://github.com/ailaaamir)
 
 # Project Origins
 
