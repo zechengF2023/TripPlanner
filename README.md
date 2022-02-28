@@ -7,6 +7,7 @@
 - [ave235](https://github.com/ave235)
 - [cel-hu](https://github.com/cel-hu)
 - [ailaaamir](https://github.com/ailaaamir)
+- [narrasreeya](https://github.com/narrasreeya)
 
 # Project Origins
 The inspiration of this project arises from the fact that it's time-consuming for people to plan trips themselves. To make an interesting and memorable trip, one would have to do vast research on local hotels, tourist attractions , restaurants, etc. With the goal of exempting people from such trouble, the Trip Planner app aims to generate trips based on users' preferences, saving their time while catering to their needs.
