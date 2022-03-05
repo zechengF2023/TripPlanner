@@ -12,7 +12,7 @@
 # Project Origins
 The inspiration of this project arises from the fact that it's time-consuming for people to plan trips themselves. To make an interesting and memorable trip, one would have to do vast research on local hotels, tourist attractions , restaurants, etc. With the goal of exempting people from such trouble, the Trip Planner app aims to generate trips based on users' preferences, saving their time while catering to their needs.
 # How to Contribute
-To contribute to the project please see the following [page](final-project-tripplanner/CONTRIBUTING.md)
+To contribute to the project please see the following [page](./CONTRIBUTING.md)
 
 # Building & Testing
 To be completed as the project is built
