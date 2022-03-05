@@ -1,0 +1,55 @@
+nav{
+  border: 1px solid black;
+  border-width: 3px; /* no border on left or right */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 30px;
+  margin: 20px; /* no margin on left or right */
+  text-align: center;
+}
+
+nav a {
+  font-size: 30px;
+  text-decoration: underline;
+  color: black;
+  margin: 20px;
+}
+nav a:link{color:black}
+nav a:hover{color:grey;}
+.image{
+  float: left;
+  height:90px;
+  width:300px;
+  position:absolute;
+  left: 30px;
+  top: 26px; 
+}
+#settingIcon{
+  float: right;
+  height: 55px;
+  width: 60px;
+  position: absolute;
+  right: 250px;
+  top:40px;
+}
+#profileIcon{
+  float: right;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  right: 170px;
+  top:40px;
+}
+#helpIcon{
+  float: right;
+  height: 58px;
+  width: 58px;
+  position: absolute;
+  right: 330px;
+  top:40px;
+}
+.login_text{
+  float:right;
+  position: absolute;
+  right: 10px;
+  top:55px;
+}
