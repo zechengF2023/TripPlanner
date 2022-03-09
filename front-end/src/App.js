@@ -1,13 +1,12 @@
 import './App.css';
-import Header from "./Header.js"
-import Home from "./Home.js"
-import About from "./About.js"
-import RecommendedTrips from "./RecommendedTrips.js"
-import MyTrips from "./MyTrips.js"
-import Profile from "./Profile.js"
-import Settings from "./Settings.js"
-import Help from "./Help.js"
-import Login from "./Login.js"
+import Header from "./components/Header.js"
+import Home from "./pages/Home.js"
+import About from "./pages/About.js"
+import MyTrips from "./pages/MyTrips.js"
+import Profile from "./pages/Profile.js"
+import Settings from "./pages/Settings.js"
+import Help from "./pages/Help.js"
+import Login from "./pages/Login.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React from "react"
 
@@ -18,7 +17,6 @@ function App() {
         <Header />
         <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/recommendedTrips" element={<RecommendedTrips/>}/>
         <Route path="/myTrips" element={<MyTrips />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/profile" element={<Profile />}/>

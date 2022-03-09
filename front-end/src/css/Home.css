@@ -1,0 +1,34 @@
+.imageSearch {
+    height: 45vh; 
+}
+
+.destinationInput {
+    margin-left: 175px; 
+    width: 500px; 
+}
+
+.imageSearch {
+    background-image: url('../assets/heroHomepage.jpeg');
+    background-size: 100%; 
+}
+
+.searchButton {
+    border-radius: 20px; 
+    height: 50px; 
+    width: 100px; 
+}
+
+.searchForm {
+    padding-top:40vh; 
+}
+
+.searchForm input {
+    border-radius: 20px; 
+    height: 50px; 
+    margin-right: 15px; 
+}
+
+.recommendation {
+    display: flex; 
+    flex-direction: row; 
+}

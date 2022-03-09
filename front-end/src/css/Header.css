@@ -1,0 +1,53 @@
+
+.header{
+  background-color: yellow; 
+  display: flex;
+  font-family:'Arial';
+  justify-content: space-between;
+  margin: 0; /* no margin on left or right */
+  text-align: center;
+}
+
+.header a {
+  color: black;
+  font-size: 24px;
+  top: 15px; 
+  margin: 20px;
+}
+.header a:link{
+  color:black; 
+  text-decoration: none; 
+}
+.header a:hover{
+  color:grey;
+  text-decoration: none; 
+}
+
+.headerImage{
+  height:50px;
+  width:175px;
+}
+#profileIcon{
+  height: 30px;
+  padding-top: 30px;
+  width: 30px;
+}
+/* .login_text{
+} */
+
+/* #settingIcon{
+  float: right;
+  height: 55px;
+  width: 60px;
+  right: 250px;
+  top:40px;
+} */
+
+/* #helpIcon{
+  float: right;
+  height: 58px;
+  width: 58px;
+  right: 330px;
+  top:40px;
+} */
+
