@@ -7,6 +7,7 @@ import RecommendationDestination from "../components/RecommendationDestination"
 import logo from "../assets/Logo.png"
 import ProfileIcon from "../assets/ProfileWhite.png"
 import recData from '../components/recommendationData.json'; 
+import Footer from "../components/Footer"
 
 const Home=()=>{
 
@@ -79,6 +80,7 @@ const Home=()=>{
                         <RecommendationDestination destination={destination} key={i}/>
                 )}
             </div>
+            <Footer />
         </div>
     )
 }

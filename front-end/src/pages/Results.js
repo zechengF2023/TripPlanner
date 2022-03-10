@@ -3,6 +3,8 @@ import React from "react"
 import Header from "../components/Header"
 import Search from "../components/SearchBar"
 import ArticleListing from "../components/Article.js"
+import Footer from "../components/Footer"
+
 // import Dropdown from 'react-bootstrap/Dropdown'
 // import {DropdownButton} from 'react-bootstrap/DropdownButton'
 // import {Link} from "react-router-dom"
@@ -38,7 +40,7 @@ const Home=()=>{
                         <Article article={article} key={i}/>
                 )} */}
             </div>
-            
+            <Footer />
         </div>
     )
 }
