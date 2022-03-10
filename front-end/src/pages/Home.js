@@ -1,17 +1,49 @@
 import "../css/Home.css"
-import React from "react"
-import {Link} from "react-router-dom"
+import React, {useEffect, useState, useMemo}  from "react"
+import Search from "../components/SearchBar"
+import {Link, useParams} from "react-router-dom"
 import RecommendationActivity from "../components/RecommendationActivity"
 import RecommendationDestination from "../components/RecommendationDestination"
 import logo from "../assets/Logo.png"
 import ProfileIcon from "../assets/ProfileWhite.png"
-
-function changeQuery(e) {
-    e.preventDefault(); 
-    // const word = e.currentTarget.word; 
-}
+import recData from '../components/recommendationData.json'; 
 
 const Home=()=>{
+
+    // const [article, setArticle ] = useState({}); 
+    // let {id} = useParams(); 
+
+    // useEffect(() => {
+    //     const dataToSet = recData.find((item) => item.id === id && item.type == "activity");
+    //     setArticle(dataToSet); 
+    // }, [id]); 
+
+    const activityResults = useMemo(() => {
+        if (!recData) return [];
+        else {
+            let activities = []; 
+            for (var i=0; i<recData.length; i++){
+                if(recData[i].type === "activity"){
+                    activities.push(recData[i]); 
+                }
+            }
+            return activities 
+        }
+    }, [recData])
+
+    const destinationResults = useMemo(() => {
+        if (!recData) return [];
+        else {
+            let destinations = []; 
+            for (var i=0; i<recData.length; i++){
+                if(recData[i].type === "destination"){
+                    destinations.push(recData[i]); 
+                }
+            }
+            return destinations
+        }
+    }, [recData])
+
     return (
         <div>
             <div className="imageSearch">
@@ -26,31 +58,26 @@ const Home=()=>{
                     </Link>
                     <a href="/profile"><img id="profileIcon" alt="profileIcon" src={ProfileIcon} /></a>
                 </div>
-                <form className="searchForm" onSubmit={(e) => changeQuery()}>
-                    <input className="destinationInput" type="text" placeholder="Search Destinations" name="destination"/>
-                    <input className="checkInInput" type="text" placeholder="Check In" name="checkIn"/>
-                    <input className="checkOuInput" type="text" placeholder="Check Out" name="checkOut"/>
-                    <input className="travelerInput" type="text" placeholder="Number of Travelers" name="traveler"/>
-                    <button className="searchButton" type="submit">Search</button>
-                </form>
+                <div className="search">
+                    <Search/>
+                </div>
+                
             </div>
             <h1 className="recTitle">
                     Recommended Activities
             </h1>
             <div className="recommendation">
-                    <RecommendationActivity/>
-                    {/* {results.map((RecommendationActivity, i) =>
-                        <RecommendationActivity activity={activity} key={i}/>
-                    )} */}
+                    {activityResults.map((recommendation, i) =>
+                        <RecommendationActivity recommendation={recommendation} key={i}/>
+                    )}
             </div>
             <h1 className="recTitle">
                     Recommended Destinations
             </h1>
             <div className="recommendation">
-                <RecommendationDestination/>
-                {/* {results.map((RecommendationDestination, i) =>
+                {destinationResults.map((destination, i) =>
                         <RecommendationDestination destination={destination} key={i}/>
-                )} */}
+                )}
             </div>
         </div>
     )

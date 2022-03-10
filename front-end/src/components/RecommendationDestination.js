@@ -1,11 +1,12 @@
 import "../css/Recommendation.css"
 import React from "react"
-import destination from "../assets/destination.jpeg"
+import temporaryPhoto from "../assets/destination.jpeg"
 
-const RecommendationDestination=()=>{
+const RecommendationDestination=({destination})=>{
     return (
-        <div className="recDestination">
-            <h2 className="destinationSubHeader">Location</h2>
+        // <div className="recDestination" style={{backgroundImage:`url(${destination.image})`}}>
+        <div className="recDestination" style={{backgroundImage:`url(${temporaryPhoto})`}}>
+            <h2 className="destinationSubHeader">{destination.location}</h2>
         </div>
     )
 }
