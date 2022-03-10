@@ -1,5 +1,4 @@
 import './App.css';
-import Header from "./components/Header.js"
 import Home from "./pages/Home.js"
 import About from "./pages/About.js"
 import MyTrips from "./pages/MyTrips.js"
@@ -14,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <Router>  
-        <Header />
         <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/myTrips" element={<MyTrips />}/>

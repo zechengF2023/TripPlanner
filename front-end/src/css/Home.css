@@ -1,15 +1,23 @@
-.imageSearch {
-    height: 45vh; 
-}
-
 .destinationInput {
     margin-left: 175px; 
     width: 500px; 
 }
 
+.headerImage{
+    height:50px;
+    width:175px;
+    padding-left: 43vw; 
+  }
+
+.homepageHeader {
+    display: flex; 
+    flex-direction: row; 
+}
+
 .imageSearch {
     background-image: url('../assets/heroHomepage.jpeg');
     background-size: 100%; 
+    height: 50vh; 
 }
 
 .searchButton {
@@ -19,7 +27,7 @@
 }
 
 .searchForm {
-    padding-top:40vh; 
+    padding-top:37vh; 
 }
 
 .searchForm input {
@@ -31,4 +39,31 @@
 .recommendation {
     display: flex; 
     flex-direction: row; 
+}
+
+.tripsLink {
+    color: white; 
+    font-family: "Arial";
+    font-size: 24px; 
+    text-decoration: none;
+    padding-left: 35vw; 
+}
+
+#profileIcon{
+    height: 30px;
+    padding-left: 25px; 
+    padding-top: 0;
+    width: 30px;
+}
+
+.recTitle {
+    margin-left: 100px; 
+    margin-top: 50px;
+}
+
+.recommendation {
+    display: flex; 
+    flex-direction: row; 
+    margin-left: 150px; 
+    margin-top: 5px; 
 }
