@@ -7,6 +7,7 @@ import Profile from "./pages/Profile.js"
 import Settings from "./pages/Settings.js"
 import Help from "./pages/Help.js"
 import Login from "./pages/Login.js"
+import Contact from "./pages/Contact.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React from "react"
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/settings" element={<Settings />}/>
         <Route path="/help" element={<Help />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/contact" element={<Contact />}/>
         </Routes>
       </Router>
     </div>
