@@ -9,6 +9,7 @@
     justify-content: space-around;
     font-size: 24px;
     height: 60px;
+    font-weight: bold;
 }
 .item a:hover{
     color: grey;
