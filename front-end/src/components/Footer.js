@@ -6,7 +6,6 @@ const Footer=()=>{
         <>
         <div className='blank'></div >
         <div className="container">
-            <Link className="item" to="/settings">Settings</Link>
             <Link className="item" to="/about">About</Link>
             <Link className="item" to="/help">Help</Link>
         </div>

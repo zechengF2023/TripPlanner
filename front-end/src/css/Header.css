@@ -11,17 +11,17 @@
 }
 
 .header a {
-  color: black;
+  color: grey;
   font-size: 24px;
-  top: 15px; 
-  margin: 20px;
+  top: 15px;
+  margin-right: 5px;
 }
 .header a:link{
-  color:black; 
+  color:grey; 
   text-decoration: none; 
 }
 .header a:hover{
-  color:grey;
+  color:white;
   text-decoration: none; 
 }
 
@@ -33,6 +33,11 @@
   height: 30px;
   padding-top: 15px;
   width: 30px;
+}
+
+.headerRight{
+  margin-top: 10px;  
+  margin-right: 50px; 
 }
 /* .login_text{
 } */

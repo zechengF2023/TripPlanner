@@ -52,6 +52,8 @@
 .recommendation {
     display: flex; 
     flex-direction: row; 
+    justify-content: space-between;
     margin-left: 150px; 
+    margin-right: 150px; 
     margin-top: 5px; 
 }

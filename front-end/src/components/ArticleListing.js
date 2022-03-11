@@ -2,7 +2,7 @@ import "../css/ArticleListing.css"
 import hotel from "../assets/hotel.jpeg"
 import React from "react"
 
-const ArticleListing=()=>{
+const ArticleListing=({article})=>{
     return (
         <div className="articleBox">
             <div className="articleVisual">
@@ -10,16 +10,16 @@ const ArticleListing=()=>{
             </div>
             <div className="articleContent">
                 <div className="articleHeader">
-                    <h1>Property Name</h1>
-                    <h1>Price</h1>
+                    <h1>{article.name}</h1>
+                    <h1>{article.price}</h1>
                 </div>
                 <h3 className="articleDistance">distance from location</h3>
                 <div className="articleAmenities">
-                    <h2>Main Amenities</h2>
+                    <h2>{article.amenitites}</h2>
                 </div>
-                <h3 className="articleTagline">Tagline of property</h3>
-                <p className="articleDescription">Blurb about the property</p>
-                <h2 className="articleRating">Rating (# of reviews)</h2>
+                <h3 className="articleTagline">{article.tagline}</h3>
+                <p className="articleDescription">{article.blurb}</p>
+                <h2 className="articleRating">{article.rating} (# of reviews)</h2>
             </div>
         </div>
     )
