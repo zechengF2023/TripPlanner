@@ -2,14 +2,26 @@ import "../css/Results.css"
 import React from "react"
 import Header from "../components/Header"
 import Search from "../components/SearchBar"
-import ArticleListing from "../components/Article.js"
+import ArticleListing from "../components/ArticleListing.js"
 import Footer from "../components/Footer"
-
-// import Dropdown from 'react-bootstrap/Dropdown'
-// import {DropdownButton} from 'react-bootstrap/DropdownButton'
-// import {Link} from "react-router-dom"
+import Properties from "./Properties.json"
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Box from '@mui/material/Box';
 
 const Home=()=>{
+    const [sort, setSort] = React.useState('');
+    const [price, setPrice] = React.useState('');
+
+    const sortChange = (event) => {
+      setSort(event.target.value);
+    };
+      const priceChange = (event) => {
+        setPrice(event.target.value);
+    };
+
     return (
         <div>
             <Header/>
@@ -17,28 +29,46 @@ const Home=()=>{
                 <Search/>
             </div>
             <div className="filterSection">
-                <h3 className="resultNumber">XXXX locations found</h3>
-                {/* <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Dropdown Button
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown> */}
-                <h3>Sort</h3>
-                <h3>Rating</h3>
-                <h3>Price</h3>
+                <h3 className="resultNumber">{Properties.length} locations found</h3>
+                <Box className="dropdown" sx={{ minWidth: 120 }}>
+                    <FormControl fullWidth size="small">
+                        <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={sort}
+                        label="Age"
+                        onChange={sortChange}
+                        >
+                        <MenuItem value={"Recommended"}>Recommended</MenuItem>
+                        <MenuItem value={"Price"}>Price: Low to High</MenuItem>
+                        <MenuItem value={"Rating"}>Rating</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+                <Box className="dropdown" sx={{ minWidth: 120 }}>
+                    <FormControl fullWidth size="small">
+                        <InputLabel id="demo-simple-select-label">Price</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={price}
+                        label="Age"
+                        onChange={priceChange}
+                        >
+                        <MenuItem value={"Less 100"}>Less than $100</MenuItem>
+                        <MenuItem value={"BW 100 200"}>$100-$200</MenuItem>
+                        <MenuItem value={"BW 200 300"}>$200-$300</MenuItem>
+                        <MenuItem value={"More 300"}>$300+</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
                 <h3>All Filters</h3>
             </div>
             <div className="resultSection">
-                <ArticleListing/>
-                {/* {results.map((article, i) =>
-                        <Article article={article} key={i}/>
-                )} */}
+                {Properties.map((article, i) =>
+                        <ArticleListing article={article} key={i}/>
+                )}
             </div>
             <Footer />
         </div>

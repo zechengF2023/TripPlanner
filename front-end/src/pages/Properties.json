@@ -1,0 +1,66 @@
+[
+    {
+        "id": "1",
+        "rating": "4", 
+        "type": "property",
+        "name": "name",  
+        "price": "200", 
+        "location": "Location", 
+        "tagline": "tagline", 
+        "image": "url", 
+        "blurb": "blurb about property",
+        "amenities": ["wifi", "pool", "bar"],
+        "tags": ["tropics", "water", "family-friendly"]
+    },
+    {
+        "id": "2",
+        "type": "property", 
+        "rating": "3", 
+        "name": "name",  
+        "price": "350", 
+        "location": "Location",
+        "tagline": "tagline", 
+        "image": "url", 
+        "blurb": "blurb about property", 
+        "amenities": ["wifi", "restaurant", "bar"],
+        "tags": ["tropics", "water", "family-friendly"]
+    },
+    {
+        "id": "3",
+        "type": "property", 
+        "rating": "2.5", 
+        "name": "name",  
+        "price": "50", 
+        "tagline": "tagline", 
+        "image": "url", 
+        "blurb": "blurb about property",
+        "amenities": ["bar"],
+        "tags": ["tropics", "water", "family-friendly"]
+    },
+    {
+        "id": "4",
+        "type": "property", 
+        "rating": "5", 
+        "name": "name",  
+        "price": "400", 
+        "location": "Location", 
+        "tagline": "tagline", 
+        "image": "url", 
+        "blurb": "blurb about property",
+        "amenities": ["wifi", "pool", "bar", "restaurant", "laundry service"],
+        "tags": ["tropics", "water", "family-friendly"]
+    },
+    {
+        "id": "5",
+        "type": "property", 
+        "rating": "3.5", 
+        "name": "name",  
+        "price": "290", 
+        "location": "Location", 
+        "tagline": "tagline", 
+        "image": "url", 
+        "blurb": "blurb about property",
+        "amenities": ["wifi", "bar", "car service"],
+        "tags": ["tropics", "water", "family-friendly"]
+    }
+]

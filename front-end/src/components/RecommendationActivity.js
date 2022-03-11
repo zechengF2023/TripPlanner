@@ -1,7 +1,6 @@
 import "../css/Recommendation.css"
 import React from "react"
 import activityImage from "../assets/activity.jpeg"
-import ArticleListing from "./Article"
 
 const RecommendationActivity=({recommendation})=>{
     return (

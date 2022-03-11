@@ -1,12 +1,10 @@
 import "../css/Home.css"
-import React, {useEffect, useState, useMemo}  from "react"
+import React, {useMemo}  from "react"
 import Search from "../components/SearchBar"
-import {Link, useParams} from "react-router-dom"
 import RecommendationActivity from "../components/RecommendationActivity"
 import RecommendationDestination from "../components/RecommendationDestination"
-import logo from "../assets/Logo.png"
-import ProfileIcon from "../assets/ProfileWhite.png"
-import recData from '../components/recommendationData.json'; 
+import Header from "../components/Header"
+import recData from '../components/recommendationData.json'
 import Footer from "../components/Footer"
 
 const Home=()=>{
@@ -30,7 +28,7 @@ const Home=()=>{
             }
             return activities 
         }
-    }, [recData])
+    }, [])
 
     const destinationResults = useMemo(() => {
         if (!recData) return [];
@@ -43,23 +41,14 @@ const Home=()=>{
             }
             return destinations
         }
-    }, [recData])
+    }, [])
 
     return (
         <div>
             <div className="imageSearch">
-                <div className="homepageHeader">
-                    <Link to="/">
-                        <img class="headerImage" alt="Logo" src={logo} />  
-                    </Link>  
-                    <Link to="/myTrips">
-                        <h1 className="tripsLink">
-                            Trips
-                        </h1>
-                    </Link>
-                    <a href="/profile"><img id="profileIcon" alt="profileIcon" src={ProfileIcon} /></a>
-                </div>
+                <Header/>
                 <div className="search">
+                    {/* will send user to the results page  */}
                     <Search/>
                 </div>
                 
