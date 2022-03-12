@@ -1,4 +1,4 @@
-/* div.contactDiv{
+div.contactDiv{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,4 +72,4 @@ div h2.support_num{
     font-size: 15px;
     margin-top:3px;
     margin-bottom: 5px;
-} */
+}
