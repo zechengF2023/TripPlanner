@@ -86,13 +86,13 @@ const Header=()=>{
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <Link to="/">
-                        <MenuItem containerElement={<Link to="/profile"/>}>
+                    <Link to="/profile">
+                        <MenuItem>
                         <Avatar/> <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Profile</h4>
                         </MenuItem>
                     </Link>
-                    <Link to="/">
-                        <MenuItem containerElement={<Link to="/settings"/>}>
+                    <Link to="/settings">
+                        <MenuItem>
                         <ListItemIcon>
                             <Settings fontSize="small"/>
                         </ListItemIcon>

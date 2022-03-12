@@ -6,8 +6,8 @@
   justify-content: space-between;
   margin: 0; /* no margin on left or right */
   text-align: center;
-  padding-bottom: 20px;
-  border-bottom: 5px solid black;
+  /* padding-bottom: 20px;
+  border-bottom: 5px solid black; */
 }
 
 .header a {
@@ -39,22 +39,3 @@
   margin-top: 10px;  
   margin-right: 50px; 
 }
-/* .login_text{
-} */
-
-/* #settingIcon{
-  float: right;
-  height: 55px;
-  width: 60px;
-  right: 250px;
-  top:40px;
-} */
-
-/* #helpIcon{
-  float: right;
-  height: 58px;
-  width: 58px;
-  right: 330px;
-  top:40px;
-} */
-

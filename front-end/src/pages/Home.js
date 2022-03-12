@@ -48,7 +48,6 @@ const Home=()=>{
             <div className="imageSearch">
                 <Header/>
                 <div className="search">
-                    {/* will send user to the results page  */}
                     <Search/>
                 </div>
                 
