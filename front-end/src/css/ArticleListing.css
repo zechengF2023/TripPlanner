@@ -1,0 +1,53 @@
+.articleBox {
+    border: 3px black;  
+    border-radius: 15px; 
+    border-style: solid; 
+    display: flex; 
+    flex-direction: row; 
+    width: 85vw; 
+}
+
+.articleImage {
+    border-radius: 15px; 
+    flex-basis: 30%; 
+    width: auto; 
+}
+
+.articleContent {
+    display: flex; 
+    flex-basis: 70%;
+    flex-direction: column;
+    margin: 15px; 
+}
+
+.articleHeader {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    padding-bottom: 0px; 
+    margin-bottom: 0px; 
+}
+
+.articleHeader h1 {
+    padding-bottom: 0px; 
+    margin-bottom: 0px; 
+}
+
+.articleContent h1 h2 h3 p{
+    margin:0px; 
+    padding:0px;
+}
+
+.articleDistance {
+    margin-top:0px; 
+}
+
+.articleTagline {
+    margin-bottom: 0px; 
+}
+
+.articleDescription {
+    margin-top: 5px; 
+}
+
+

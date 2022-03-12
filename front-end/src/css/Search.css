@@ -1,0 +1,11 @@
+.searchButton {
+    border-radius: 20px; 
+    height: 50px; 
+    width: 100px; 
+}
+
+.searchForm input {
+    border-radius: 20px; 
+    height: 50px; 
+    margin-right: 15px; 
+}

@@ -1,0 +1,31 @@
+.activityImage {
+    border-radius: 15px; 
+    height: 125px; 
+    width: 125px; 
+}
+
+.activitySubHeader {
+    font-size: 14px; 
+    font-weight: normal; 
+    margin: 2px; 
+    text-align: center; 
+}
+
+.destinationSubHeader {
+    color: black; 
+    font-size: 30px; 
+    font-weight: bold; 
+    margin: 5px; 
+    text-align: left;
+}
+
+.recAct { 
+    margin-right: 30px; 
+}
+
+.recDestination {
+    border-radius: 15px; 
+    height: 300px; 
+    margin-right: 15px; 
+    width: 300px;  
+}

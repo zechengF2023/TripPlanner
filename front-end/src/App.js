@@ -1,13 +1,12 @@
 import './App.css';
-import Header from "./Header.js"
-import Home from "./Home.js"
-import About from "./About.js"
-import RecommendedTrips from "./RecommendedTrips.js"
-import MyTrips from "./MyTrips.js"
-import Profile from "./Profile.js"
-import Settings from "./Settings.js"
-import Help from "./Help.js"
-import Login from "./Login.js"
+import Home from "./pages/Home.js"
+import Results from "./pages/Results"
+import About from "./pages/About.js"
+import MyTrips from "./pages/MyTrips.js"
+import Profile from "./pages/Profile.js"
+import Settings from "./pages/Settings.js"
+import Login from "./pages/Login.js"
+import Contact from "./pages/Contact.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React from "react"
 
@@ -15,16 +14,15 @@ function App() {
   return (
     <div className="App">
       <Router>  
-        <Header />
         <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/recommendedTrips" element={<RecommendedTrips/>}/>
+        <Route path="/results" element={<Results/>}/>
         <Route path="/myTrips" element={<MyTrips />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/settings" element={<Settings />}/>
-        <Route path="/help" element={<Help />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/contact" element={<Contact />}/>
         </Routes>
       </Router>
     </div>

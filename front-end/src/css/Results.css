@@ -1,0 +1,25 @@
+.dropdown {
+    margin-top:15px; 
+    margin-left: 7px; 
+    margin-right: 7px; 
+}
+
+.searchSection {
+    margin-top: 25px; 
+}
+
+.filterSection {
+    display: flex; 
+    flex-direction: row; 
+    margin-left: 100px; 
+}
+
+.resultSection {
+    border-color: 10px black;
+    margin-left: 100px; 
+    margin-top: 25px; 
+}
+
+.resultNumber {
+    padding-top: 5px; 
+}
