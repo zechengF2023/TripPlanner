@@ -8,6 +8,7 @@ import Settings from "./pages/Settings.js"
 import Help from "./pages/Help.js"
 import Login from "./pages/Login.js"
 import Contact from "./pages/Contact.js"
+import ResultMap from "./pages/ResultMap.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React from "react"
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/help" element={<Help />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/contact" element={<Contact />}/>
+        <Route path="/map" element={<ResultMap />}/>
         </Routes>
       </Router>
     </div>
