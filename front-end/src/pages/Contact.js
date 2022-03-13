@@ -1,18 +1,25 @@
 import "../css/Contact.css"
 import Footer from "../components/Footer.js"
 import Header from "../components/Header"
-import React from "react"
+import React,{ useState } from "react"
 import Plane from "../assets/Plane.png"
 
-
 const Contact=e=>{
-    const handleSubmit=()=>{
-        return(
-            alert("form submitted!")  
-        )
+    const [issueCategory,setCategory]=useState("")
+    const [issueDescription,setDescription]=useState("")
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        if (!issueDescription){
+            alert("Please enter the description")
+        }
+        else if(!issueCategory){
+            alert("Please choose a issue")
+        }
+        else{
+            console.log("Category: ", {issueCategory}, "Description: ",{issueDescription})
+            alert("Form Submitted!")
+        }
     }
-        
-
     return(
         <>
             <Header />
@@ -23,16 +30,17 @@ const Contact=e=>{
                     <h2 className="H2">We are here to help!</h2>
                 </div>
                 <h2 id="send_message">Send us a message!</h2>
-                <form className="issueForm"onSubmit={handleSubmit}>
-                    <label for= "issue_text">What kind of issue are you having:</label>
-                    <select name="issues" id="issues">
+                <form className="issueForm" onSubmit={handleSubmit}>
+                    <label htmlFor= "issue_text">What kind of issue are you having:</label>
+                    <select name="issues" id="issues" value={issueCategory} onChange={e=>setCategory(e.target.value)}>
+                        <option value="Empty"></option>
                         <option value="Login issue">Login Issue</option>
                         <option value="Searching issue">Searching Issue</option>
                         <option value="Profile issue">Profile Issue</option>
                         <option value="Other">Other</option>
                     </select>
-                    <label for= "issue_text">Please describe your problem:</label>
-                    <textarea className="issueBox" /><br/>
+                    <label htmlFor= "issue_text">Please describe your problem:</label>
+                    <textarea className="issueBox" value={issueDescription} onChange={e=>setDescription(e.target.value)}></textarea><br/>
                     <input type="submit" id="submit_button" name="button" value="submit"/>
                 </form>
                 <h2 className="support_num" >For further issue:</h2>

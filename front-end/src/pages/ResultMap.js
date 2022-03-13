@@ -13,7 +13,7 @@ const ResultMap=(props)=>{
   const LocationPin =({text})=>(
     <div className="pin">
       <Icon className="pinImg" icon="entypo:location-pin" color="red"/>      
-      <p>{text}</p>
+      <p className="pinText">{text}</p>
     </div>
   )
   return(
@@ -27,7 +27,7 @@ const ResultMap=(props)=>{
           defaultZoom={17}
         >
           <LocationPin lat={40.729603794934015} lng={-73.99646407872974} text="NYU"/>
-          <LocationPin lat={40.73169582048705} lng={-73.99712378852689} text="NYU"/>
+          <LocationPin lat={40.73169582048705} lng={-73.99712378852689} text="Washington Square"/>
         </GoogleMapReact>
         
       </div>
