@@ -2,6 +2,10 @@ import "../css/ContactModal.css"
 import { useNavigate } from "react-router-dom"
 const ContactModal=({toClose})=>{
     let navigate=useNavigate();
+    const toHome=()=>{
+        toClose();
+        navigate("/")
+    }
     return(
         <div className="screen">
             <div className="modal">
@@ -10,7 +14,7 @@ const ContactModal=({toClose})=>{
                 </div>
                 <div className="btns">
                     <button id="continueBtn" onClick={()=>toClose()}>Continue reporting</button>
-                    <button id="homeBtn" onClick={()=>navigate("/")}>Return to home</button>
+                    <button id="homeBtn" onClick={()=>toHome()}>Return to home</button>
                 </div>
             </div>
         </div>
