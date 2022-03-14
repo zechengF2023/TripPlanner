@@ -1,0 +1,50 @@
+.screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height: 100%;
+    width: 100%;
+    background-color: gainsboro;
+    position:fixed;
+    background-attachment: fixed;
+}
+.modal{
+    background-color:white;
+    border:solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35vw;
+    height: 25vh;
+    padding:0;
+}
+.btns{
+    width: 40vw;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 3vh;
+}
+#continueBtn{
+    cursor: pointer;
+    width:14vw;
+    margin-right:2vw;
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+#homeBtn{
+    cursor: pointer;
+    width:14vw;
+    margin-left:2vw;
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+.title{
+    font-size:5vh;
+    height: 20vh;
+    display:flex;
+    justify-content: center;
+    width: 40vw;
+}

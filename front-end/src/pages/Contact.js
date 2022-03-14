@@ -1,13 +1,11 @@
 import "../css/Contact.css"
 import Footer from "../components/Footer.js"
 import Header from "../components/Header"
+import Modal from "../components/ContactModal"
 import React,{ useState } from "react"
 import Plane from "../assets/Plane.png"
-import {useNavigate} from "react-router-dom"
-
 
 const Contact=e=>{
-    let navigate=useNavigate();
     const [issueCategory,setCategory]=useState("")
     const [issueDescription,setDescription]=useState("")
     const [show, setShow]=useState(false)
@@ -16,16 +14,25 @@ const Contact=e=>{
         if (!issueDescription){
             alert("Please enter the description")
         }
-        else if(!issueCategory){
-            alert("Please choose a issue")
+        else if(!issueCategory || issueCategory==="Empty"){
+            alert("Please choose an issue")
         }
         else{
             console.log("Category: ", {issueCategory}, "Description: ",{issueDescription})
-            alert("Form Submitted!")
+            handleShow()
+            setCategory("")
+            setDescription("")
         }
     }
-    const handleShow=()=>{setShow(true)}
-    const handleClose=()=>{setShow(false)}
+    const handleShow=()=>{
+        setShow(true)
+        document.body.style.overflow = 'hidden';
+    }
+    const handleClose=()=>{
+        setShow(false)
+        document.body.style.overflow="scroll";
+    }
+    
     return(
         <>
             <Header />
@@ -51,6 +58,7 @@ const Contact=e=>{
                 </form>
                 <h2 className="support_num" >For further issue:</h2>
                 <h2 className="support_num">Support number: xxx-xxx-xxx</h2>
+                {show &&<Modal toClose={handleClose}/>}
             </div>
             <Footer />
         </>
