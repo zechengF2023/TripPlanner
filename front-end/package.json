@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@iconify/react": "^3.1.4",
     "@mui/icons-material": "^5.5.0",
     "@mui/material": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.2",
@@ -13,6 +14,7 @@
     "b": "^2.0.1",
     "babel-plugin-macros": "^3.1.0",
     "dom": "^0.0.3",
+    "google-map-react": "^2.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^6.2.2",

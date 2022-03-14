@@ -28,7 +28,7 @@ const Header=()=>{
             {/* Logo will send user back to homepage */}
             <div className="headerLeft">
                 <Link to="/">
-                    <img class="headerImage" alt="Logo" src={logo} />  
+                    <img className="headerImage" alt="Logo" src={logo} />  
                 </Link>    
             </div>
             

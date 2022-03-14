@@ -2,7 +2,8 @@ import "../css/ResultMap.css"
 import GoogleMapReact from 'google-map-react'
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import { Icon } from '@iconify/react';
+import { red } from '@mui/material/colors';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const ResultMap=(props)=>{
   const location ={
@@ -12,8 +13,8 @@ const ResultMap=(props)=>{
   }
   const LocationPin =({text})=>(
     <div className="pin">
-      <Icon className="pinImg" icon="entypo:location-pin" color="red"/>      
-      <p>{text}</p>
+      <LocationOnIcon sx={{ fontSize: 35, color:red[400]}} ></LocationOnIcon>
+      <p className="pinText">{text}</p>
     </div>
   )
   return(
@@ -27,7 +28,7 @@ const ResultMap=(props)=>{
           defaultZoom={17}
         >
           <LocationPin lat={40.729603794934015} lng={-73.99646407872974} text="NYU"/>
-          <LocationPin lat={40.73169582048705} lng={-73.99712378852689} text="NYU"/>
+          <LocationPin lat={40.73169582048705} lng={-73.99712378852689} text="Washington Square"/>
         </GoogleMapReact>
         
       </div>
