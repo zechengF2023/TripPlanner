@@ -19,7 +19,7 @@ div .map_component{
     font-weight: bold;
     font-size: 15px;
 }
-.pinImg{
-    height: 40px;
-    width: 40px;
+LocationOnIcon{
+    height: 48px;
+    width: 48;
 }

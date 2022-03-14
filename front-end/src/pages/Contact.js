@@ -3,10 +3,14 @@ import Footer from "../components/Footer.js"
 import Header from "../components/Header"
 import React,{ useState } from "react"
 import Plane from "../assets/Plane.png"
+import {useNavigate} from "react-router-dom"
+
 
 const Contact=e=>{
+    let navigate=useNavigate();
     const [issueCategory,setCategory]=useState("")
     const [issueDescription,setDescription]=useState("")
+    const [show, setShow]=useState(false)
     const handleSubmit=(e)=>{
         e.preventDefault();
         if (!issueDescription){
@@ -17,9 +21,11 @@ const Contact=e=>{
         }
         else{
             console.log("Category: ", {issueCategory}, "Description: ",{issueDescription})
-            alert("Form Submitted!")
+            handleShow();
         }
     }
+    const handleShow=()=>{setShow(true)}
+    const handleClose=()=>{setShow(false)}
     return(
         <>
             <Header />
