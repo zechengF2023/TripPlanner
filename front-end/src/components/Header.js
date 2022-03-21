@@ -27,7 +27,7 @@ const Header=()=>{
         <div className="header">
             {/* Logo will send user back to homepage */}
             <div className="headerLeft">
-                <Link to="/">
+                <Link to="/home">
                     <img className="headerImage" alt="Logo" src={logo} />  
                 </Link>    
             </div>
@@ -100,10 +100,12 @@ const Header=()=>{
                         </MenuItem>
                     </Link>
                     <MenuItem>
-                    <ListItemIcon>
-                        <Logout fontSize="small"/>
-                    </ListItemIcon>
-                    Logout
+                    <Link to="/login">
+                        <ListItemIcon>
+                            <Logout fontSize="small"/>
+                        </ListItemIcon>
+                          <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
+                        </Link>
                     </MenuItem>
                 </Menu>
                 </React.Fragment>

@@ -7,6 +7,20 @@
     margin: 10px 25px 0;
 }
 
-.btn{
+.btn
+.filterList {
+    list-style-type: none;
+    margin-left: 25px;
+}
+
+.filterTitle {
+    margin-bottom: 2px;
+}
+
+.filterItem {
+    margin: 0 5px 0;
+}
+
+.btn {
     margin: 20px;
 }

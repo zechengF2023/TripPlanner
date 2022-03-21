@@ -1,0 +1,20 @@
+.landingContainer{
+    height:100vh;
+    display: flex;
+}
+.landingContainer .card{
+    width:500px;
+    height: 500px;
+    background: white;
+    box-shadow: 0px 0px 12px 0px #bbbbbb;
+    margin: auto;
+    border-radius: .5rem;
+    padding: 1.5rem;
+}
+.landingContainer .card .logoContainer{
+    display: flex;
+    justify-content:center;
+}
+.landingContainer .card .logoContainer img{
+    width: 250px;
+}

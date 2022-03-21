@@ -1,4 +1,3 @@
-//unused as of now
 export const prices = [
     {name: "Less than $100"},
     {name: "$100-$200"},

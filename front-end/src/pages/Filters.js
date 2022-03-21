@@ -7,6 +7,137 @@ import Footer from "../components/Footer.js"
 import ResultsButton from "../components/ResultsButton.js"
 
 const Filters = () => {
+    const [priceState, setPriceState] = useState(new Array(prices.length).fill(false))
+    const [ratingState, setRatingState] = useState(new Array(ratings.length).fill(false))
+    const [propertyState, setPropertyState] = useState(new Array(ratings.length).fill(false))
+    const [amenityState, setAmenityState] = useState(new Array(ratings.length).fill(false))
+
+    const handlePriceOnChange = (position) => {
+        const updatedPriceState = priceState.map((price, index) => index === position ? !price: price)
+        setPriceState(updatedPriceState)
+    }
+    const handleRatingOnChange = (position) => {
+        const updatedRatingState = ratingState.map((rating, index) => index === position ? !rating: rating)
+        setRatingState(updatedRatingState)
+    }
+
+    const handlePropertyOnChange = (position) => {
+        const updatedPropertyState = propertyState.map((property, index) => index === position ? !property: property)
+        setPropertyState(updatedPropertyState)
+    }
+    const handleAmenityOnChange = (position) => {
+        const updatedAmenityState = amenityState.map((amenity, index) => index === position ? !amenity: amenity)
+        setAmenityState(updatedAmenityState)
+    }
+
+    return(
+        <div>
+            <Header />
+            <h2>Filter by:</h2>
+            <ul className="pricesList">
+                <h3 className="filterTitle">Price:</h3>
+                <div className="filterList">
+                    {prices.map(({ name }, index) => {
+                        return (
+                            <li key={index}>
+                                <div className="filterItem">
+                                    <input
+                                        type="checkbox"
+                                        id={`custom-checkbox-${index}`}
+                                        name={name}
+                                        value={name}
+                                        checked={priceState[index]}
+                                        onChange={() => handlePriceOnChange(index)}
+                                    />
+                                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                </div>
+                            </li>
+                        )
+                    })}
+                </div>
+            </ul>
+            <ul className="ratingsList">
+                <h3 className="filterTitle">Rating:</h3>
+                <div className="filterList">
+                    {ratings.map(({ name }, index) => {
+                        return (
+                            <li key={index}>
+                                <div className="filterItem">
+                                    <input
+                                        type="checkbox"
+                                        id={`custom-checkbox-${index}`}
+                                        name={name}
+                                        value={name}
+                                        checked={ratingState[index]}
+                                        onChange={() => handleRatingOnChange(index)}
+                                    />
+                                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                </div>
+                            </li>
+                        )
+                    })}
+                </div>
+            </ul>
+            <ul className="propertiesList">
+                <h3 className="filterTitle">Property Type:</h3>
+                <div className="filterList">
+                    {properties.map(({ name }, index) => {
+                        return (
+                            <li key={index}>
+                                <div className="filterItem">
+                                    <input
+                                        type="checkbox"
+                                        id={`custom-checkbox-${index}`}
+                                        name={name}
+                                        value={name}
+                                        checked={propertyState[index]}
+                                        onChange={() => handlePropertyOnChange(index)}
+                                    />
+                                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                </div>
+                            </li>
+                        )
+                    })}
+                </div>
+            </ul>
+            <ul className="amenitiesList">
+                <h3 className="filterTitle">Amenities:</h3>
+                <div className="filterList">
+                    {amenities.map(({ name }, index) => {
+                        return (
+                            <li key={index}>
+                                <div className="filterItem">
+                                    <input
+                                        type="checkbox"
+                                        id={`custom-checkbox-${index}`}
+                                        name={name}
+                                        value={name}
+                                        checked={amenityState[index]}
+                                        onChange={() => handleAmenityOnChange(index)}
+                                    />
+                                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                </div>
+                            </li>
+                        )
+                    })}
+                </div>
+            </ul>
+            <div className="btn">
+                <ResultsButton />
+            </div>
+            <Footer />
+        </div>
+
+    )
+}
+
+export default Filters
+
+
+
+/*
+>>>>>>> 7a5820851bfd97647e9c906593cbe2b102bd5da2
+const Filters = () => {
     return(
         <div>
             <Header />
@@ -79,135 +210,4 @@ const Filters = () => {
         </div>
     )
 }
-
-/*
-const Prices = () => {
-    const [checkedState, setCheckedState] = useState(new Array(prices.length).fill(false)
-    )
-    const handleOnChange = (position) => {
-        const updatedCheckedState = checkedState.map((price, index) => index === position ? !price: price)
-        setCheckedState(updatedCheckedState)
-    }
-
-    return(
-        <div>
-            <Header />
-            <h2>Filter by:</h2>
-            <ul className="pricesList">
-                <h3 className="filterTitle">Price:</h3>
-                {prices.map(({ name }, index) => {
-                    return (
-                        <li key={index}>
-                            <div className="filterItem">
-                                <input
-                                    type="checkbox"
-                                    id={`custom-checkbox-${index}`}
-                                    name={name}
-                                    value={name}
-                                    checked={checkedState[index]}
-                                    onChange={() => handleOnChange(index)}
-                                />
-                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                            </div>
-                        </li>
-                    )
-                })}
-            </ul>
-            <Footer />
-        </div>
-
-    )
-}
-
-const Ratings = () => {
-    const [checkedState, setCheckedState] = useState(new Array(ratings.length).fill(false)
-    )
-    const handleOnChange = (position) => {
-        const updatedCheckedState = checkedState.map((rating, index) => index === position ? !rating: rating)
-        setCheckedState(updatedCheckedState)
-    }
-
-    return(
-        <div>
-            <h2>Filter by:</h2>
-            <ul className="ratingsList">
-                <h3 className="filterTitle">Rating:</h3>
-                {ratings.map(({ name }, index) => {
-                    return (
-                        <li key={index}>
-                            <div className="filterItem">
-                                <input
-                                    type="checkbox"
-                                    id={`custom-checkbox-${index}`}
-                                    name={name}
-                                    value={name}
-                                    checked={checkedState[index]}
-                                    onChange={() => handleOnChange(index)}
-                                />
-                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                            </div>
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
-
-    )
-}*/
-
-export default Filters
-
-
-/*const Filters = () => {
-    const [checkedState, setCheckedState] = useState(new Array(filters.length).fill(false)
-    )
-    const handleOnChange = (position) => {
-        const updatedCheckedState = checkedState.map((price, index) => index === position ? !price: price)
-        setCheckedState(updatedCheckedState)
-    }
-
-    return(
-        <div>
-            <Header />
-            <h2>Filter by:</h2>
-            <ul className="filtersList">
-                <div className="price">
-                </div>
-                {filters.map(({ name }, index) => {
-                    return (
-                        <li key={index}>
-                            <div className="filtersListItem">
-                                <input
-                                    type="checkbox"
-                                    id={`custom-checkbox-${index}`}
-                                    name={name}
-                                    value={name}
-                                    checked={checkedState[index]}
-                                    onChange={() => handleOnChange(index)}
-                                />
-                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                            </div>
-                        </li>
-                    )
-                })}
-            </ul>
-            {/*
-            <div className="price">
-                <h3 className="filterTitle">Price:</h3>
-                <div className="filterSelection">
-                    <input type="checkbox" id="price" name="price" value="-$100" checked={checkedState} onChange={handleOnChange} /> Less than $100
-                    {/*<input type="checkbox" id="price" name="price" value="$100-$200" /> $100-$200
-                    <input type="checkbox" id="price" name="price" value="$200-$300" /> $200-$300
-                    <input type="checkbox" id="price" name="price" value="$300+" /> $300+ 
-                </div>
-                <div className="result">
-                    Above checkbox is {isChecked ? "checked" : "un-checked"}
-                </div>
-            </div>
-            
-            <Footer />
-        </div>
-    )
-}
-
-export default Filters*/
+*/

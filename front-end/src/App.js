@@ -8,7 +8,11 @@ import Settings from "./pages/Settings.js"
 import Login from "./pages/Login.js"
 import Contact from "./pages/Contact.js"
 import ResultMap from "./pages/ResultMap.js"
+
+import SignUp from "./pages/Signup.js"
+import Landing from "./pages/Landing.js"
 import Filters from "./pages/Filters.js"
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React from "react"
 
@@ -17,7 +21,9 @@ function App() {
     <div className="App">
       <Router>  
         <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Landing />}/>
+        <Route path="/signup" element={<SignUp />}/>
+        <Route path="/home" element={<Home />}/>
         <Route path="/results" element={<Results/>}/>
         <Route path="/myTrips" element={<MyTrips />}/>
         <Route path="/about" element={<About />}/>
@@ -34,3 +40,4 @@ function App() {
 }
 
 export default App;
+
