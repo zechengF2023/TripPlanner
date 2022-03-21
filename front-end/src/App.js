@@ -8,6 +8,7 @@ import Settings from "./pages/Settings.js"
 import Login from "./pages/Login.js"
 import Contact from "./pages/Contact.js"
 import ResultMap from "./pages/ResultMap.js"
+import Filters from "./pages/Filters.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React from "react"
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/contact" element={<Contact />}/>
         <Route path="/map" element={<ResultMap />}/>
+        <Route path="/filters" element={<Filters />}/>
         </Routes>
       </Router>
     </div>
