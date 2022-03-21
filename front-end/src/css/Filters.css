@@ -1,0 +1,12 @@
+.filterList{
+    margin-left: 50px;
+}
+
+.filterItem label{
+    display: block;
+    margin: 10px 25px 0;
+}
+
+.btn{
+    margin: 20px;
+}
