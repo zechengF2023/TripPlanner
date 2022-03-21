@@ -10,6 +10,7 @@ import Contact from "./pages/Contact.js"
 import ResultMap from "./pages/ResultMap.js"
 import SignUp from "./pages/Signup.js"
 import Landing from "./pages/Landing.js"
+import Filters from "./pages/Filters.js"
 
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
