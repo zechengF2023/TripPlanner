@@ -51,8 +51,8 @@ const Settings=()=>{
 
             <p>This is Settings!</p>
             <div class="flex-container">
-                <div class="flex-child">
-                    <h4>Settings</h4>
+                <div class="flex-child" id ="div1">
+                    <h4 class="col-h1">Settings</h4>
                     <div id= "info">
                         <p>See your account information</p>
                     </div>
@@ -67,24 +67,30 @@ const Settings=()=>{
                     </div>
                 </div>
 
+                <div  id="vertical-line" class ="vertical-row"></div>
+
                 <div class="flex-child" id ="div2">
                     <div id="divinfo" class="hidden">
+                        <h4 class="col-h2">Account Settings</h4>
                         <p>First Name: N/A</p>
                         <p>Last Name: N/A</p>
                         <p>Date of birth: N/A</p>
                         <p>Email: N/A</p>
                     </div>
                     <div id ="divpass" class="hidden">
+                        <h4 class="col-h2">Passwords</h4>
                         <p>Current Password:</p>
                         <p>New Password:</p>
-                        <p>Confirm Password:</p>
+                        <p>Confirm New Password:</p>
                         <button>Reset Password</button>
                     </div>
                     <div id = "divemail" class="hidden">
+                        <h4 class="col-h2">Email</h4>
                         <p>Enter email:</p>
                         <button>Verify Email</button>
                     </div>
                     <div id ="divtemp" class="hidden">
+                        <h4 class="col-h2">Edit Account</h4>
                         <p>Please enter your username:</p>
                         <p>Please enter password: </p>
                         <button>Deactivate Account</button>

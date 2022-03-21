@@ -1,17 +1,43 @@
 .flex-container {
     display: flex;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 .flex-child {
     flex: 1;
-    border: 2px solid yellow;
+    /*border: 2px solid yellow;*/
 }  
 
 .flex-child:first-child {
     margin-right: 20px;
 } 
+/* This is for vertical line between the 2 columns */
+.vertical-row {
+    Float:left;
+    width:2px; /* edit this if you want */
+    background-color: brown;
+   }
+
+/* or use this
+.vl {
+  border-left: 6px solid green;
+  height: 500px; get rid of height
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+} */
+
 h4{
     text-align: center;
+    font-size: 20px;
+}
+.col-h1{
+    color: #7f5539;
+}
+.col-h2{
+    color: #9c6644;
+
 }
 .hidden{
     display: none !important;
@@ -20,5 +46,18 @@ footer {
     position: fixed;
     bottom: 0;
     left: 0;
+}
+
+p{
+    font-size: 12px;
+}
+
+#div1 p{
+    color: #c19770;
 
 }
+#div2 p{
+    text-align: center;
+    color: #d5b895;
+}
+
