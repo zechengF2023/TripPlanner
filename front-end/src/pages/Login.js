@@ -23,7 +23,7 @@ const Login=()=> {
                   <label>Password</label>
                   <TextField style={{width:"100%"}} variant="standard" />
               </div>
-              <Button style={{width:"100%", background: "grey"}} size="large" variant="contained" href="/login">Login</Button>
+              <Button style={{width:"100%", background: "grey"}} size="large" variant="contained" href="/home">Login</Button>
               <div>
                   <h3>Not yet a member?</h3>
                   <h3><Link to="/signup">Create an Account</Link>  here.</h3>

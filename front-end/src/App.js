@@ -23,7 +23,6 @@ function App() {
         <Routes>
         <Route path="/" element={<Landing />}/>
         <Route path="/signup" element={<SignUp />}/>
-        <Route path="/forgotpassword" element={<Home />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="/results" element={<Results/>}/>
         <Route path="/myTrips" element={<MyTrips />}/>
@@ -41,3 +40,4 @@ function App() {
 }
 
 export default App;
+

@@ -2,7 +2,7 @@
     height:100vh;
     display: flex;
 }
-.card{
+.signupContainer .card{
     width:500px;
     height: 650px;
     background: white;
@@ -11,23 +11,23 @@
     border-radius: .5rem;
     padding: 1.5rem;
 }
-.card .heading{
+.signupContainer .card .heading{
     text-align: center;
     font-size: 2.5rem;
     margin-top: 0;
 }
-.card .logoContainer{
+.signupContainer .card .logoContainer{
     display: flex;
     justify-content:center;
 }
-.card .logoContainer img{
+.signupContainer .card .logoContainer img{
     width: 250px;
 }
-.card .form-row{
+.signupContainer .card .form-row{
     width: 100%;
     margin-bottom: 1rem;
 }
-.card .form-row label {
+.signupContainer .card .form-row label {
     display: block;
     width: 100%;
     font-size: 1.25rem;

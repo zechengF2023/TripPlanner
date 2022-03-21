@@ -2,7 +2,7 @@
     height:100vh;
     display: flex;
 }
-.card{
+.landingContainer .card{
     width:500px;
     height: 500px;
     background: white;
@@ -11,10 +11,10 @@
     border-radius: .5rem;
     padding: 1.5rem;
 }
-.card .logoContainer{
+.landingContainer .card .logoContainer{
     display: flex;
     justify-content:center;
 }
-.card .logoContainer img{
+.landingContainer .card .logoContainer img{
     width: 250px;
 }
