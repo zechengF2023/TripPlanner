@@ -1,0 +1,56 @@
+[
+  {
+    "id": "6",
+    "type": "destination",
+    "location": "Saved Trip #1",
+    "tags": ["tropics", "asia", "beaches"]
+  },
+  {
+  "id": "7",
+  "type": "destination",
+  "location": "Saved Trip #2",
+  "tags": ["tropics", "asia", "beaches"]
+  },
+  {
+  "id": "8",
+  "type": "destination",
+  "location": "Saved Trip #3",
+  "tags": ["tropics", "asia", "beaches"]
+  },
+  {
+    "id": "6",
+    "type": "destination",
+    "location": "Saved Trip #4",
+    "tags": ["tropics", "asia", "beaches"]
+  },
+  {
+    "id": "7",
+    "type": "destination",
+    "location": "Saved Trip #5",
+    "tags": ["tropics", "asia", "beaches"]
+  },
+  {
+    "id": "8",
+    "type": "destination",
+    "location": "Saved Trip #6",
+    "tags": ["tropics", "asia", "beaches"]
+  },
+  {
+    "id": "6",
+    "type": "destination",
+    "location": "Saved Trip #7",
+    "tags": ["tropics", "asia", "beaches"]
+  },
+  {
+    "id": "7",
+    "type": "destination",
+    "location": "Saved Trip #8",
+    "tags": ["tropics", "asia", "beaches"]
+  },
+  {
+    "id": "8",
+    "type": "destination",
+    "location": "Saved Trip #9",
+    "tags": ["tropics", "asia", "beaches"]
+  }
+]
