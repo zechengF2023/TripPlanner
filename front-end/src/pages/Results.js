@@ -3,6 +3,7 @@ import React from "react"
 import Header from "../components/Header"
 import Search from "../components/SearchBar"
 import ArticleListing from "../components/ArticleListing.js"
+import FilterButton from "../components/FilterButton.js"
 import Footer from "../components/Footer"
 import Properties from "./Properties.json"
 import InputLabel from '@mui/material/InputLabel';
@@ -63,7 +64,9 @@ const Home=()=>{
                         </Select>
                     </FormControl>
                 </Box>
-                <h3>All Filters</h3>
+                <div className="filterBtn">
+                    <FilterButton/>
+                </div>
             </div>
             <div className="resultSection">
                 {Properties.map((article, i) =>

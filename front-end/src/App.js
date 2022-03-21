@@ -32,6 +32,7 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/contact" element={<Contact />}/>
         <Route path="/map" element={<ResultMap />}/>
+        <Route path="/filters" element={<Filters />}/>
         </Routes>
       </Router>
     </div>
