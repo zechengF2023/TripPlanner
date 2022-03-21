@@ -7,7 +7,7 @@
         "price": "200", 
         "location": "Location", 
         "tagline": "tagline", 
-        "image": "url", 
+        "images": ["hotelExample1.webp", "hotelExample2.jpeg", "hotelExample3.webp"], 
         "blurb": "blurb about property",
         "amenities": ["wifi", "pool", "bar"],
         "tags": ["tropics", "water", "family-friendly"]
@@ -20,7 +20,7 @@
         "price": "350", 
         "location": "Location",
         "tagline": "tagline", 
-        "image": "url", 
+        "images": ["hotelExample1.webp", "hotelExample2.jpeg", "hotelExample3.webp"], 
         "blurb": "blurb about property", 
         "amenities": ["wifi", "restaurant", "bar"],
         "tags": ["tropics", "water", "family-friendly"]
@@ -32,7 +32,7 @@
         "name": "name",  
         "price": "50", 
         "tagline": "tagline", 
-        "image": "url", 
+        "images": ["hotelExample1.webp", "hotelExample2.jpeg", "hotelExample3.webp"],  
         "blurb": "blurb about property",
         "amenities": ["bar"],
         "tags": ["tropics", "water", "family-friendly"]
@@ -45,7 +45,7 @@
         "price": "400", 
         "location": "Location", 
         "tagline": "tagline", 
-        "image": "url", 
+        "images": ["hotelExample1.webp", "hotelExample2.jpeg", "hotelExample3.webp"], 
         "blurb": "blurb about property",
         "amenities": ["wifi", "pool", "bar", "restaurant", "laundry service"],
         "tags": ["tropics", "water", "family-friendly"]
@@ -58,7 +58,7 @@
         "price": "290", 
         "location": "Location", 
         "tagline": "tagline", 
-        "image": "url", 
+        "images": ["hotelExample1.webp", "hotelExample2.jpeg", "hotelExample3.webp"], 
         "blurb": "blurb about property",
         "amenities": ["wifi", "bar", "car service"],
         "tags": ["tropics", "water", "family-friendly"]

@@ -1,0 +1,10 @@
+.singleContent {
+    display: flex; 
+    flex-direction: row; 
+}
+
+.singleContentLeft {
+    display: flex; 
+    flex-direction: column; 
+    width: 80%; 
+}
