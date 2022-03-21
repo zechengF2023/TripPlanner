@@ -1,12 +1,16 @@
-.filterList{
-    margin-left: 50px;
+.filterList {
+    list-style-type: none;
+    margin-left: 25px;
 }
 
-.filterItem label{
-    display: block;
-    margin: 10px 25px 0;
+.filterTitle {
+    margin-bottom: 2px;
 }
 
-.btn{
+.filterItem {
+    margin: 0 5px 0;
+}
+
+.btn {
     margin: 20px;
 }
