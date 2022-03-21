@@ -1,0 +1,24 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid yellow;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 
+h4{
+    text-align: center;
+}
+.hidden{
+    display: none !important;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+}
