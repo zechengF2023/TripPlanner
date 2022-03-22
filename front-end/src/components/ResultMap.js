@@ -1,7 +1,5 @@
 import "../css/ResultMap.css"
 import GoogleMapReact from 'google-map-react'
-import Header from "../components/Header"
-import Footer from "../components/Footer"
 import { red } from '@mui/material/colors';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
@@ -18,8 +16,6 @@ const ResultMap=(props)=>{
     </div>
   )
   return(
-    <>
-    <Header />
     <div className="map_page">
       <div className="map_component">
         <GoogleMapReact
@@ -33,8 +29,6 @@ const ResultMap=(props)=>{
         
       </div>
     </div>
-    <Footer />
-    </>
   )
 }
 

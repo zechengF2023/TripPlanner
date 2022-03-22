@@ -7,10 +7,10 @@ import Profile from "./pages/Profile.js"
 import Settings from "./pages/Settings.js"
 import Login from "./pages/Login.js"
 import Contact from "./pages/Contact.js"
-import ResultMap from "./pages/ResultMap.js"
 import SignUp from "./pages/Signup.js"
 import Landing from "./pages/Landing.js"
 import Filters from "./pages/Filters.js"
+import SpecificResult from "./pages/SpecificResult"
 
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
@@ -31,8 +31,9 @@ function App() {
         <Route path="/settings" element={<Settings />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/contact" element={<Contact />}/>
-        <Route path="/map" element={<ResultMap />}/>
         <Route path="/filters" element={<Filters />}/>
+        <Route path="/specific" element={<SpecificResult />}/>
+
         </Routes>
       </Router>
     </div>
