@@ -28,7 +28,7 @@ const Home=()=>{
             }
             return activities 
         }
-    }, [])
+    }, [recData])
 
     const destinationResults = useMemo(() => {
         if (!recData) return [];
@@ -41,7 +41,7 @@ const Home=()=>{
             }
             return destinations
         }
-    }, [])
+    }, [recData])
 
     return (
         <div>
