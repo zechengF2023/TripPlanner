@@ -22,7 +22,7 @@
             {
                 "name": "activity 1", 
                 "price": "100",
-                "image": "..assets/activity.jpeg"
+                "image": "../assets/activity.jpeg"
             },
             {
                 "name": "activity 2", 
