@@ -2,14 +2,17 @@ import "../css/SpecificResult.css"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import ResultMap from "../components/ResultMap"
+import Modal from "../components/SaveModal"
 import SaveIcon from '@mui/icons-material/Save';
 import EditIcon from '@mui/icons-material/Edit';
 import MapIcon from '@mui/icons-material/Map';
+
 import { useState } from "react"
 
 const SpecificResult=props=>{
     let days=2
     let destination="xxxx"
+    const [showModal, setShow]=useState(false)
     const renderDays=(days)=>{
         let dayList=[]
         for (let i=1;i<days+1;i++){
@@ -27,9 +30,15 @@ const SpecificResult=props=>{
         console.log("edit clicked!")
     }
     const handleSaveClick=()=>{
-        setDisplay(days+3)
+        setShow(true)
+        document.body.style.overflow = 'hidden';
         console.log("save clicked!")
     }
+    const closeModal=()=>{
+        setShow(false)
+        document.body.style.overflow="scroll";
+    }
+
     const handleDayClick=num=>{
         setDisplay(num)
     }
@@ -42,9 +51,6 @@ const SpecificResult=props=>{
         }
         else if (displayId===days+2){
             return <p>This is edit</p>
-        }
-        else if (displayId===days+3){
-            return <p>This is save</p>
         }
     }
     return(
@@ -63,6 +69,7 @@ const SpecificResult=props=>{
                     </div>
                 </div>
                 {displayContent(displayId)}
+                {showModal && <Modal toClose={closeModal}/>} 
             </div>
             <Footer />
         </div>
