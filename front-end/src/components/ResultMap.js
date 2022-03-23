@@ -5,9 +5,9 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const ResultMap=(props)=>{
   const location ={
-    address: 'NYU',
-    lat: 40.729603794934015, 
-    lng: -73.99646407872974,
+    address:props.data[0].location,
+    lat: props.data[0].lat,
+    lng: props.data[0].lng,
   }
   const LocationPin =({text})=>(
     <div className="pin">
@@ -23,8 +23,9 @@ const ResultMap=(props)=>{
           defaultCenter={location}
           defaultZoom={17}
         >
-          <LocationPin lat={40.729603794934015} lng={-73.99646407872974} text="NYU"/>
-          <LocationPin lat={40.73169582048705} lng={-73.99712378852689} text="Washington Square"/>
+          {props.data.map((destination,index)=>{
+            return <LocationPin key={index} lat={destination.lat} lng={destination.lng} text={destination.location} ></LocationPin>
+          })}
         </GoogleMapReact>
         
       </div>

@@ -10,8 +10,11 @@ import MapIcon from '@mui/icons-material/Map';
 import { useState } from "react"
 
 const SpecificResult=props=>{
+    /*data*/
     let days=2
     let destination="xxxx"
+    let destinationData=[{"location": "NYU", "lat": 40.729603794934015,"lng":-73.99646407872974},{"location": "Washington Square", "lat": 40.73169582048705,"lng":-73.99712378852689}]
+
     const [showModal, setShow]=useState(false)
     const renderDays=(days)=>{
         let dayList=[]
@@ -47,7 +50,7 @@ const SpecificResult=props=>{
             return <p>This is day {displayId}!</p>
         }
         else if (displayId===days+1){
-            return <ResultMap></ResultMap>
+            return <ResultMap data={destinationData}></ResultMap>
         }
         else if (displayId===days+2){
             return <p>This is edit</p>
