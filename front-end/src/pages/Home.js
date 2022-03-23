@@ -9,14 +9,6 @@ import Footer from "../components/Footer"
 
 const Home=()=>{
 
-    // const [article, setArticle ] = useState({}); 
-    // let {id} = useParams(); 
-
-    // useEffect(() => {
-    //     const dataToSet = recData.find((item) => item.id === id && item.type == "activity");
-    //     setArticle(dataToSet); 
-    // }, [id]); 
-
     const activityResults = useMemo(() => {
         if (!recData) return [];
         else {
@@ -28,7 +20,7 @@ const Home=()=>{
             }
             return activities 
         }
-    }, [recData])
+    }, [])
 
     const destinationResults = useMemo(() => {
         if (!recData) return [];
@@ -41,7 +33,7 @@ const Home=()=>{
             }
             return destinations
         }
-    }, [recData])
+    }, [])
 
     return (
         <div>

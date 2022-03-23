@@ -19,7 +19,7 @@ const ArticleListing=({article})=>{
             <div className="articleContent">
                 <div className="articleHeader">
                     <h1>{article.name}</h1>
-                    <h1>{article.price}</h1>
+                    <h1>${article.price}</h1>
                 </div>
                 <h3 className="articleDistance">distance from location</h3>
                 <div className="articleAmenities">
