@@ -6,10 +6,12 @@ import React,{ useState } from "react"
 import Plane from "../assets/Plane.png"
 
 const Contact=e=>{
+    const axios=require("axios")
     const [issueCategory,setCategory]=useState("")
     const [issueDescription,setDescription]=useState("")
     const [show, setShow]=useState(false)
-    const handleSubmit=(e)=>{
+    
+    async function handleSubmit(e){
         e.preventDefault();
         if (!issueDescription){
             alert("Please enter the description")
@@ -18,10 +20,13 @@ const Contact=e=>{
             alert("Please choose an issue")
         }
         else{
-            console.log("Category: ", {issueCategory}, "Description: ",{issueDescription})
-            handleShow()
-            setCategory("")
-            setDescription("")
+            setTimeout(()=>alert("Submit failed! Please try again later."),5000)
+            let res=await axios.post("http://localhost:3000/contact",{"category":issueCategory, "description":issueDescription})
+            if(res.status===200){
+                handleShow()
+                setCategory("")
+                setDescription("")
+            }   
         }
     }
     const handleShow=()=>{
@@ -32,7 +37,6 @@ const Contact=e=>{
         setShow(false)
         document.body.style.overflow="scroll";
     }
-    
     return(
         <>
             <Header />
