@@ -1,8 +1,8 @@
 import './App.css';
 import Home from "./pages/Home.js"
 import Results from "./pages/Results"
+import SingleResult from "./pages/SingleResult.js"
 import About from "./pages/About.js"
-import MyTrips from "./pages/MyTrips.js"
 import Profile from "./pages/Profile.js"
 import Settings from "./pages/Settings.js"
 import Login from "./pages/Login.js"
@@ -25,7 +25,7 @@ function App() {
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="/results" element={<Results/>}/>
-        <Route path="/myTrips" element={<MyTrips />}/>
+        <Route path = "/results/:id" element={<SingleResult/>}></Route>
         <Route path="/about" element={<About />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/settings" element={<Settings />}/>

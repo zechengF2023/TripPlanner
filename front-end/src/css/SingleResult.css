@@ -1,0 +1,44 @@
+.singleContent {
+    display: flex; 
+    flex-direction: row; 
+}
+
+.singleContentLeft {
+    display: flex; 
+    flex-direction: column; 
+    width: 80%;  
+    margin-right: 0px; 
+}
+
+.singleContentRight {
+    width: 20%;
+    margin: 10px; 
+}
+
+.singleName {
+    margin-bottom: 0; 
+}
+
+.singleLocation {
+    font-style: italic; 
+}
+
+.singleTagline {
+    color: grey; 
+    font-style: italic; 
+    margin-bottom: 0; 
+}
+
+.singleActivityContent{
+    display: flex; 
+    flex-direction: row; 
+}
+
+.singleActivityLeft{
+    width: 30%; 
+}
+
+.singleActivityRight {
+    display: flex; 
+    flex-direction: column; 
+}
