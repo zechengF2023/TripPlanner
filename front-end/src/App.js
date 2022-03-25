@@ -8,10 +8,9 @@ import Settings from "./pages/Settings.js"
 import Login from "./pages/Login.js"
 import Contact from "./pages/Contact.js"
 import SignUp from "./pages/Signup.js"
-import Landing from "./pages/Landing.js"
+import TripView from "./pages/TripView"
+// import Landing from "./pages/Landing.js"
 import Filters from "./pages/Filters.js"
-import SpecificResult from "./pages/SpecificResult"
-
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React from "react"
@@ -21,9 +20,9 @@ function App() {
     <div className="App">
       <Router>  
         <Routes>
-        <Route path="/" element={<Landing />}/>
+        <Route path="/" element={<Home />}/>
         <Route path="/signup" element={<SignUp />}/>
-        <Route path="/home" element={<Home />}/>
+        {/* <Route path="/home" element={<Home />}/> */}
         <Route path="/results" element={<Results/>}/>
         <Route path = "/results/:id" element={<SingleResult/>}></Route>
         <Route path="/about" element={<About />}/>
@@ -32,7 +31,7 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/contact" element={<Contact />}/>
         <Route path="/filters" element={<Filters />}/>
-        <Route path="/specific" element={<SpecificResult />}/>
+        <Route path="/trip" element={<TripView/>}/>
 
         </Routes>
       </Router>

@@ -40,7 +40,7 @@
                 "image": "../assets/activity.jpeg"
             }
         ],
-        "blurb": "blurb about property",
+        "blurb": "blurb about property/activity",
         "amenities": ["wifi", "pool", "bar"],
         "tags": ["tropics", "water", "family-friendly"]
     },
@@ -81,7 +81,7 @@
                 "price": "400"
             }
         ],
-        "blurb": "blurb about property", 
+        "blurb": "blurb about property/activity", 
         "amenities": ["wifi", "restaurant", "bar"],
         "tags": ["tropics", "water", "family-friendly"]
     },
@@ -121,7 +121,7 @@
                 "price": "400"
             }
         ], 
-        "blurb": "blurb about property",
+        "blurb": "blurb about property/activity",
         "amenities": ["bar"],
         "tags": ["tropics", "water", "family-friendly"]
     },
@@ -162,7 +162,7 @@
                 "price": "400"
             }
         ],
-        "blurb": "blurb about property",
+        "blurb": "blurb about property/activity",
         "amenities": ["wifi", "pool", "bar", "restaurant", "laundry service"],
         "tags": ["tropics", "water", "family-friendly"]
     },
@@ -203,7 +203,7 @@
                 "price": "400"
             }
         ],
-        "blurb": "blurb about property",
+        "blurb": "blurb about property/activity",
         "amenities": ["wifi", "bar", "car service"],
         "tags": ["tropics", "water", "family-friendly"]
     }

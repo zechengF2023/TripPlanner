@@ -9,7 +9,7 @@ import MapIcon from '@mui/icons-material/Map';
 
 import { useState } from "react"
 
-const SpecificResult=props=>{
+const TripView=props=>{
     /*data*/
     let days=2
     let destination="xxxx"
@@ -79,4 +79,4 @@ const SpecificResult=props=>{
     )
 }
 
-export default SpecificResult
+export default TripView

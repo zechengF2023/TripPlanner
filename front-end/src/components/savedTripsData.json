@@ -1,56 +1,65 @@
 [
   {
+    "id": "1",
+    "type": "trip",
+    "location": "Location #1",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
+  },
+  {
+    "id": "2",
+    "type": "trip",
+    "location": "Location #2",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
+  },
+  {
+    "id": "3",
+    "type": "trip",
+    "location": "Location #3",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
+  },
+  {
+    "id": "4",
+    "type": "trip",
+    "location": "Location #4",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
+  },
+  {
+    "id": "5",
+    "type": "trip",
+    "location": "Location #5",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
+  },
+  {
     "id": "6",
-    "type": "destination",
-    "location": "Saved Trip #1",
-    "tags": ["tropics", "asia", "beaches"]
-  },
-  {
-  "id": "7",
-  "type": "destination",
-  "location": "Saved Trip #2",
-  "tags": ["tropics", "asia", "beaches"]
-  },
-  {
-  "id": "8",
-  "type": "destination",
-  "location": "Saved Trip #3",
-  "tags": ["tropics", "asia", "beaches"]
-  },
-  {
-    "id": "6",
-    "type": "destination",
-    "location": "Saved Trip #4",
-    "tags": ["tropics", "asia", "beaches"]
+    "type": "trip",
+    "location": "Location #1",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
   },
   {
     "id": "7",
-    "type": "destination",
-    "location": "Saved Trip #5",
-    "tags": ["tropics", "asia", "beaches"]
+    "type": "trip",
+    "location": "Location #7",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
   },
   {
     "id": "8",
-    "type": "destination",
-    "location": "Saved Trip #6",
-    "tags": ["tropics", "asia", "beaches"]
+    "type": "trip",
+    "location": "Location #8",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
   },
   {
-    "id": "6",
-    "type": "destination",
-    "location": "Saved Trip #7",
-    "tags": ["tropics", "asia", "beaches"]
-  },
-  {
-    "id": "7",
-    "type": "destination",
-    "location": "Saved Trip #8",
-    "tags": ["tropics", "asia", "beaches"]
-  },
-  {
-    "id": "8",
-    "type": "destination",
-    "location": "Saved Trip #9",
-    "tags": ["tropics", "asia", "beaches"]
+    "id": "9",
+    "type": "trip",
+    "location": "Location #9",
+    "startDate": "xx-xx-xx", 
+    "endDate": "yy-yy-yy"
   }
 ]

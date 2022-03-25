@@ -3,7 +3,7 @@ import React, {useEffect, useState, useMemo}  from 'react';
 import Header from "../components/Header"; 
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
-import {useParams} from "react-router-dom"; 
+import {useParams, Link} from "react-router-dom"; 
 import Data from './Properties.json';
 import activityPhoto from "../assets/activity.jpeg"; 
 import hotelPhoto from "../assets/hotelExample1.webp"
@@ -53,7 +53,11 @@ function SingleResult(){
                             <h4 className="singleTagline">{article.tagline}</h4>
                             <p className="singleBlurb">{article.blurb}</p>
     
-                            <Button> Book a Room </Button>
+                            <Button>
+                                <Link to="/trip">
+                                    Book a Room 
+                                </Link> 
+                            </Button>
                         </div>
                         <div className="singleContentRight">
                             {articleActivities.map( (item, i) => <ActivitiesItem key={i} item={item} /> )}
@@ -88,7 +92,9 @@ function SingleResult(){
                     <h3 style={{margin:"0px"}}>{props.item.name}</h3>
                     <h5 style={{margin:"0px"}}>{props.item.price}</h5>
                     <Button>
-                        Add Activity
+                        <Link to="/trip">
+                            Add Activity
+                        </Link>
                     </Button>
                 </div>
     
