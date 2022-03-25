@@ -1,0 +1,69 @@
+.flex-container {
+    display: flex;
+    font-family: "Arial";
+    flex-direction:row;
+    justify-content: center;
+}
+.flex-child{
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    margin-right:100px;
+}
+.vertical-row {
+    margin-left: 50px;
+    margin-right: 50px;
+    width:2px; 
+    background-color: brown;
+   }
+.rightContent{
+    width: 40vw;
+    display: flex;
+    flex-direction:column;
+}
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 
+
+
+h4{
+    text-align: center;
+    font-size: 30px;
+}
+.col-h1{
+    align-self: center;
+    color: #7f5539;
+}
+.col-h2{
+    color: #9c6644;
+
+}
+.hidden{
+    display: none !important;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+p{
+    font-size: 25px;
+}
+
+#div1 p{
+    color: #c19770;
+
+}
+#div2 p{
+    text-align: center;
+    color: #d5b895;
+}
+
+.btn {
+    border-radius: 20px; 
+    height: 50px; 
+    width: 100px; 
+    justify-self: center;
+}
