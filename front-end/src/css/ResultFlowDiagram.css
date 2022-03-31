@@ -1,0 +1,49 @@
+.resultDiagram{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    font-size: 1.6vw;
+}
+
+.hotelBox{
+    align-items: center;
+    height: 20vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    border: solid;
+}
+.hotelBox img{
+    height: 20vh;
+    width: 16vw;
+}
+
+.actiBox{
+    align-items: center;
+    height: 20vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    border: solid;
+}
+.actiBox img{
+    height: 20vh;
+    width: 16vw;
+}
+.actiBox .line1{
+    display: flex;
+    flex-direction: row;
+}
+
+.transBox{
+    height: 20vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.transLine{
+    height: 20vh;
+    margin-left: 10vw;
+    border-left: 2px dotted;
+}

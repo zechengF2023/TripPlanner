@@ -2,10 +2,13 @@ import "../css/SpecificResult.css"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import ResultMap from "../components/ResultMap"
+import ResultFlowDiagram from "../components/ResultFlowDiagram"
 import Modal from "../components/SaveModal"
 import SaveIcon from '@mui/icons-material/Save';
 import EditIcon from '@mui/icons-material/Edit';
 import MapIcon from '@mui/icons-material/Map';
+
+import actiImg from "../assets/activity.jpeg"
 
 import { useState } from "react"
 
@@ -13,8 +16,9 @@ const TripView=props=>{
     /*data*/
     let days=2
     let destination="xxxx"
-    let actiData=[{"location": "NYU", "lat": 40.729603794934015,"lng":-73.99646407872974},{"location": "Washington Square", "lat": 40.73169582048705,"lng":-73.99712378852689}, {"location": "NYU Bookstore", "lat": 40.7292215,"lng":-73.9932385}]
-    let hotelData=[{"location":"Lipton", "lat": 40.73163825016495, "lng":-73.99930411551414}]
+    let actiData=[{"location": "NYU", "lat": 40.729603794934015,"lng":-73.99646407872974, "image":actiImg, "stay":30},{"location": "Washington Square", "lat": 40.73169582048705,"lng":-73.99712378852689,"image":actiImg, "stay":45}, {"location": "NYU Bookstore", "lat": 40.7292215,"lng":-73.9932385, "image":actiImg,"stay":35}]
+    let hotelData=[{"location":"Lipton", "lat": 40.73163825016495, "lng":-73.99930411551414, "image":actiImg}]
+    let timeData=[10, 20, 30, 40]
     const [showModal, setShow]=useState(false)
     const renderDays=(days)=>{
         let dayList=[]
@@ -47,7 +51,7 @@ const TripView=props=>{
     }
     const displayContent=display=>{
         if (displayId<=days){
-            return <p>This is day {displayId}!</p>
+            return <ResultFlowDiagram actiData={actiData} hotelData={hotelData} timeData={timeData}></ResultFlowDiagram>
         }
         else if (displayId===days+1){
             return <ResultMap actiData={actiData} hotelData={hotelData} ></ResultMap>
