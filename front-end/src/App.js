@@ -1,16 +1,20 @@
 import './App.css';
 import Home from "./pages/Home.js"
 import Results from "./pages/Results"
+import SingleResult from "./pages/SingleResult.js"
 import About from "./pages/About.js"
-import MyTrips from "./pages/MyTrips.js"
 import Profile from "./pages/Profile.js"
 import Settings from "./pages/Settings.js"
 import Login from "./pages/Login.js"
 import Contact from "./pages/Contact.js"
+<<<<<<< HEAD
 import ResultMap from "./pages/ResultMap.js"
 
+=======
+>>>>>>> 689290584b52e5cc58c8db8098213f6fb7a62cf6
 import SignUp from "./pages/Signup.js"
-import Landing from "./pages/Landing.js"
+import TripView from "./pages/TripView"
+// import Landing from "./pages/Landing.js"
 import Filters from "./pages/Filters.js"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
@@ -21,18 +25,19 @@ function App() {
     <div className="App">
       <Router>  
         <Routes>
-        <Route path="/" element={<Landing />}/>
+        <Route path="/" element={<Home />}/>
         <Route path="/signup" element={<SignUp />}/>
-        <Route path="/home" element={<Home />}/>
+        {/* <Route path="/home" element={<Home />}/> */}
         <Route path="/results" element={<Results/>}/>
-        <Route path="/myTrips" element={<MyTrips />}/>
+        <Route path = "/results/:id" element={<SingleResult/>}></Route>
         <Route path="/about" element={<About />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/settings" element={<Settings />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/contact" element={<Contact />}/>
-        <Route path="/map" element={<ResultMap />}/>
         <Route path="/filters" element={<Filters />}/>
+        <Route path="/trip" element={<TripView/>}/>
+
         </Routes>
       </Router>
     </div>

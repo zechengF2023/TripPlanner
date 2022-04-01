@@ -2,9 +2,8 @@ import React, {useMemo} from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import savedTrips from "../components/savedTripsData.json"
-import RecommendationDestination from "../components/RecommendationDestination"
+import TripListing from "../components/TripListing"
 import "../css/Profile.css"
-
 
 const Profile=()=> {
     const trips = useMemo(() => {
@@ -24,8 +23,8 @@ const Profile=()=> {
             </div>
             <h2 className="subtitle">Your saved trips:</h2>
             <div className="tripHolder">
-                {trips.map((destination, i) =>
-                    <RecommendationDestination destination={destination} key={i}/>
+                {trips.map((trip, i) =>
+                    <TripListing trip={trip} key={i}/>
                 )}
             </div>
             <Footer/>

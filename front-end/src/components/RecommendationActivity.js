@@ -1,11 +1,15 @@
 import "../css/Recommendation.css"
 import React from "react"
+import {Link} from "react-router-dom"
 import activityImage from "../assets/activity.jpeg"
 
 const RecommendationActivity=({recommendation})=>{
     return (
         <div className="recAct">
-            <img className="activityImage" alt="activity" src={activityImage} /> 
+            {/* MUST MERGE recommendationData.json and Properties json */}
+            <Link to="/results/1"> 
+                <img className="activityImage" alt="activity" src={activityImage} /> 
+            </Link>
             {/* <img class="activityImage" alt="activity" src={recommendation.image} />  */}
             <h2 className="activitySubHeader">{recommendation.rating}/5</h2>
             <h2 className="activitySubHeader">{recommendation.name}</h2>

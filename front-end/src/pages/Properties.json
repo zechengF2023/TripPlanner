@@ -7,8 +7,40 @@
         "price": "200", 
         "location": "Location", 
         "tagline": "tagline", 
-        "image": "url", 
-        "blurb": "blurb about property",
+        "images": [
+            {
+                "photo": "../assets/hotelExample1.webp"
+            }, 
+            {
+                "photo": "../assets/hotelExample2.jpeg"
+            }, 
+            {
+                "photo": "../assets/hotelExample3.webp"
+            }
+        ], 
+        "activities": [
+            {
+                "name": "activity 1", 
+                "price": "100",
+                "image": "../assets/activity.jpeg"
+            },
+            {
+                "name": "activity 2", 
+                "price": "200",
+                "image": "../assets/activity.jpeg"
+            },
+            {
+                "name": "activity 3", 
+                "price": "300",
+                "image": "../assets/activity.jpeg"
+            },
+            {
+                "name": "activity 4", 
+                "price": "400",
+                "image": "../assets/activity.jpeg"
+            }
+        ],
+        "blurb": "blurb about property/activity",
         "amenities": ["wifi", "pool", "bar"],
         "tags": ["tropics", "water", "family-friendly"]
     },
@@ -20,8 +52,36 @@
         "price": "350", 
         "location": "Location",
         "tagline": "tagline", 
-        "image": "url", 
-        "blurb": "blurb about property", 
+        "images": [
+            {
+                "photo": "hotelExample1.webp"
+            }, 
+            {
+                "photo": "hotelExample2.jpeg"
+            }, 
+            {
+                "photo": "hotelExample3.webp"
+            }
+        ], 
+        "activities": [
+            {
+                "name": "activity 1", 
+                "price": "100"
+            },
+            {
+                "name": "activity 2", 
+                "price": "200"
+            },
+            {
+                "name": "activity 3", 
+                "price": "300"
+            },
+            {
+                "name": "activity 4", 
+                "price": "400"
+            }
+        ],
+        "blurb": "blurb about property/activity", 
         "amenities": ["wifi", "restaurant", "bar"],
         "tags": ["tropics", "water", "family-friendly"]
     },
@@ -32,8 +92,36 @@
         "name": "name",  
         "price": "50", 
         "tagline": "tagline", 
-        "image": "url", 
-        "blurb": "blurb about property",
+        "images": [
+            {
+                "photo": "hotelExample1.webp"
+            }, 
+            {
+                "photo": "hotelExample2.jpeg"
+            }, 
+            {
+                "photo": "hotelExample3.webp"
+            }
+        ], 
+        "activities": [
+            {
+                "name": "activity 1", 
+                "price": "100"
+            },
+            {
+                "name": "activity 2", 
+                "price": "200"
+            },
+            {
+                "name": "activity 3", 
+                "price": "300"
+            },
+            {
+                "name": "activity 4", 
+                "price": "400"
+            }
+        ], 
+        "blurb": "blurb about property/activity",
         "amenities": ["bar"],
         "tags": ["tropics", "water", "family-friendly"]
     },
@@ -45,8 +133,36 @@
         "price": "400", 
         "location": "Location", 
         "tagline": "tagline", 
-        "image": "url", 
-        "blurb": "blurb about property",
+        "images": [
+            {
+                "photo": "hotelExample1.webp"
+            }, 
+            {
+                "photo": "hotelExample2.jpeg"
+            }, 
+            {
+                "photo": "hotelExample3.webp"
+            }
+        ], 
+        "activities": [
+            {
+                "name": "activity 1", 
+                "price": "100"
+            },
+            {
+                "name": "activity 2", 
+                "price": "200"
+            },
+            {
+                "name": "activity 3", 
+                "price": "300"
+            },
+            {
+                "name": "activity 4", 
+                "price": "400"
+            }
+        ],
+        "blurb": "blurb about property/activity",
         "amenities": ["wifi", "pool", "bar", "restaurant", "laundry service"],
         "tags": ["tropics", "water", "family-friendly"]
     },
@@ -58,8 +174,36 @@
         "price": "290", 
         "location": "Location", 
         "tagline": "tagline", 
-        "image": "url", 
-        "blurb": "blurb about property",
+        "images": [
+            {
+                "photo": "hotelExample1.webp"
+            }, 
+            {
+                "photo": "hotelExample2.jpeg"
+            }, 
+            {
+                "photo": "hotelExample3.webp"
+            }
+        ], 
+        "activities": [
+            {
+                "name": "activity 1", 
+                "price": "100"
+            },
+            {
+                "name": "activity 2", 
+                "price": "200"
+            },
+            {
+                "name": "activity 3", 
+                "price": "300"
+            },
+            {
+                "name": "activity 4", 
+                "price": "400"
+            }
+        ],
+        "blurb": "blurb about property/activity",
         "amenities": ["wifi", "bar", "car service"],
         "tags": ["tropics", "water", "family-friendly"]
     }

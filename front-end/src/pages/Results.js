@@ -5,7 +5,7 @@ import Search from "../components/SearchBar"
 import ArticleListing from "../components/ArticleListing.js"
 import FilterButton from "../components/FilterButton.js"
 import Footer from "../components/Footer"
-import Properties from "./Properties.json"
+import Properties from "./Properties"
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';

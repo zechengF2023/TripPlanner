@@ -29,14 +29,28 @@
     justify-content: center;
     margin-bottom: 3vh;
 }
-#continueBtn{
+.continueBtn{
     cursor: pointer;
     width:14vw;
     margin-right:2vw;
     font-size: 2.5vh;
     font-weight: bold;
 }
-#homeBtn{
+.saveBtn{
+    cursor: pointer;
+    width:14vw;
+    margin-left:2vw;
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+.homeBtn{
+    cursor: pointer;
+    width:14vw;
+    margin-left:2vw;
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+.profileBtn{
     cursor: pointer;
     width:14vw;
     margin-left:2vw;

@@ -1,0 +1,43 @@
+.template{
+    display: flex;
+    flex-direction: column;
+}
+
+.template h1{
+    display:flex;
+    justify-content:center;
+}
+.subHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 3px solid;
+}
+.Icon{
+    display:flex;
+    justify-content:center;
+    border: solid;
+}
+.Icons{
+    display: flex;
+    cursor: pointer;
+}
+.dayIcons{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    
+}
+.dayIcon{
+    background-color: white;
+    display: flex;
+    border:solid;
+    height: 45px;
+    width: 60px;
+    font-weight: bold;
+    font-size: 20px;
+    align-items: center;
+    cursor: pointer;
+}
+
+

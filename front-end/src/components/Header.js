@@ -27,7 +27,7 @@ const Header=()=>{
         <div className="header">
             {/* Logo will send user back to homepage */}
             <div className="headerLeft">
-                <Link to="/home">
+                <Link to="/">
                     <img className="headerImage" alt="Logo" src={logo} />  
                 </Link>    
             </div>
@@ -35,7 +35,7 @@ const Header=()=>{
             <div className="headerRight">
                 <React.Fragment>
                 <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                    <Link to="/myTrips">Trips</Link>
+                    <Link to="/profile">Trips</Link>
                     <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
@@ -104,7 +104,13 @@ const Header=()=>{
                         <ListItemIcon>
                             <Logout fontSize="small"/>
                         </ListItemIcon>
-                          <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
+                            {/* {loggedIn && (
+                                <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Login</h4>
+                            )}
+                            {!loggedIn && (
+                                <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
+                            )} */}
+                            <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Login</h4>
                         </Link>
                     </MenuItem>
                 </Menu>
