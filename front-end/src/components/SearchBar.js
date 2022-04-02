@@ -1,6 +1,8 @@
 import "../css/Search.css"
-import React from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 function changeQuery(e) {
     e.preventDefault(); 
@@ -8,6 +10,8 @@ function changeQuery(e) {
 }
 
 const Search=()=>{
+    const [checkin, setCheckin] = useState(null)
+    const [checkout, setCheckout] = useState(null)
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
         let path = `/results`; 
@@ -16,8 +20,8 @@ const Search=()=>{
     return (
         <form className="searchForm" onSubmit={(e) => changeQuery()}>
             <input className="destinationInput" type="text" placeholder="Search Destinations" name="destination"/>
-            <input className="checkInInput" type="text" placeholder="Check In" name="checkIn"/>
-            <input className="checkOuInput" type="text" placeholder="Check Out" name="checkOut"/>
+            <DatePicker placeholderText = "Check In" selected = {checkin} onChange = {(date) => setCheckin(date)} />
+            <DatePicker placeholderText = "Check Out" selected = {checkout} onChange = {(date) => setCheckout(date)} />
             <input className="travelerInput" type="text" placeholder="Number of Travelers" name="traveler"/>
             <button className="searchButton" type="submit" onClick={routeChange}>Search</button>
         </form>
