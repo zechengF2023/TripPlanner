@@ -3,34 +3,41 @@ import {GoogleMap,Marker, withGoogleMap, withScriptjs,DirectionsRenderer } from 
 import { useState } from "react"
 
 const ResultMap=(props)=>{
-  const directionService=new window.google.maps.DirectionsService();
-  let [dir, setDirections] = useState("");
+  // const directionService=new window.google.maps.DirectionsService();
+  // let dirL=[{"id":1, "val":null}]
+  // let [dirList, setDirections] = useState(dirL);
+  // const handleAdd=(i,val)=>{
+  //   setDirections(
+  //     dirList.map((dir)=>
+  //       dir.id==i?{...dir, "val":val}:{...dir}
+  //     )
+  //   )
+  // }
   let [mode, setMode] = useState(window.google.maps.TravelMode.DRIVING);
-  const waypointsList=[]
-  for (let i=0;i<props.actiData.length;i++){
-    waypointsList.push({location: new window.google.maps.LatLng(props.actiData[i].lat,props.actiData[i].lng), stopover: true})
-    console.log(props.actiData[i].lat)
-  }
-
-  directionService.route(
-    {
-      origin: new window.google.maps.LatLng(props.hotelData[0].lat, props.hotelData[0].lng),
-      destination: new window.google.maps.LatLng(props.hotelData[0].lat, props.hotelData[0].lng),
-      travelMode: mode,
-      waypoints: waypointsList
-    },
-     (result, status) => {
-      if (status === window.google.maps.DirectionsStatus.OK){
-        console.log("Legs are:")
-        console.log(result.routes[0].legs)
-        setDirections(result)
-      }
-      else {
-        console.error(`error fetching directions ${result}`);
-        return<></>
-      }
-    }
-  )
+  // const waypointsList=[]
+  // for (let i=0;i<props.actiData.length;i++){
+  //   waypointsList.push({location: new window.google.maps.LatLng(props.actiData[i].lat,props.actiData[i].lng), stopover: true})
+  //   console.log(props.actiData[i].lat)
+  // }
+  // directionService.route(
+  //   {
+  //     origin: new window.google.maps.LatLng(props.hotelData[0].lat, props.hotelData[0].lng),
+  //     destination: new window.google.maps.LatLng(props.hotelData[0].lat, props.hotelData[0].lng),
+  //     travelMode: mode,
+  //     waypoints: waypointsList
+  //   },
+  //    (result, status) => {
+  //     if (status === window.google.maps.DirectionsStatus.OK){
+  //       // console.log("Legs duration is:")
+  //       // console.log(result.routes[0].legs[0].duration)
+  //       handleAdd(1, result)
+  //     }
+  //     else {
+  //       console.error(`error fetching directions ${result}`);
+  //       return<></>
+  //     }
+  //   }
+  // )
   
   const MapComponent=()=>{
     return( 
@@ -43,7 +50,7 @@ const ResultMap=(props)=>{
       {props.actiData.map((d, idx)=>(
         <Marker key={idx+1} position={{lat:d.lat, lng:d.lng}} label={{text:d.location, fontSize:"18px", fontWeight:"bold"}}></Marker>
       ))}
-      <DirectionsRenderer directions={dir} options={{suppressMarkers: true}}/>
+      <DirectionsRenderer directions={props.dir} options={{suppressMarkers: true}}/>
       </GoogleMap> 
   )}
   const WrappedMap=withScriptjs(withGoogleMap(MapComponent));
