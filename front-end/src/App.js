@@ -7,11 +7,6 @@ import Profile from "./pages/Profile.js"
 import Settings from "./pages/Settings.js"
 import Login from "./pages/Login.js"
 import Contact from "./pages/Contact.js"
-<<<<<<< HEAD
-import ResultMap from "./pages/ResultMap.js"
-
-=======
->>>>>>> 689290584b52e5cc58c8db8098213f6fb7a62cf6
 import SignUp from "./pages/Signup.js"
 import TripView from "./pages/TripView"
 // import Landing from "./pages/Landing.js"
