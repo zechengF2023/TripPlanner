@@ -20,8 +20,10 @@ const Search=()=>{
     return (
         <form className="searchForm" onSubmit={(e) => changeQuery()}>
             <input className="destinationInput" type="text" placeholder="Search Destinations" name="destination"/>
+            <div className="datePickers">
             <DatePicker placeholderText = "Check In" selected = {checkin} onChange = {(date) => setCheckin(date)} />
             <DatePicker placeholderText = "Check Out" selected = {checkout} onChange = {(date) => setCheckout(date)} />
+            </div>
             <input className="travelerInput" type="text" placeholder="Number of Travelers" name="traveler"/>
             <button className="searchButton" type="submit" onClick={routeChange}>Search</button>
         </form>
