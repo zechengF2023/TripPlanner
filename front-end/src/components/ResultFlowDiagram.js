@@ -1,6 +1,8 @@
 import "../css/ResultFlowDiagram.css"
 const ResultFlowDiagram=(props)=>{
     // Wikipedia link to be implemented
+    console.log("data accepted is: ")
+    console.log(props.timeData)
     const HotelBox=(hotelData, isStart)=>{
         return(
             <div className="hotelBox">
@@ -27,7 +29,7 @@ const ResultFlowDiagram=(props)=>{
         return(
             <div className="transBox">
                 <div className="transLine"></div>
-                <div className="transContent">{time} minutes.</div>
+                <div className="transContent">{time}.</div>
             </div>
         )
     }

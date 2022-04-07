@@ -9,7 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import MapIcon from '@mui/icons-material/Map';
 
 import actiImg from "../assets/activity.jpeg"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const TripView=props=>{
     // number of days of this trip
@@ -22,98 +22,109 @@ const TripView=props=>{
     // data of the chosen hotel
     let hotelData=[{"location":"Lipton", "lat": 40.73163825016495, "lng":-73.99930411551414, "image":actiImg}]
     
-    const [showModal, setShow]=useState(false)
     const renderDays=(days)=>{
         let dayList=[]
         for (let i=1;i<days+1;i++){
             dayList.push(<button className="dayIcon" key={i} onClick={()=>handleDayClick(i)}>Day{i}</button>)
         }
         return dayList
-    }
-    const dirL=[]
-    for(let i=0;i<days;i++){
-        dirL.push({"id":i, "val":null})
-    }
-    let [dirList, setDirections] = useState(dirL);
-    const addDir=(i,val)=>{ //i is day number
-      setDirections(
-        dirList.map((dir)=>
-          dir.id===i?{...dir, "val":val}:{...dir}
-        )
-      )
     }    
-        const directionService=new window.google.maps.DirectionsService();
-        const fakeWPList=[]
-        const [dir, setDir]=useState(null)
-        for(let z=0;z<3;z++){
-            const locObj=new window.google.maps.LatLng(actiData[0][z].lat,actiData[0][z].lng)
-            fakeWPList.push({location: locObj})
-        }
-        for(let z=0;z<3;z++){
-            const locObj=new window.google.maps.LatLng(actiData[1][z].lat,actiData[1][z].lng)
-            fakeWPList.push({location: locObj})
-        }
-        // for(let i=0;i<days;i++){
-            const waypointsList=[]
-            // for (let x=0;x<actiData[i].length;x++){
-            //     const locObj=new window.google.maps.LatLng(actiData[i][x].lat,actiData[i][x].lng)
-            //     waypointsList.push({location: locObj})
-            // }
-            directionService.route(
-                {
-                origin: new window.google.maps.LatLng(hotelData[0].lat, hotelData[0].lng),
-                destination: new window.google.maps.LatLng(hotelData[0].lat, hotelData[0].lng),
-                travelMode: window.google.maps.TravelMode.DRIVING,
-                waypoints: fakeWPList,
-                provideRouteAlternatives: false
-                },
-                (result, status) => {
-                if (status === window.google.maps.DirectionsStatus.OK){
-                    // console.log("Legs duration is:")
-                    // console.log(result.routes[0].legs[0].duration)
-                    console.log("success")
-                    setDir(result)
-                }
-                else {
-                    console.log("I'm run!")
-                    console.error(`error fetching directions ${result}`);
-                }
-                }
-            )
-        // }
-    
-    const [displayId, setDisplay]=useState(1);
+    const [showModal, setModal]=useState(false)
+    const [displayMap, showMap]=useState(false);
+    const [displayId, setDisplayDay]=useState(1);
+    const [displayEdit, showEdit]=useState(false);
+    const [dir, setDir]=useState([]);
+    const [mode, setMode]=useState(window.google.maps.TravelMode.DRIVING);
+    const [timeL, setTimeL] = useState([])
+
+    const handleDayClick=num=>{
+        showMap(false)
+        showEdit(false)
+        setDisplayDay(num)
+    }
     const handleMapClick=()=>{
-        setDisplay(days+1)
+        showEdit(false)
+        showMap(true)
         console.log("map clicked!")
     }
     const handleEditClick=()=>{
-        setDisplay(days+2)
+        showMap(false)
+        showEdit(true)
         console.log("edit clicked!")
     }
     const handleSaveClick=()=>{
-        setShow(true)
+        setModal(true)
         document.body.style.overflow = 'hidden';
         console.log("save clicked!")
     }
     const closeModal=()=>{
-        setShow(false)
+        setModal(false)
         document.body.style.overflow="scroll";
     }
-
-    const handleDayClick=num=>{
-        setDisplay(num)
+    const directionService=new window.google.maps.DirectionsService();
+    const waypointsList=[]
+    for(let x=0;x<actiData.length;x++){
+        console.log("waypl")
+        const dayWPList=[]
+        for (let i=0;i<actiData[x].length;i++){
+          dayWPList.push({location: new window.google.maps.LatLng(actiData[x][i].lat,actiData[x][i].lng), stopover: true})
+        }
+      waypointsList.push(dayWPList)
     }
-    let timeData=[30, 20, 40, 35]
+
+    async function getDir(request){
+        const result2 = await directionService.route(
+          request, (result, status) => {
+            if (status != window.google.maps.DirectionsStatus.OK){
+              console.error(`error fetching directions ${result}`);
+              return false
+            }
+          }
+        )
+        console.log("result returned in gitDir is:")
+        console.log(result2)
+        return result2
+    }
+    function getRequest(idx){
+        let dirRequest={
+            origin: new window.google.maps.LatLng(hotelData[0].lat, hotelData[0].lng),
+            destination: new window.google.maps.LatLng(hotelData[0].lat, hotelData[0].lng),
+            travelMode: mode,
+            waypoints: waypointsList[idx]
+        }
+        return dirRequest
+    }
+    
+    
+    let tdir;
+    (async() => {
+        console.log("async f")
+        const aDir=await getDir(getRequest(0))
+        console.log("aDir is: ")
+        console.log(aDir)
+        setDir(aDir)
+        // setDir((dirs)=>[...dirs, aDir])
+        console.log("dir before sent is")
+        console.log(dir)
+        const timeData=[]
+        for(let i=0;i<aDir.routes[0].legs.length;i++){
+            timeData.push(aDir.routes[0].legs[i].duration.text)
+        }
+        setTimeL(timeData)
+        console.log("temp timeL before sent is")
+        console.log(timeL)
+        
+    })()
+    
     const displayContent=()=>{
-        if (displayId<=days){
-            return <ResultFlowDiagram actiData={actiData[displayId-1]} hotelData={hotelData} timeData={timeData}></ResultFlowDiagram>
+        if (displayMap){           
+            return <ResultMap dir={dir} actiData={actiData} hotelData={hotelData} timeData={timeL}></ResultMap>
         }
-        else if (displayId===days+1){
-            return <ResultMap dir={null} actiData={actiData[0]} hotelData={hotelData} timeData={timeData}></ResultMap>
-        }
-        else if (displayId===days+2){
+        else if (displayEdit){
             return <p>This is edit</p>
+        }
+        else {
+            return <ResultFlowDiagram actiData={actiData[displayId-1]} hotelData={hotelData} timeData={timeL}></ResultFlowDiagram>
         }
     }
     
@@ -132,7 +143,7 @@ const TripView=props=>{
                         <SaveIcon className="Icon" sx={{ fontSize: 40}} onClick={handleSaveClick}/>
                     </div>
                 </div>
-                {displayContent(displayId)}
+                {displayContent()}
                 {showModal && <Modal toClose={closeModal}/>} 
             </div>
             <Footer />
