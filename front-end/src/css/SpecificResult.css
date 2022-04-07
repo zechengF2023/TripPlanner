@@ -40,4 +40,20 @@
     cursor: pointer;
 }
 
-
+.floatingPanel{
+    top: 40vh;
+    height: 6vh;
+    width: 10vw;
+    position: absolute;
+    display:flex;
+    background:silver;
+    justify-content: space-around;
+    align-items:center;
+}
+#panelIntro{
+    font-size:1.8vh;
+}
+#selectBox{
+    height:5vh;
+    width: 5vw;
+}
