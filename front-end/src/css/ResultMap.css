@@ -6,19 +6,12 @@ div .map_page{
     width: 100vw;
     height: 100vh;
 }
-.floatingPanel{
-    height: 6vh;
-    width: 12vw;
+.dayNum{
     position: absolute;
-    display:flex;
-    background:silver;
-    justify-content: space-around;
-    align-items:center;
+    font-size: 0.8vw;
+    justify-self: center;
+    border: solid;
+    background: silver;
+    z-index: 2;
 }
-#panelIntro{
-    font-size:1.8vh;
-}
-#selectBox{
-    height:5vh;
-    width: 5vw;
-}
+

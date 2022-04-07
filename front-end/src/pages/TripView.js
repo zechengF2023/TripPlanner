@@ -28,7 +28,7 @@ const TripView=props=>{
             dayList.push(<button className="dayIcon" key={i} onClick={()=>handleDayClick(i)}>Day{i}</button>)
         }
         return dayList
-    }    
+    }
     const [showModal, setModal]=useState(false)
     const [displayMap, showMap]=useState(false);
     const [displayId, setDisplayDay]=useState(1);
@@ -36,7 +36,6 @@ const TripView=props=>{
     const [dir, setDir]=useState([]);
     const [mode, setMode]=useState(window.google.maps.TravelMode.DRIVING);
     const [timeL, setTimeL] = useState([])
-
     const handleDayClick=num=>{
         showMap(false)
         showEdit(false)
@@ -71,7 +70,6 @@ const TripView=props=>{
         }
       waypointsList.push(dayWPList)
     }
-
     async function getDir(request){
         const result2 = await directionService.route(
           request, (result, status) => {
@@ -85,7 +83,7 @@ const TripView=props=>{
         console.log(result2)
         return result2
     }
-    function getRequest(idx){
+    function getRequest(idx, mode){
         let dirRequest={
             origin: new window.google.maps.LatLng(hotelData[0].lat, hotelData[0].lng),
             destination: new window.google.maps.LatLng(hotelData[0].lat, hotelData[0].lng),
@@ -96,29 +94,20 @@ const TripView=props=>{
     }
     
     
-    let tdir;
     (async() => {
         console.log("async f")
-        const aDir=await getDir(getRequest(0))
-        console.log("aDir is: ")
-        console.log(aDir)
+        const aDir=await getDir(getRequest(displayId-1, mode))
         setDir(aDir)
-        // setDir((dirs)=>[...dirs, aDir])
-        console.log("dir before sent is")
-        console.log(dir)
         const timeData=[]
         for(let i=0;i<aDir.routes[0].legs.length;i++){
             timeData.push(aDir.routes[0].legs[i].duration.text)
         }
         setTimeL(timeData)
-        console.log("temp timeL before sent is")
-        console.log(timeL)
-        
     })()
     
     const displayContent=()=>{
         if (displayMap){           
-            return <ResultMap dir={dir} actiData={actiData} hotelData={hotelData} timeData={timeL}></ResultMap>
+            return <ResultMap dayNum={displayId} dir={dir} actiData={actiData[displayId-1]} hotelData={hotelData} timeData={timeL}></ResultMap>
         }
         else if (displayEdit){
             return <p>This is edit</p>
@@ -143,6 +132,15 @@ const TripView=props=>{
                         <SaveIcon className="Icon" sx={{ fontSize: 40}} onClick={handleSaveClick}/>
                     </div>
                 </div>
+                <div className="floatingPanel">
+                    <p id="panelIntro">Mode of Travel:</p>
+                    <select id="selectBox" value={mode} onChange={e=>setMode(e.target.value)}>
+                    <option value={window.google.maps.TravelMode.DRIVING}>Driving</option>
+                    <option value={window.google.maps.TravelMode.WALKING}>Walking</option>
+                    <option value={window.google.maps.TravelMode.BICYCLING}>Bicycling</option>
+                    <option value={window.google.maps.TravelMode.TRANSIT}>Transit</option>
+                    </select>
+                </div> 
                 {displayContent()}
                 {showModal && <Modal toClose={closeModal}/>} 
             </div>
