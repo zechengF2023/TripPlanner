@@ -1,0 +1,17 @@
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.content h1{
+    align-self: center;
+}
+.footerDiv{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+#logoImg{
+    height: 10vh;
+    width: 18vw;
+}
