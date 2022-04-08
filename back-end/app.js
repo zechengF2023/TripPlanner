@@ -2,6 +2,7 @@ const express = require("express")
 const app = express() 
 const cors=require("cors")
 const bodyParser=require("body-parser")
+const { isTypedArray } = require("util/types")
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -12,6 +13,5 @@ app.post("/contact",(req,res)=>{
     res.sendStatus(200).end()
     /*store in database*/
 })
-
 
 module.exports = app
