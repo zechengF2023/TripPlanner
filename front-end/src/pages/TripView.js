@@ -7,6 +7,8 @@ import Modal from "../components/SaveModal"
 import SaveIcon from '@mui/icons-material/Save';
 import EditIcon from '@mui/icons-material/Edit';
 import MapIcon from '@mui/icons-material/Map';
+import Day from "../components/Day/Day"
+import DayView from "../components/DayView/DayView"
 
 import actiImg from "../assets/activity.jpeg"
 import { useEffect, useState } from "react"
@@ -25,13 +27,17 @@ const TripView=props=>{
     const renderDays=(days)=>{
         let dayList=[]
         for (let i=1;i<days+1;i++){
-            dayList.push(<button className="dayIcon" key={i} onClick={()=>handleDayClick(i)}>Day{i}</button>)
+            dayList.push(<Day dayNumber = {i} setDayNumber = {setDisplayDay}/>
+            
+            /*<button className="dayIcon" key={i} onClick={()=>handleDayClick(i)}>Day{i}</button>*/)
         }
         return dayList
     }
+
     const [showModal, setModal]=useState(false)
     const [displayMap, showMap]=useState(false);
-    const [displayId, setDisplayDay]=useState(1);
+    // handles the current day view - based on button pressed
+    const [displayDay, setDisplayDay]=useState(1);
     const [displayEdit, showEdit]=useState(false);
     const [dir, setDir]=useState([]);
     const [mode, setMode]=useState(window.google.maps.TravelMode.DRIVING);
@@ -96,7 +102,7 @@ const TripView=props=>{
     
     (async() => {
         console.log("async f")
-        const aDir=await getDir(getRequest(displayId-1, mode))
+        const aDir=await getDir(getRequest(displayDay-1, mode))
         setDir(aDir)
         const timeData=[]
         for(let i=0;i<aDir.routes[0].legs.length;i++){
@@ -107,13 +113,13 @@ const TripView=props=>{
     
     const displayContent=()=>{
         if (displayMap){           
-            return <ResultMap dayNum={displayId} dir={dir} actiData={actiData[displayId-1]} hotelData={hotelData} timeData={timeL}></ResultMap>
+            return <ResultMap dayNum={displayDay} dir={dir} actiData={actiData[displayDay-1]} hotelData={hotelData} timeData={timeL}></ResultMap>
         }
         else if (displayEdit){
             return <p>This is edit</p>
         }
         else {
-            return <ResultFlowDiagram actiData={actiData[displayId-1]} hotelData={hotelData} timeData={timeL}></ResultFlowDiagram>
+            return <ResultFlowDiagram actiData={actiData[displayDay-1]} hotelData={hotelData} timeData={timeL}></ResultFlowDiagram>
         }
     }
     
@@ -132,6 +138,7 @@ const TripView=props=>{
                         <SaveIcon className="Icon" sx={{ fontSize: 40}} onClick={handleSaveClick}/>
                     </div>
                 </div>
+                <DayView dayNumber = {displayDay} key = {displayDay} />
                 <div className="floatingPanel">
                     <p id="panelIntro">Mode of Travel:</p>
                     <select id="selectBox" value={mode} onChange={e=>setMode(e.target.value)}>
@@ -142,7 +149,7 @@ const TripView=props=>{
                     </select>
                 </div> 
                 {displayContent()}
-                {showModal && <Modal toClose={closeModal}/>} 
+                {showModal && <Modal toClose={closeModal}/>}
             </div>
             <Footer />
         </div>
