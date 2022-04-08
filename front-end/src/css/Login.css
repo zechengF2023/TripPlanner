@@ -1,6 +1,7 @@
 .loginContainer{
     height:100vh;
     display: flex;
+    justify-content: center;
 }
 .loginContainer .card{
     width:500px;

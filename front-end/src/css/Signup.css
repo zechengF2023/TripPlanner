@@ -1,6 +1,7 @@
 .signupContainer{
     height:100vh;
     display: flex;
+    justify-content: center;
 }
 .signupContainer .card{
     width:500px;
