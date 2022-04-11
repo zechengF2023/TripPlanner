@@ -14,6 +14,28 @@ const fs = require('fs')
 const users = require("./data/user.json")
 const trips = require("./data/trip.json")
 
+const mongoose=require("mongoose");
+const {Schema}=mongoose;
+(async()=>{
+await mongoose.connect('mongodb+srv://Guo:tripplanner@cluster0.yougi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+})()
+
+//test database operations
+// const personSchema=new Schema({
+//     first: String,
+//     last: String,
+// })
+// const Person=mongoose.model('Person', personSchema)
+// const me=new Person()
+// me.first='ZC'
+// me.last='Guo';
+
+// (async()=>{
+//     await me.save();
+//     console.log("sent")
+// })()
+
+
 // signup page
 app.post("/signup", (req, res) => {
     const userData = {username: req.body.name, password: req.body.password}
@@ -50,8 +72,11 @@ app.post("/login", (req, res) => {
 /* data from contact page*/
 app.post("/contact",(req,res)=>{
     const contactData=req.body
+    console.log(contactData)
     res.sendStatus(200).end()
     /*store in database*/
 })
+
+
 
 module.exports = app
