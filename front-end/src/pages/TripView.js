@@ -69,7 +69,6 @@ const TripView=props=>{
     const directionService=new window.google.maps.DirectionsService();
     const waypointsList=[]
     for(let x=0;x<actiData.length;x++){
-        console.log("waypl")
         const dayWPList=[]
         for (let i=0;i<actiData[x].length;i++){
           dayWPList.push({location: new window.google.maps.LatLng(actiData[x][i].lat,actiData[x][i].lng), stopover: true})
@@ -79,7 +78,7 @@ const TripView=props=>{
     async function getDir(request){
         const result2 = await directionService.route(
           request, (result, status) => {
-            if (status != window.google.maps.DirectionsStatus.OK){
+            if (status !== window.google.maps.DirectionsStatus.OK){
               console.error(`error fetching directions ${result}`);
               return false
             }

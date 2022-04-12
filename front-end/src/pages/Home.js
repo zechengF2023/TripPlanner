@@ -1,39 +1,43 @@
 import "../css/Home.css"
-import React, {useMemo}  from "react"
+import React, {useState, useEffect}  from "react"
 import Search from "../components/SearchBar"
 import RecommendationActivity from "../components/RecommendationActivity"
 import RecommendationDestination from "../components/RecommendationDestination"
 import Header from "../components/Header"
-import recData from '../components/recommendationData.json'
+// import recData from '../components/recommendationData.json'
 import Footer from "../components/Footer"
 
+const axios=require("axios")
+
 const Home=()=>{
+    // state variables
+    const [activityData, setActivityData] = useState([]);
+    const[destData, setDestData] = useState([]);
 
-    const activityResults = useMemo(() => {
-        if (!recData) return [];
-        else {
-            let activities = []; 
-            for (var i=0; i<recData.length; i++){
-                if(recData[i].type === "activity"){
-                    activities.push(recData[i]); 
+    const fetchData = async() => {
+        try{
+            const tempData = await axios.get("http://localhost:3000/home-getInitData")
+            console.log(tempData.data)
+            tempData.data.forEach((item)=>{
+                if (item.type==="activity"){
+                    setActivityData((activityData)=>[...activityData,item])
                 }
-            }
-            return activities 
+            })
+            tempData.data.forEach((item)=>{
+                if (item.type==="destination"){
+                    setDestData((destData)=>[...destData,item])
+                }
+            })
         }
-    }, [])
+        catch(error) {
+            console.log(error);
+        }
+    }
 
-    const destinationResults = useMemo(() => {
-        if (!recData) return [];
-        else {
-            let destinations = []; 
-            for (var i=0; i<recData.length; i++){
-                if(recData[i].type === "destination"){
-                    destinations.push(recData[i]); 
-                }
-            }
-            return destinations
-        }
-    }, [])
+    // run this once!
+    useEffect(()=>{
+        fetchData()
+    },[])
 
     return (
         <div>
@@ -42,22 +46,21 @@ const Home=()=>{
                 <div className="search">
                     <Search/>
                 </div>
-                
             </div>
             <h1 className="recTitle">
                     Recommended Activities
             </h1>
             <div className="recommendation">
-                    {activityResults.map((recommendation, i) =>
+                    {activityData.map((recommendation, i) =>
                         <RecommendationActivity recommendation={recommendation} key={i}/>
-                    )}
+                    )}                   
             </div>
             <h1 className="recTitle">
                     Recommended Destinations
             </h1>
             <div className="recommendation">
-                {destinationResults.map((destination, i) =>
-                        <RecommendationDestination destination={destination} key={i}/>
+                {destData.map((destination, i) =>
+                    <RecommendationDestination destination={destination} key={i}/>  
                 )}
             </div>
             <Footer />
@@ -66,3 +69,6 @@ const Home=()=>{
 }
 
 export default Home
+
+
+
