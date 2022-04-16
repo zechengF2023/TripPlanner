@@ -1,5 +1,5 @@
 import "../css/Results.css"
-import React from "react"
+import React, { useEffect } from "react"
 import Header from "../components/Header"
 import Search from "../components/SearchBar"
 import ArticleListing from "../components/ArticleListing.js"
@@ -11,18 +11,20 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
+import {useLocation} from "react-router-dom"
+import axios from "axios"
 
-const Home=()=>{
+const Results=({route, navigation})=>{
+    const {state}=useLocation()
+    const {intTravelerNum, destination, duration}=state
     const [sort, setSort] = React.useState('');
     const [price, setPrice] = React.useState('');
-
     const sortChange = (event) => {
-      setSort(event.target.value);
+        setSort(event.target.value);
     };
-      const priceChange = (event) => {
+    const priceChange = (event) => {
         setPrice(event.target.value);
     };
-
     return (
         <div>
             <Header/>
@@ -78,4 +80,4 @@ const Home=()=>{
     )
 }
 
-export default Home
+export default Results
