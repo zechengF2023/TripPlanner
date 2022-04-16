@@ -13,28 +13,34 @@ app.use(express.urlencoded({ extended: true }))
 const fs = require('fs')
 const users = require("./data/user.json")
 const trips = require("./data/trip.json")
-
+const dbData=require("./uploadData")
+const activitiesData=require("./data/activities.json")
 const mongoose=require("mongoose");
+const { stringify } = require('querystring');
 const {Schema}=mongoose;
+
 (async()=>{
-await mongoose.connect('mongodb+srv://Guo:tripplanner@cluster0.yougi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+await mongoose.connect('mongodb+srv://Guo:tripplanner@cluster0.yougi.mongodb.net/TripPlannerDB?retryWrites=true&w=majority')
 })()
 
-//test database operations
-// const personSchema=new Schema({
-//     first: String,
-//     last: String,
-// })
-// const Person=mongoose.model('Person', personSchema)
-// const me=new Person()
-// me.first='ZC'
-// me.last='Guo';
+// for data upload purpose.
+// dbData.uploadActivityData(activitiesData)
 
-// (async()=>{
-//     await me.save();
-//     console.log("sent")
-// })()
 
+app.get("/getRecommendedActivities", (req, res)=>{
+    let activityL=[];
+    (async()=>{
+        console.log("async f runs")
+        for(let i=1;i<6;i++){
+            let activityFound=await dbData.activityModel.findOne({"id":i})
+            console.log(activityFound.id)
+            activityL.push(activityFound)
+            console.log("loop runs")
+        }
+        res.json(activityL)
+    })()  
+    //res.json??
+})
 
 // signup page
 app.post("/signup", (req, res) => {

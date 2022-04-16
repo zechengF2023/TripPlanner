@@ -8,21 +8,23 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 
 const axios=require("axios")
-
+const Buffer=require('buffer').Buffer;
 const Home=()=>{
     // state variables
     const [activityData, setActivityData] = useState([]);
-    const[destData, setDestData] = useState([]);
-
+    const [destData, setDestData] = useState([]);
+    const [destination, setDestination]=useState("New York") //only New York in database
+    const [checkin, setCheckin] = useState(new Date())
+    const [checkout, setCheckout] = useState(new Date())
+    const [travelerNum, setTravelerNum]=useState()
     const fetchData = async() => {
         try{
-            const tempData = await axios.get("http://localhost:3000/home-getInitData")
-            console.log(tempData.data)
-            tempData.data.forEach((item)=>{
-                if (item.type==="activity"){
-                    setActivityData((activityData)=>[...activityData,item])
-                }
+            const activitiesReceived=await axios.get("http://localhost:3000/getRecommendedActivities")
+            activitiesReceived.data.forEach((item)=>{
+                item.image="data:image/jpeg;base64,".concat(Buffer.from(item.image.data).toString("base64"))
+                setActivityData((activityData=>[...activityData, item]))
             })
+            const tempData = await axios.get("http://localhost:3000/home-getInitData")
             tempData.data.forEach((item)=>{
                 if (item.type==="destination"){
                     setDestData((destData)=>[...destData,item])
@@ -33,27 +35,25 @@ const Home=()=>{
             console.log(error);
         }
     }
-
-    // run this once!
+    
     useEffect(()=>{
         fetchData()
     },[])
-
     return (
         <div>
             <div className="imageSearch">
                 <Header/>
                 <div className="search">
-                    <Search/>
+                    <Search destination={destination} setDestination={setDestination} checkin={checkin} setCheckin={setCheckin} checkout={checkout} setCheckout={setCheckout} travelerNum={travelerNum} setTravelerNum={setTravelerNum}/>
                 </div>
             </div>
             <h1 className="recTitle">
                     Recommended Activities
             </h1>
             <div className="recommendation">
-                    {activityData.map((recommendation, i) =>
-                        <RecommendationActivity recommendation={recommendation} key={i}/>
-                    )}                   
+                {activityData.map((recommendation, i) =>
+                    <RecommendationActivity recommendation={recommendation} key={i}/>
+                )}                   
             </div>
             <h1 className="recTitle">
                     Recommended Destinations
