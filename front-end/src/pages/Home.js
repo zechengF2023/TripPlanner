@@ -35,7 +35,6 @@ const Home=()=>{
             console.log(error);
         }
     }
-    
     useEffect(()=>{
         fetchData()
     },[])

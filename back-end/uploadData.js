@@ -25,7 +25,7 @@ const hotelSchema=new Schema({
     image: {data:Buffer,contentType: String},
     link: String
 })
-let hotelModel=mongoose.model('hotelModel',hotelSchema)
+let hotelModel=mongoose.model('hotels',hotelSchema)
 function uploadActivityData(activities){
     activities.forEach(ele => {
         let activity=new activityModel();
@@ -39,13 +39,30 @@ function uploadActivityData(activities){
         activity.image.data=fs.readFileSync(ele.image);
         (async()=>{
             await activity.save();
-            console.log("activity "+ele.id+" sent")
+            console.log("activity "+ele.id+" uploaded")
         })()
     });
 }
 function uploadHotelData(hotels){
-    let hotel=new hotelModel();
-    hotel.image.contentType='image/jpeg';
+    hotels.forEach(ele=>{
+        let hotel=new hotelModel();
+        hotel.image.contentType='image/jpeg';  
+        hotel.name=ele.name
+        hotel.city=ele.city
+        hotel.rating=ele.rating
+        hotel.price=ele.price
+        hotel.blurb=ele.blurb
+        hotel.amenity=ele.amenity
+        hotel.lat=ele.lat
+        hotel.lng=ele.lng
+        hotel.image.data=fs.readFileSync(ele.image)
+        hotel.link=ele.link;
+        (async()=>{
+            await hotel.save();
+            console.log("hotel "+ele.name+" uploaded")
+        })()
+    })
+    
 }
 
 

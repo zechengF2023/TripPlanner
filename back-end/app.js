@@ -14,32 +14,37 @@ const fs = require('fs')
 const users = require("./data/user.json")
 const trips = require("./data/trip.json")
 const dbData=require("./uploadData")
-const activitiesData=require("./data/activities.json")
+const activityData=require("./data/activities.json")
+const hotelData=require("./data/hotels.json")
 const mongoose=require("mongoose");
 const { stringify } = require('querystring');
 const {Schema}=mongoose;
 
 (async()=>{
 await mongoose.connect('mongodb+srv://Guo:tripplanner@cluster0.yougi.mongodb.net/TripPlannerDB?retryWrites=true&w=majority')
-})()
+})();
 
-// for data upload purpose.
-// dbData.uploadActivityData(activitiesData)
-
+// for data upload purpose only.
+// dbData.uploadActivityData(activityData)
+// dbData.uploadHotelData(hotelData)
 
 app.get("/getRecommendedActivities", (req, res)=>{
     let activityL=[];
     (async()=>{
-        console.log("async f runs")
         for(let i=1;i<6;i++){
             let activityFound=await dbData.activityModel.findOne({"id":i})
-            console.log(activityFound.id)
             activityL.push(activityFound)
-            console.log("loop runs")
         }
         res.json(activityL)
     })()  
     //res.json??
+})
+
+app.get("/results/getHotelData",(req, res)=>{
+    (async()=>{
+        const hotelL=await dbData.hotelModel.find({"city":"New York"})
+        res.json(hotelL)
+    })()
 })
 
 // signup page
