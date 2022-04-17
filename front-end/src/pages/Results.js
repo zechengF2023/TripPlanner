@@ -24,7 +24,8 @@ const Results=({route, navigation})=>{
     const [displayData, setDisplayData]=useState([]);
     const Buffer=require('buffer').Buffer;
     const sortFunction=(method, arr)=>{
-        if(method==="Price"){
+        if (arr.length===0){return []}
+        else if(method==="Price"){
             const newDisplayData=arr;
             for(let i=0;i<newDisplayData.length;i++){
                 let smallestIdx=i;
@@ -40,7 +41,11 @@ const Results=({route, navigation})=>{
             return newDisplayData
         }
         else if(method==="Default"){
-            return hotelData
+            const newDisplayData=[]
+            hotelData.forEach(item=>{
+                if(arr.includes(item)){newDisplayData.push(item)}
+            })
+            return newDisplayData
         }
         else if(method==="Rating"){
             const newDisplayData=arr;
@@ -60,6 +65,7 @@ const Results=({route, navigation})=>{
     }
     const sortChange = (event) => {
         setSort(event.target.value)
+        console.log(event.target.value)
         setDisplayData(sortFunction(event.target.value, displayData))
     };
     const priceChange = (event) => {
@@ -69,13 +75,10 @@ const Results=({route, navigation})=>{
         if(event.target.value==="Any"){
             newDisplayData=hotelData
         }
-        if(event.target.value==="Less 100"){
+        else if(event.target.value==="Less 100"){
             hotelData.forEach(item=>{
                 if(item.price<100){newDisplayData.push(item)
-                    console.log("found")
                 }
-                console.log(newDisplayData.length)
-
             })
         }
         else if(event.target.value==="BW 100 200"){
@@ -85,7 +88,9 @@ const Results=({route, navigation})=>{
         }
         else if(event.target.value==="BW 200 300"){
             hotelData.forEach(item=>{
-                if(item.price>=200 && item.price<=300){newDisplayData.push(item)                }
+                if(item.price>=200 && item.price<=300){
+                    newDisplayData.push(item)              
+                }
             })
         }
         else{
@@ -93,6 +98,7 @@ const Results=({route, navigation})=>{
                 if(item.price>300){newDisplayData.push(item)}
             })
         }
+        console.log(newDisplayData)
         console.log(sortFunction(sort, newDisplayData))
         setDisplayData(sortFunction(sort, newDisplayData))
     };
@@ -162,7 +168,7 @@ const Results=({route, navigation})=>{
                 </div> */}
             </div>
             <div className="resultSection">
-                {displayData.map((hotel, i) =>
+                {displayData.length>0 && displayData.map((hotel, i) =>
                         <ArticleListing article={hotel} key={i}/>
                 )}
                 {displayData.length==0 && <h2>No matching result.</h2>}
