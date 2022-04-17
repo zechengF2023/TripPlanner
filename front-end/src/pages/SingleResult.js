@@ -1,106 +1,57 @@
 import "../css/SingleResult.css"
-import React, {useEffect, useState, useMemo}  from 'react'; 
+import React, {useEffect, useState}  from 'react'; 
 import Header from "../components/Header"; 
-import Carousel from 'react-material-ui-carousel'
-import { Paper, Button } from '@mui/material'
+import Footer from "../components/Footer"
+import { Paper, Button, touchRippleClasses } from '@mui/material'
 import {useParams, Link} from "react-router-dom"; 
-import Data from './Properties.json';
-import activityPhoto from "../assets/activity.jpeg"; 
-import hotelPhoto from "../assets/hotelExample1.webp"
+import {useLocation} from "react-router-dom"
+import {GoogleMap,Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
 
 function SingleResult(){
-    let [article, setArticle] = useState({}); 
-    let {id} = useParams(); 
-
-    useEffect(() => {
-        const dataToSet = Data.find((item) => item.id === id);
-        setArticle(dataToSet); 
-    }, [id]); 
-
-    const articleImages = useMemo(() => {
-        if (!article) return {};
-        else {
-            return article.images; 
-        }
-    }, [article])
-
-    const articleActivities = useMemo(() => {
-        if (!article) return {};
-        else {
-            return article.activities; 
-        }
-    }, [article])
-
-    if (article === {} || articleImages === undefined || articleActivities === undefined) {
-        return (<> <h1>Still Loading...</h1></>);
-    }
-    else{
-        return (
-            <div>
-                <Header/>
-                <div style = {{backgroundColor: "white"}}>
-                    <div style={{ marginLeft: "100px", marginRight: "100px", height: "400px",backgroundColor: "white"}}>
-                        <Carousel>
-                            {articleImages.map( (item, i) => <CarouselItem key={i} item={item} /> )}
-                        </Carousel>
-                    </div>
-    
-                    <div className="singleContent" style={{marginTop: "30px", marginLeft:"100px", marginRight:"100px"}}>
-                        <div className="singleContentLeft">
-                            <h2 className="singleName">{article.name}</h2>
-                            <h4 className="singleLocation">{article.location}</h4>
-                            <p> {article.amenities} </p>
-                            <h4 className="singleTagline">{article.tagline}</h4>
-                            <p className="singleBlurb">{article.blurb}</p>
-    
-                            <Button>
-                                <Link to="/trip">
-                                    Book a Room 
-                                </Link> 
-                            </Button>
-                        </div>
-                        <div className="singleContentRight">
-                            {articleActivities.map( (item, i) => <ActivitiesItem key={i} item={item} /> )}
-                        </div>
-                    </div>
+    const {state}=useLocation()
+    const {article}=state;
+    const amenityStr=article.amenity.join(", ")
+    const MapComponent=()=>{
+        return( 
+          <GoogleMap
+            defaultCenter={new window.google.maps.LatLng(article.lat,article.lng)} defaultZoom={13} id="hotelMap">
+          <Marker key={0} position={{lat:article.lat, lng:article.lng}} label={{text:article.name, fontSize:"18px", fontWeight:"bold"}}></Marker>
+          </GoogleMap> 
+    )}
+   
+    const WrappedMap=withScriptjs(withGoogleMap(MapComponent));
+    return (
+        <div>
+            <Header/>
+            <div className="hotelDisplay">
+                <div className="leftContent">
+                    <h2 className="priceRating">{"Price: $"+article.price+" Rating:"+article.rating}</h2>
+                    <h2 className="singleName">{article.name}</h2>
+                    <p className="singleBlurb">{article.blurb}</p>
+                    <p> {"Amenities: "+amenityStr} </p>
+                </div>
+                <div className="rightContent">
+                    <div className="hotelMap" >
+                        <WrappedMap
+                        googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDXkTuxCbHzr4PT0wiF_SO5rh6wpeiWMoQ"}
+                        loadingElement={<div style={{ height: '100%' }} />}
+                        containerElement={<div style={{ height: '100%' }} />}
+                        mapElement={<div style={{ height: '100%' }} />}
+                        />
+                    </div> 
                 </div>
             </div>
-        )
-    }
-        
-    function CarouselItem(props)
-    {
-        return (
-            <Paper style={{height: "400px"}}>
-                <div>
-                    {/* <img alt="hotelPhotos" src={props.item.photo}/> */}
-                    <img alt="hotelPhotos" src={hotelPhoto}/>
-                </div>  
-            </Paper>
-        )
-    }
-        
-    function ActivitiesItem(props)
-    {
-        return (
-            <div className="singleActivityContent" style ={{height:"100px"}}>
-                <div className="singleActivityLeft">
-                    {/* <img alt="activityPhoto" src={props.item.image} style={{width:"100%"}}/> */}
-                    <img alt="activityPhoto" src={activityPhoto} style={{width: "100%"}}/>
-                </div>
-                <div className="singleActivityRight">
-                    <h3 style={{margin:"0px"}}>{props.item.name}</h3>
-                    <h5 style={{margin:"0px"}}>{props.item.price}</h5>
-                    <Button>
-                        <Link to="/trip">
-                            Add Activity
-                        </Link>
-                    </Button>
-                </div>
-    
+            <div className="links">
+                <a target="_blank" href={article.link} className="bookLink">
+                    Book a Room
+                </a>
+                <a href={"/trip"} className="tripLink">
+                    Proceed to choose activities
+                </a>
             </div>
-        )
-    }   
+            <Footer className="ftr"/>
+        </div>
+    )
 }
-
+        
 export default SingleResult

@@ -18,13 +18,13 @@ import React from "react"
 function App() {
   return (
     <div className="App">
-      <Router>  
+      <Router>
         <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/signup" element={<SignUp />}/>
         {/* <Route path="/home" element={<Home />}/> */}
         <Route path="/results" element={<Results/>}/>
-        <Route path = "/results/:id" element={<SingleResult/>}></Route>
+        <Route path = "/hotelResult" element={<SingleResult/>}></Route>
         <Route path="/about" element={<About />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/settings" element={<Settings />}/>

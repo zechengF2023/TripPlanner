@@ -1,24 +1,21 @@
-.singleContent {
-    display: flex; 
-    flex-direction: row; 
+.hotelDisplay{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 5vh;
 }
 
-.singleContentLeft {
+.leftContent {
     display: flex; 
     flex-direction: column; 
-    width: 80%;  
-    margin-right: 0px; 
+    width: 45vw;
 }
 
-.singleContentRight {
-    width: 20%;
-    margin: 10px; 
+.singleName{
+    align-self: center;
+    margin-bottom:0;
 }
-
-.singleName {
-    margin-bottom: 0; 
-}
-
 .singleLocation {
     font-style: italic; 
 }
@@ -28,17 +25,27 @@
     font-style: italic; 
     margin-bottom: 0; 
 }
-
-.singleActivityContent{
-    display: flex; 
-    flex-direction: row; 
+.rightContent{
+    display: flex;
+    flex-direction: column;
+}
+.hotelMap{
+    margin-top: 2vh;
+    height: 60vh;
+    width: 45vw;
+}
+.priceRating{
+    margin-bottom:0;
 }
 
-.singleActivityLeft{
-    width: 30%; 
+.links{
+    margin-top: 4vh;
+    display: flex;
+    font-size: 3vh;
+    justify-content: right;
+    font-weight: bold;
+    margin-right: 5vw;
 }
-
-.singleActivityRight {
-    display: flex; 
-    flex-direction: column; 
+.bookLink{
+    margin-right: 3vw;
 }
