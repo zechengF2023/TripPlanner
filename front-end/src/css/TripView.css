@@ -1,0 +1,87 @@
+.template{
+    display: flex;
+    flex-direction: column;
+}
+
+.template h1{
+    display:flex;
+    justify-content:center;
+}
+.subHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 0.3vh solid;
+    margin-bottom: 0;
+}
+.Icon{
+    display:flex;
+    justify-content:center;
+    height:5vh;
+    border:solid 0.4vh;
+}
+.Icons{
+    display: flex;
+    cursor: pointer;
+}
+.dayIcons{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+}
+.dayIcon{
+    background-color: white;
+    display: flex;
+    height: 5.7vh;
+    width: 4vw;
+    font-weight: bold;
+    font-size: 20px;
+    align-items: center;
+    cursor: pointer;
+    margin-top:0.1vh;
+    border:solid 0.4vh;
+
+}
+.panelAndSummary{
+    position:absolute;
+    top:40vh;
+    display:flex;
+    flex-direction: column;
+}
+.timeSummary{  
+    display:flex;
+    flex-direction: row;
+    height: 6vh;
+    width: 15vw;
+    border:solid;
+    align-content: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+#timeText{
+    align-self: center;
+    border:solid;
+    font-size:2.5vh;
+}
+#timeValue{
+    align-self:center;
+    font-size:2.5vh;
+}
+.floatingPanel{
+    border: solid;
+    height: 6vh;
+    width: 15vw;
+    display:flex;
+    background:silver;
+    justify-content: space-around;
+    align-items:center;
+}
+#panelIntro{
+    font-weight: bold;
+    font-size: 2.5vh;
+}
+#selectBox{
+    font-size:2vh;
+    font-weight:bold;
+    height:5vh;
+}

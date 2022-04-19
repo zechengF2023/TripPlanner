@@ -1,14 +1,14 @@
 import "../css/Recommendation.css"
 import React from "react"
 import {Link} from "react-router-dom"
-import activityImage from "../assets/activity.jpeg"
+
 
 const RecommendationActivity=({recommendation})=>{
     return (
         <div className="recAct">
-            <Link to={"/results/1"} > 
+            <a href={recommendation.link} > 
                 <img className="activityImage" alt="activity" src={recommendation.image} /> 
-            </Link>
+            </a>
             <h2 className="activitySubHeader">{recommendation.name}</h2>
         </div>
     )

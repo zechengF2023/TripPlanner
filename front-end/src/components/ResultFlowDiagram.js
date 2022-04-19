@@ -5,8 +5,8 @@ const ResultFlowDiagram=(props)=>{
         return(
             <div className="hotelBox">
                 <img src={hotelData.image}/>
-                {isStart&&<text> Start from <a href="https://en.wikipedia.org/wiki/"> {hotelData.name}</a></text>}
-                {!isStart&&<text> End at <a href="https://en.wikipedia.org/wiki/"> {hotelData.name}</a></text>}
+                {isStart&&<text> Start from <a href={hotelData.link}> {hotelData.name}</a></text>}
+                {!isStart&&<text> End at <a href={hotelData.link}> {hotelData.name}</a></text>}
             </div>
         )
     }
@@ -16,7 +16,7 @@ const ResultFlowDiagram=(props)=>{
                 <img src={actiData.image}/>
                 <div className="actiText">
                 <text className="line1">
-                Arrive at:<a href="https://en.wikipedia.org/wiki/"> {actiData.name}</a>
+                Arrive at:<a href={actiData.link}> {actiData.name}</a>
                 </text>
                 <text className="line2">Recommended time: {actiData.stay} min</text>
                 </div>
@@ -33,13 +33,13 @@ const ResultFlowDiagram=(props)=>{
     }
     const RenderDiagram=()=>{
         const result=[]
-        result.push(HotelBox(props.hotelData[0], true))
+        result.push(HotelBox(props.hotelData, true))
         for(let i=0;i<props.actiData.length;i++){
             result.push(TransBox(props.timeData[i]))
             result.push(ActiBox(props.actiData[i]))
         }
         result.push(TransBox(props.timeData[props.timeData.length-1]))
-        result.push(HotelBox(props.hotelData[0], false));
+        result.push(HotelBox(props.hotelData, false));
         return result;
     }
     return(

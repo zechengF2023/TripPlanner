@@ -1,8 +1,7 @@
 import "../css/Results.css"
 import React, { useEffect, useState } from "react"
 import Header from "../components/Header"
-import Search from "../components/SearchBar"
-import ArticleListing from "../components/ArticleListing.js"
+import HotelListing from "../components/HotelListing.js"
 import FilterButton from "../components/FilterButton.js"
 import Footer from "../components/Footer"
 import InputLabel from '@mui/material/InputLabel';
@@ -127,7 +126,7 @@ const Results=({route, navigation})=>{
             </div>
             </div>
             <div className="filterSection">
-                <h3 className="resultNumber">{Properties.length} locations found</h3>
+                <h3 className="resultNumber">{displayData.length} locations found</h3>
                 <Box className="dropdown" sx={{ minWidth: 120 }}>
                     <FormControl fullWidth size="small">
                         <InputLabel id="demo-simple-select-label">Sort</InputLabel>
@@ -138,7 +137,6 @@ const Results=({route, navigation})=>{
                         label="Age"
                         onChange={sortChange}
                         >
-                        {/* <MenuItem value={"Recommended"}>Recommended</MenuItem> */}
                         <MenuItem value={"Default"}>Default</MenuItem>
                         <MenuItem value={"Price"}>Price: Low to High</MenuItem>
                         <MenuItem value={"Rating"}>Rating</MenuItem>
@@ -169,9 +167,9 @@ const Results=({route, navigation})=>{
             </div>
             <div className="resultSection">
                 {displayData.length>0 && displayData.map((hotel, i) =>
-                        <ArticleListing article={hotel} key={i}/>
+                        <HotelListing article={hotel} duration={duration} key={i}/>
                 )}
-                {displayData.length==0 && <h2>No matching result.</h2>}
+                {displayData.length===0 && <h2>No matching result.</h2>}
             </div>
             <Footer />
         </div>

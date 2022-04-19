@@ -6,7 +6,6 @@ import RecommendationDestination from "../components/RecommendationDestination"
 import Header from "../components/Header"
 // import recData from '../components/recommendationData.json'
 import Footer from "../components/Footer"
-
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 const Home=()=>{
@@ -24,11 +23,10 @@ const Home=()=>{
                 item.image="data:image/jpeg;base64,".concat(Buffer.from(item.image.data).toString("base64"))
                 setActivityData((activityData=>[...activityData, item]))
             })
-            const tempData = await axios.get("http://localhost:3000/home-getInitData")
-            tempData.data.forEach((item)=>{
-                if (item.type==="destination"){
-                    setDestData((destData)=>[...destData,item])
-                }
+            const destinationsReceived=await axios.get("http://localhost:3000/getRecommendedDestinations")
+            destinationsReceived.data.forEach(item=>{
+                item.image="data:image/jpeg;base64,".concat(Buffer.from(item.image.data).toString("base64"))
+                setDestData((destData)=>[...destData,item])
             })
         }
         catch(error) {
@@ -40,6 +38,7 @@ const Home=()=>{
     },[])
     return (
         <div>
+            {console.log(destData)}
             <div className="imageSearch">
                 <Header/>
                 <div className="search">
