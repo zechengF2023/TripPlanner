@@ -1,32 +1,44 @@
-require('dotenv').config({ silent: true })
+require('dotenv').config({path:"../.env"})
 const express = require("express") 
 const app = express() 
 const cors=require("cors")
 const morgan = require("morgan")
 const bodyParser=require("body-parser")
+const Buffer=require('buffer').Buffer;
 //const { isTypedArray } = require("util/types")
 app.use(bodyParser.json())
 app.use(morgan('dev', {skip: (req, res) => process.env.NODE_ENV === 'test'}))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
 const fs = require('fs')
 const users = require("./data/user.json")
 const trips = require("./data/trip.json")
 const dbData=require("./uploadData")
 const activityData=require("./data/activities.json")
 const hotelData=require("./data/hotels.json")
+const cityData=require('./data/cities.json')
 const mongoose=require("mongoose");
 const { stringify } = require('querystring');
 const {Schema}=mongoose;
 
 (async()=>{
-await mongoose.connect('mongodb+srv://Guo:tripplanner@cluster0.yougi.mongodb.net/TripPlannerDB?retryWrites=true&w=majority')
+await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.yougi.mongodb.net/TripPlannerDB?retryWrites=true&w=majority`)
 })();
 
 // for data upload purpose only.
 // dbData.uploadActivityData(activityData)
 // dbData.uploadHotelData(hotelData)
+// dbData.uploadCityData(cityData)
+
+app.post("/getDestinationActivities",(req, res)=>{
+    let activityList;
+    (async()=>{
+        activityList=await dbData.activityModel.find({"city":"New York"})
+        res.json(activityList)
+    })() 
+})
 
 app.get("/getRecommendedActivities", (req, res)=>{
     let activityL=[];
@@ -36,8 +48,17 @@ app.get("/getRecommendedActivities", (req, res)=>{
             activityL.push(activityFound)
         }
         res.json(activityL)
-    })()  
-    //res.json??
+    })() 
+})
+
+app.get("/getRecommendedDestinations",(req, res)=>{
+    let destinationL=[];
+    (async()=>{
+        let activityFound=await dbData.cityModel.findOne({"name":"New York"})
+        activityFound.image="data:image/jpeg;base64,".concat(Buffer.from(activityFound.image.data).toString("base64"))
+        destinationL.push(activityFound)
+        res.json(destinationL)
+    })() 
 })
 
 app.get("/results/getHotelData",(req, res)=>{
@@ -45,6 +66,20 @@ app.get("/results/getHotelData",(req, res)=>{
         const hotelL=await dbData.hotelModel.find({"city":"New York"})
         res.json(hotelL)
     })()
+})
+
+app.post("/destinationDescription/getTop5", (req, res)=>{
+    let activities=[]
+    const top5=req.body.top5
+    top5.forEach(name=>{
+        (async()=>{
+            const activity=await dbData.activityModel.find({"name":name})
+            activities.push(activity)
+            if(activities.length==5){
+                res.json(activities)
+            }
+        })()
+    })
 })
 
 // signup page
@@ -89,7 +124,6 @@ app.post("/contact",(req,res)=>{
 })
 
 app.get("/home-getInitData", (req, res)=>{
-    console.log("received")
     res.json([
         {
             "id": "1",

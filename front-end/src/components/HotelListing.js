@@ -2,16 +2,17 @@ import "../css/ArticleListing.css"
 import { useNavigate } from "react-router-dom";
 import React from "react"
 import { Link } from "@mui/material";
+import {useLocation} from "react-router-dom"
 
 const ArticleListing=({article})=>{
-
+    const {state}=useLocation()
+    const {duration}=state
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
     //   let path = `/results/${article.id}`; 
     //   navigate(path);
-        navigate("/hotelResult",{state:{article:article}})
+        navigate("/hotel",{state:{article, duration, destination: article.city}})
     }
-
     return (
         <div className="articleBox" onClick={routeChange}>
             <div className="articleVisual">
@@ -25,7 +26,7 @@ const ArticleListing=({article})=>{
                 <textarea className="articleDescription" rows={5}>{article.blurb}</textarea>
                 <div className="bottomBar">
                 <h2 className="articleRating">Rating: {article.rating}/5</h2>
-                <Link to="/results" className="linkEle">Select to continue</Link>
+                <Link to="/hotel" className="linkEle">Select to continue</Link>
                 </div>
             </div>
         </div>

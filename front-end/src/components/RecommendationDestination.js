@@ -6,9 +6,10 @@ import temporaryPhoto from "../assets/destination.jpeg"
 const RecommendationDestination=({destination})=>{
     return (
         // <div className="recDestination" style={{backgroundImage:`url(${destination.image})`}}>
-        <Link to="/results">
-            <div className="recDestination" style={{backgroundImage:`url(${temporaryPhoto})`}}>
-                <h2 className="destinationSubHeader">{destination.location}</h2>
+        <Link to="/destinationDescription" state={{destination:destination}} style={{textDecoration:"none"}}>   
+            <div className="recDestination">
+                <img src={destination.image} alt="destinationImage" className="destImg"/>
+                <h2 className="destinationSubHeader">{destination.name}</h2>
             </div>
         </Link>
 

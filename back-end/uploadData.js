@@ -1,6 +1,7 @@
 const mongoose=require("mongoose");
 const {Schema}=mongoose;
-const fs=require("fs")
+const fs=require("fs");
+const { stringify } = require("querystring");
 const activitySchema=new Schema({
     id: Number,
     city: String,
@@ -23,9 +24,17 @@ const hotelSchema=new Schema({
     lat: Number,
     lng: Number,
     image: {data:Buffer,contentType: String},
-    link: String
+    link: String,
+    stay:Number
 })
 let hotelModel=mongoose.model('hotels',hotelSchema)
+const citySchema=new Schema({
+    name:String,
+    top5: [String],
+    image: {data:Buffer,contentType: String},
+    description:String
+})
+let cityModel=mongoose.model("cities", citySchema)
 function uploadActivityData(activities){
     activities.forEach(ele => {
         let activity=new activityModel();
@@ -36,7 +45,9 @@ function uploadActivityData(activities){
         activity.lat=ele.lat
         activity.lng=ele.lng
         activity.name=ele.name
-        activity.image.data=fs.readFileSync(ele.image);
+        activity.image.data=fs.readFileSync(ele.image)
+        activity.link=ele.link
+        activity.stay=ele.stay;
         (async()=>{
             await activity.save();
             console.log("activity "+ele.id+" uploaded")
@@ -64,11 +75,24 @@ function uploadHotelData(hotels){
     })
     
 }
-
-
+function uploadCityData(cities){
+    cities.forEach(ele=>{
+        let city=new cityModel();
+        city.name=ele.name
+        city.top5=ele.top5
+        city.image.data=fs.readFileSync(ele.image)
+        city.description=ele.description;
+        (async()=>{
+            await city.save();
+            console.log("city "+ele.name+" uploaded")
+        })()
+    })
+}
 module.exports={
     uploadActivityData: uploadActivityData,
     uploadHotelData: uploadHotelData, 
+    uploadCityData,
     activityModel: activityModel,
-    hotelModel: hotelModel
+    hotelModel: hotelModel,
+    cityModel: cityModel
 }

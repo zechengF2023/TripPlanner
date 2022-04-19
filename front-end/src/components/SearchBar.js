@@ -21,7 +21,7 @@ const Search=(props)=>{
                 alert("invalid traveler number!")
             }
             if (intTravelerNum>0){
-                navigate("/results",{state:{intTravelerNum:intTravelerNum, destination: props.destination, duration: duration}})
+                navigate("/searchResults",{state:{intTravelerNum:intTravelerNum, destination: props.destination, duration: duration}})
             }
             else{alert("invalid traveler number!")}
         }

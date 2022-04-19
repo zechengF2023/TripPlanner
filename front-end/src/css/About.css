@@ -1,9 +1,21 @@
 .content{
     display: flex;
     flex-direction: column;
+    font-weight: bold;
+    font-size: 3vh;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3vh;
 }
-.content h1{
-    align-self: center;
+.title{
+    font-size: 5vh;
+}
+.body{
+    font-size:3vh;
+    margin-bottom: 2vh;
+}
+.ending{
+    margin-bottom: 2vh;
 }
 .footerDiv{
     position: absolute;

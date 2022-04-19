@@ -2,14 +2,14 @@ import "../css/SingleResult.css"
 import React, {useEffect, useState}  from 'react'; 
 import Header from "../components/Header"; 
 import Footer from "../components/Footer"
-import { Paper, Button, touchRippleClasses } from '@mui/material'
+import { Paper, Button, touchRippleClasses, duration } from '@mui/material'
 import {useParams, Link} from "react-router-dom"; 
 import {useLocation} from "react-router-dom"
 import {GoogleMap,Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
 
 function SingleResult(){
     const {state}=useLocation()
-    const {article}=state;
+    const {article, duration, destination}=state;
     const amenityStr=article.amenity.join(", ")
     const MapComponent=()=>{
         return( 
@@ -42,12 +42,12 @@ function SingleResult(){
                 </div>
             </div>
             <div className="links">
-                <a target="_blank" href={article.link} className="bookLink">
+                <a target="_blank" rel="noreferrer" href={article.link} className="bookLink">
                     Book a Room
                 </a>
-                <a href={"/trip"} className="tripLink">
+                <Link to="/hotelToTrip" state={{duration,destination,article}} className="tripLink">
                     Proceed to choose activities
-                </a>
+                </Link>
             </div>
             <Footer className="ftr"/>
         </div>

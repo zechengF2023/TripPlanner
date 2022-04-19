@@ -1,0 +1,22 @@
+.activityBox{
+    display: flex;
+    flex-direction: row;
+    height: 13vh;
+    width: 30vw;
+    border: solid;
+    border-radius:1vh;
+    align-content:center;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+.img{
+    border-radius:0.5vh;
+    height:13vh;
+    width: 10vw;
+}
+.link{
+    width:20vw;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}

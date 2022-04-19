@@ -13,7 +13,7 @@ const Profile=()=> {
             return savedTrips;
         }
     }, []);
-
+    
     return (
         <div>
             <Header/>
