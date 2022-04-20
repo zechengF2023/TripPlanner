@@ -21,7 +21,6 @@
     "buffer": "^6.0.3",
     "chai": "^4.3.6",
     "dom": "^0.0.3",
-    "google-map-react": "^2.1.10",
     "moment": "^2.29.2",
     "react": "^17.0.2",
     "react-datepicker": "^4.7.0",

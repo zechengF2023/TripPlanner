@@ -11,7 +11,6 @@ import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import {useLocation} from "react-router-dom"
 import axios from "axios"
-import Properties from "./Properties"
 
 
 const Results=({route, navigation})=>{
