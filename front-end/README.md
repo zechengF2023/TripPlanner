@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/software-assignments-spring2022/final-project-tripplanner/tree/master.svg?style=shield)](https://circleci.com/gh/software-assignments-spring2022/final-project-tripplanner/tree/master)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
