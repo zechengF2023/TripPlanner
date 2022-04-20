@@ -9,7 +9,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import MapIcon from '@mui/icons-material/Map';
 import Day from "../components/Day/Day"
 import DayView from "../components/DayView/DayView"
-import actiImg from "../assets/activity.jpeg"
 import { useEffect, useState } from "react"
 import {useLocation} from "react-router-dom"
 import { duration } from "@mui/material"

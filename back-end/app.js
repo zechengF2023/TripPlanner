@@ -1,11 +1,10 @@
-require('dotenv').config({path:"../.env"})
+require('dotenv').config({})
 const express = require("express") 
 const app = express() 
 const cors=require("cors")
 const morgan = require("morgan")
 const bodyParser=require("body-parser")
 const Buffer=require('buffer').Buffer;
-//const { isTypedArray } = require("util/types")
 app.use(bodyParser.json())
 app.use(morgan('dev', {skip: (req, res) => process.env.NODE_ENV === 'test'}))
 app.use(cors())
@@ -121,75 +120,6 @@ app.post("/contact",(req,res)=>{
     console.log(contactData)
     res.sendStatus(200).end()
     /*store in database*/
-})
-
-app.get("/home-getInitData", (req, res)=>{
-    res.json([
-        {
-            "id": "1",
-            "rating": "4", 
-            "type": "activity",
-            "name": "name",  
-            "price": "200", 
-            "location": "Location", 
-            "tags": ["tropics", "water", "family-friendly"]
-        },
-        {
-            "id": "2",
-            "type": "activity", 
-            "rating": "3", 
-            "name": "name",  
-            "price": "350", 
-            "location": "Location", 
-            "tags": ["tropics", "water", "family-friendly"]
-        },
-        {
-            "id": "3",
-            "type": "activity", 
-            "rating": "2.5", 
-            "name": "name",  
-            "price": "50", 
-            "location": "Location", 
-            "tags": ["tropics", "water", "family-friendly"]
-        },
-        {
-            "id": "4",
-            "type": "activity", 
-            "rating": "5", 
-            "name": "name",  
-            "price": "400", 
-            "location": "Location", 
-            "tags": ["tropics", "water", "family-friendly"]
-        },
-        {
-            "id": "5",
-            "type": "activity", 
-            "rating": "3.5", 
-            "name": "name",  
-            "price": "290", 
-            "location": "Location", 
-            "tags": ["tropics", "water", "family-friendly"]
-        },
-        {
-            "id": "6", 
-            "type": "destination", 
-            "location": "Location", 
-            "tags": ["tropics", "asia", "beaches"]
-        },
-        {
-            "id": "7", 
-            "type": "destination", 
-            "location": "Location", 
-            "tags": ["tropics", "asia", "beaches"]
-        },
-        {
-            "id": "8", 
-            "type": "destination", 
-            "location": "Location", 
-            "tags": ["tropics", "asia", "beaches"]
-        }
-    ])
-    res.end()
 })
 
 module.exports = app
