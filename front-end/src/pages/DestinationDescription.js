@@ -3,6 +3,8 @@ import { useLocation } from "react-router"
 import { Link } from "react-router-dom";
 import ActivityTop5 from "../components/ActivityTop5"
 import "../css/DestinationDescription.css"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 
@@ -22,6 +24,8 @@ const DestinationDescription=()=>{
         fetchData()
     },[])
     return(
+        <div>
+        <Header></Header>
         <div className="view">
             <h1 className="title">{destination.name}</h1>
             <div className="content">
@@ -40,6 +44,9 @@ const DestinationDescription=()=>{
             </div> 
             {/* end of content */}
             <Link to="/" className="link">Plan a trip to {destination.name}</Link>
+            
+        </div>
+        <Footer></Footer>
         </div>
     )
 }

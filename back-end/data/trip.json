@@ -1,7 +1,0 @@
-[
-    {"name":"dest1","price":"$200", "rating": "4"},
-    {"name":"dest2","price":"$350", "rating": "3"},
-    {"name":"dest3","price":"$50", "rating": "2.5"},
-    {"name":"dest4","price":"$400", "rating": "5"},
-    {"name":"dest5","price":"$290", "rating": "3.5"}
-]

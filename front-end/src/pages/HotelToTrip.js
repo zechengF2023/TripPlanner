@@ -23,9 +23,7 @@ const HotelToTrip=props=>{
             for(let i=0;i<duration;i++){
                 if(counter<activitiesList.length){
                     resultList[i].push(activitiesList[counter])
-                    console.log(counter)
                     counter++
-                    console.log(resultList)
                 }
                 else{
                     counter++
