@@ -8,6 +8,9 @@ import moment from 'moment';
 const Search=(props)=>{
     let duration=moment.duration((moment(props.checkout).diff(moment(props.checkin)))).days()+1;
     let navigate = useNavigate(); 
+    const dateToString=(dateObj)=>{
+        return dateObj.getFullYear()+"-"+dateObj.getMonth()+"-"+dateObj.getDate()
+    }
     const beginSearch=(e)=>{
         e.preventDefault();
         let intTravelerNum=0;
@@ -21,7 +24,7 @@ const Search=(props)=>{
                 alert("invalid traveler number!")
             }
             if (intTravelerNum>0){
-                navigate("/searchResults",{state:{intTravelerNum:intTravelerNum, destination: props.destination, duration: duration}})
+                navigate("/searchResults",{state:{intTravelerNum, destination: props.destination, duration, startDate:dateToString(props.checkin), endDate:dateToString(props.checkout)}})
             }
             else{alert("invalid traveler number!")}
         }

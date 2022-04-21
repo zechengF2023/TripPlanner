@@ -1,10 +1,15 @@
+
 .secondaryContainer{
     justify-content: space-between;
-    font-size: 20px;
+    font-size: 2vh;
     align-items: center;
     display: flex;
     margin-right: 5%;
     margin-left: 5%;
+    font-weight: bold;
+}
+.secondaryContainer p{
+    font-size:3vh;
 }
 .linkToSettings:link, .linkToSettings:visited{
     color: black;
@@ -26,16 +31,17 @@
 
 .subtitle{
     text-align: center;
+    font-size:3vh;
 }
 
 .tripHolder{
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding: 5px;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 10vw;
+    margin-right: 10vw;
     margin-top: 5px;
     row-gap: 15px;
+    width:80vw;
 }

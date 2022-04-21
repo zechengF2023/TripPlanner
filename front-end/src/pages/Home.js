@@ -38,7 +38,6 @@ const Home=()=>{
     },[])
     return (
         <div>
-            {console.log(destData)}
             <div className="imageSearch">
                 <Header/>
                 <div className="search">

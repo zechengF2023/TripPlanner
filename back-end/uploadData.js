@@ -35,6 +35,14 @@ const citySchema=new Schema({
     description:String
 })
 let cityModel=mongoose.model("cities", citySchema)
+const tripSchema=new Schema({
+    city: String,
+    hotel: String,
+    activities: [[String]],
+    startDate:String,
+    endDate: String
+})
+let tripModel=mongoose.model("trips",tripSchema)
 function uploadActivityData(activities){
     activities.forEach(ele => {
         let activity=new activityModel();
@@ -88,11 +96,27 @@ function uploadCityData(cities){
         })()
     })
 }
+function uploadTripData(trips){
+    trips.forEach(ele=>{
+        let trip=new tripModel()
+        trip.city=ele.city
+        trip.hotel=ele.hotel
+        trip.activities=ele.activities
+        trip.startDate=ele.startDate
+        trip.endDate=ele.endDate;
+        (async()=>{
+            await trip.save();
+            console.log("trip to "+ele.city+" uploaded")
+        })()
+    })
+}
 module.exports={
-    uploadActivityData: uploadActivityData,
-    uploadHotelData: uploadHotelData, 
+    uploadActivityData,
+    uploadHotelData, 
     uploadCityData,
-    activityModel: activityModel,
-    hotelModel: hotelModel,
-    cityModel: cityModel
+    uploadTripData,
+    activityModel,
+    hotelModel,
+    cityModel,
+    tripModel
 }

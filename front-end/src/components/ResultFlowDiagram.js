@@ -5,20 +5,20 @@ const ResultFlowDiagram=(props)=>{
         return(
             <div className="hotelBox">
                 <img src={hotelData.image}/>
-                {isStart&&<text> Start from <a href={hotelData.link}> {hotelData.name}</a></text>}
-                {!isStart&&<text> End at <a href={hotelData.link}> {hotelData.name}</a></text>}
+                {isStart&&<text className="line"> Start from <a href={hotelData.link}> {hotelData.name}</a></text>}
+                {!isStart&&<text className="line"> End at <a href={hotelData.link}> {hotelData.name}</a></text>}
             </div>
         )
     }
     const ActiBox=(actiData)=>{
         return(
             <div className="actiBox">
-                <img src={actiData.image}/>
+                <img src={actiData.image} alt="img"/>
                 <div className="actiText">
-                <text className="line1">
+                <text className="line">
                 Arrive at:<a href={actiData.link}> {actiData.name}</a>
                 </text>
-                <text className="line2">Recommended time: {actiData.stay} min</text>
+                <text className="line">Recommended time: {actiData.stay} min</text>
                 </div>
             </div>
         )

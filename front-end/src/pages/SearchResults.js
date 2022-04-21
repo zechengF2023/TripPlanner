@@ -15,7 +15,7 @@ import axios from "axios"
 
 const Results=({route, navigation})=>{
     const {state}=useLocation()
-    const {intTravelerNum, destination, duration}=state
+    const {intTravelerNum, destination, duration, startDate, endDate}=state
     const [sort, setSort] = React.useState('Default');
     const [price, setPrice] = React.useState('Any');
     const [hotelData, setHotelData]=useState([]);

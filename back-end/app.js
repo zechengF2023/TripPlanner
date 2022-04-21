@@ -13,11 +13,11 @@ app.use(express.urlencoded({ extended: true }))
 
 const fs = require('fs')
 const users = require("./data/user.json")
-const trips = require("./data/trip.json")
 const dbData=require("./uploadData")
 const activityData=require("./data/activities.json")
 const hotelData=require("./data/hotels.json")
 const cityData=require('./data/cities.json')
+const tripData=require('./data/trips.json')
 const mongoose=require("mongoose");
 const { stringify } = require('querystring');
 const {Schema}=mongoose;
@@ -30,6 +30,9 @@ await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.D
 // dbData.uploadActivityData(activityData)
 // dbData.uploadHotelData(hotelData)
 // dbData.uploadCityData(cityData)
+// dbData.uploadTripData(tripData)
+
+
 
 app.post("/getDestinationActivities",(req, res)=>{
     let activityList;
@@ -50,6 +53,7 @@ app.get("/getRecommendedActivities", (req, res)=>{
     })() 
 })
 
+//to be modified. 
 app.get("/getRecommendedDestinations",(req, res)=>{
     let destinationL=[];
     (async()=>{
@@ -60,6 +64,7 @@ app.get("/getRecommendedDestinations",(req, res)=>{
     })() 
 })
 
+//to be modified
 app.get("/results/getHotelData",(req, res)=>{
     (async()=>{
         const hotelL=await dbData.hotelModel.find({"city":"New York"})
@@ -79,6 +84,27 @@ app.post("/destinationDescription/getTop5", (req, res)=>{
             }
         })()
     })
+})
+
+//user id to be added
+app.post("/profile/getAllTrips",async(req, res)=>{
+    const trip=await dbData.tripModel.find()
+    res.json(trip)
+})
+
+app.post("/getActivity", async(req, res)=>{
+    const activity=await dbData.activityModel.find({"name": req.body.name})
+    res.json(activity)
+})
+
+app.post("/getHotel", async(req, res)=>{
+    const hotel=await dbData.hotelModel.find({"name": req.body.name})
+    res.json(hotel)
+})
+
+app.post("/getCity", async(req, res)=>{
+    const city=await dbData.cityModel.find({"name": req.body.name})
+    res.json(city)
 })
 
 // signup page

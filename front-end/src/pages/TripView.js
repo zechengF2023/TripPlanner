@@ -19,15 +19,7 @@ const TripView=props=>{
     const hotelData=state.hotelData
     const days=state.duration
     const actiData=state.actiData
-    console.log(actiData)
     const destination=state.destination
-    // number of days of this trip
-    //destination city name//
-    // data of all the activities, each sublist is for one day
-    // let actiData=[[{"name": "NYU", "lat": 40.729603794934015,"lng":-73.99646407872974, "image":actiImg, "stay":30},{"name": "Washington Square", "lat": 40.73169582048705,"lng":-73.99712378852689,"image":actiImg, "stay":45}, {"name": "NYU Bookstore", "lat": 40.7292215,"lng":-73.9932385, "image":actiImg,"stay":35}],
-    //               [{"name": "Bobst Library", "lat":40.729793742025834, "lng":-73.99704954065322, "image":actiImg, "stay":200},{"name": "Stern School of Business", "lat": 40.729228370255534, "lng": -73.99624215337731,"image":actiImg, "stay":15}, {"name": "Tish School of the Arts", "lat": 40.72951832313394, "lng":-73.99357707600099, "image":actiImg,"stay":25}]]
-    // data of the chosen hotel
-    // let hotelData={"name":"Lipton", "lat": 40.73163825016495, "lng":-73.99930411551414, "image":actiImg}
     
     const renderDays=(days)=>{
         let dayList=[]
@@ -119,7 +111,6 @@ const TripView=props=>{
             return <ResultFlowDiagram actiData={actiData[displayDay-1]} hotelData={hotelData} timeData={timeL}></ResultFlowDiagram>
         }
     }
-    
     return(
         <div>
             <Header />
