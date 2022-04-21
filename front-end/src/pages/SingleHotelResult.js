@@ -6,16 +6,17 @@ import { Paper, Button, touchRippleClasses, duration } from '@mui/material'
 import {useParams, Link} from "react-router-dom"; 
 import {useLocation} from "react-router-dom"
 import {GoogleMap,Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 
 function SingleResult(){
-    const {state}=useLocation()
-    const {article, duration, destination}=state;
-    const amenityStr=article.amenity.join(", ")
+    const myContext=useContext(AppContext)
+    const amenityStr=myContext.hotel.amenity.join(", ")
     const MapComponent=()=>{
-        return( 
+        return(
           <GoogleMap
-            defaultCenter={new window.google.maps.LatLng(article.lat,article.lng)} defaultZoom={13} id="hotelMap">
-          <Marker key={0} position={{lat:article.lat, lng:article.lng}} label={{text:article.name, fontSize:"18px", fontWeight:"bold"}}></Marker>
+            defaultCenter={new window.google.maps.LatLng(myContext.hotel.lat,myContext.hotel.lng)} defaultZoom={13} id="hotelMap">
+          <Marker key={0} position={{lat:myContext.hotel.lat, lng:myContext.hotel.lng}} label={{text:myContext.hotel.name, fontSize:"18px", fontWeight:"bold"}}></Marker>
           </GoogleMap> 
     )}
    
@@ -25,9 +26,9 @@ function SingleResult(){
             <Header/>
             <div className="hotelDisplay">
                 <div className="leftContent">
-                    <h2 className="priceRating">{"Price: $"+article.price+" Rating:"+article.rating}</h2>
-                    <h2 className="singleName">{article.name}</h2>
-                    <p className="singleBlurb">{article.blurb}</p>
+                    <h2 className="priceRating">{"Price: $"+myContext.hotel.price+" Rating:"+myContext.hotel.rating}</h2>
+                    <h2 className="singleName">{myContext.hotel.name}</h2>
+                    <p className="singleBlurb">{myContext.hotel.blurb}</p>
                     <p> {"Amenities: "+amenityStr} </p>
                 </div>
                 <div className="rightContent">
@@ -42,10 +43,10 @@ function SingleResult(){
                 </div>
             </div>
             <div className="links">
-                <a target="_blank" rel="noreferrer" href={article.link} className="bookLink">
+                <a target="_blank" rel="noreferrer" href={myContext.hotel.link} className="bookLink">
                     Book a Room
                 </a>
-                <Link to="/hotelToTrip" state={{duration,destination,article}} className="tripLink">
+                <Link to="/hotelToTrip" className="tripLink">
                     Proceed to choose activities
                 </Link>
             </div>

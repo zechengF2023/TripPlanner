@@ -12,18 +12,17 @@ import DayView from "../components/DayView/DayView"
 import { useEffect, useState } from "react"
 import {useLocation} from "react-router-dom"
 import { duration } from "@mui/material"
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 const Buffer=require('buffer').Buffer
 
 const TripView=props=>{
+    const myContext=useContext(AppContext)
     const {state}=useLocation()
-    const hotelData=state.hotelData
-    const days=state.duration
     const actiData=state.actiData
-    const destination=state.destination
-    
-    const renderDays=(days)=>{
+    const renderDays=()=>{
         let dayList=[]
-        for (let i=1;i<days+1;i++){
+        for (let i=1;i<myContext.duration+1;i++){
             dayList.push(<Day dayNumber = {i} setDayNumber = {handleDayClick} className="dayIcon"/>)
             // <button className="dayIcon" key={i} onClick={()=>handleDayClick(i)}>Day{i}</button>
         }
@@ -82,8 +81,8 @@ const TripView=props=>{
     }
     function getRequest(idx, mode){
         let dirRequest={
-            origin: new window.google.maps.LatLng(hotelData.lat, hotelData.lng),
-            destination: new window.google.maps.LatLng(hotelData.lat, hotelData.lng),
+            origin: new window.google.maps.LatLng(myContext.hotel.lat, myContext.hotel.lng),
+            destination: new window.google.maps.LatLng(myContext.hotel.lat, myContext.hotel.lng),
             travelMode: mode,
             waypoints: waypointsList[idx]
         }
@@ -102,23 +101,23 @@ const TripView=props=>{
     
     const displayContent=()=>{
         if (displayMap){           
-            return <ResultMap dayNum={displayDay} dir={dir} actiData={actiData[displayDay-1]} hotelData={hotelData} timeData={timeL}></ResultMap>
+            return <ResultMap dayNum={displayDay} dir={dir} actiData={actiData[displayDay-1]} timeData={timeL}></ResultMap>
         }
         else if (displayEdit){
             return <p>This is edit</p>
         }
         else {
-            return <ResultFlowDiagram actiData={actiData[displayDay-1]} hotelData={hotelData} timeData={timeL}></ResultFlowDiagram>
+            return <ResultFlowDiagram actiData={actiData[displayDay-1]} timeData={timeL}></ResultFlowDiagram>
         }
     }
     return(
         <div>
             <Header />
             <div className="template">
-                <h1>Trip to {destination} </h1>
+                <h1>Trip to {myContext.destination} </h1>
                 <div className="subHeader">
                     <div className="dayIcons">
-                        {renderDays(days)}
+                        {renderDays(myContext.duration)}
                     </div>
                     <div className="Icons">
                         <MapIcon className="Icon"  sx={{ fontSize: "5vh"}} onClick={handleMapClick} />
@@ -143,7 +142,7 @@ const TripView=props=>{
                     </div> */}
                 </div>
                 {displayContent()}
-                {showModal && <Modal toClose={closeModal}/>}
+                {showModal && <Modal toClose={closeModal} actiData={actiData}/>}
             </div>
             <Footer />
         </div>

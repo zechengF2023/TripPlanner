@@ -5,10 +5,17 @@ import savedTrips from "../components/savedTripsData.json"
 import TripListing from "../components/TripListing"
 import "../css/Profile.css"
 import { useState } from "react"
+import { Navigate, useNavigate } from "react-router"
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 
 const Profile=()=> {
+    const navigate=useNavigate()
+    useEffect(()=>{
+        window.onpopstate=()=>{
+            navigate("/")
+        }
+    })
     const [trips, setTrips]=useState([])
     const [userName, setUsername]=useState("Username")
     const fetchTrip=async()=>{
@@ -18,7 +25,6 @@ const Profile=()=> {
     useEffect(()=>{
         fetchTrip()
     },[])
-
     return (
         <div className="view">
             <Header/>

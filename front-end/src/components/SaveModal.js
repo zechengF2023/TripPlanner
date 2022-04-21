@@ -1,16 +1,38 @@
 import { useNavigate } from "react-router-dom"
 import {useState} from "react"
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 import "../css/SaveModal.css"
-const SaveModal=({toClose})=>{
+const axios=require("axios")
+
+const SaveModal=({toClose,actiData})=>{
+    const myContext=useContext(AppContext)
     let navigate=useNavigate()
     const [isSaved, setSaved]=useState(false)    
+    const dateToString=(dateObj)=>{
+        return dateObj.getFullYear()+"-"+dateObj.getMonth()+"-"+dateObj.getDate()
+    }
     const toSave=()=>{
         /*save operations*/
-        setSaved(true)
+        let dataToUpload={}
+        const activities=[]
+        actiData.forEach(subArray=>{
+            const activitiesForDays=[]
+            subArray.forEach(activity=>{
+                activitiesForDays.push(activity.name)
+            })
+            activities.push(activitiesForDays)
+        })
+        dataToUpload.activities=activities
+        dataToUpload.hotel=myContext.hotel.name
+        dataToUpload.city=myContext.destination
+        dataToUpload.startDate=dateToString(myContext.checkin)
+        dataToUpload.endDate=dateToString(myContext.checkout)
+        const res=axios.post("http://localhost:3000/saveTrip",dataToUpload).then(setSaved(true))
     }
     const toHome=()=>{
         toClose();
-        navigate("/home")
+        navigate("/")
     }
     const toProfile=()=>{
         toClose();

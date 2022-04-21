@@ -107,6 +107,13 @@ app.post("/getCity", async(req, res)=>{
     res.json(city)
 })
 
+app.post("/saveTrip", (req, res)=>{
+    const newTrip=[req.body]
+    dbData.uploadTripData(newTrip)
+    console.log("sent")
+    res.status(200)
+})
+
 // signup page
 app.post("/signup", (req, res) => {
     const userData = {username: req.body.name, password: req.body.password}
