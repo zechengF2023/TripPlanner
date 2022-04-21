@@ -11,11 +11,13 @@ import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import {useLocation} from "react-router-dom"
 import axios from "axios"
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 
-
-const Results=({route, navigation})=>{
+const Results=()=>{
+    const myContext=useContext(AppContext)
     const {state}=useLocation()
-    const {intTravelerNum, destination, duration, startDate, endDate}=state
+    const {startDate, endDate}=state
     const [sort, setSort] = React.useState('Default');
     const [price, setPrice] = React.useState('Any');
     const [hotelData, setHotelData]=useState([]);
@@ -101,6 +103,7 @@ const Results=({route, navigation})=>{
         setDisplayData(sortFunction(sort, newDisplayData))
     };
     const fetchHotelData=async()=>{
+        //to be modified
         const hotelDataFetched=await axios.get("http://localhost:3000/results/getHotelData");
         setHotelData([])
         setDisplayData([])
@@ -121,7 +124,7 @@ const Results=({route, navigation})=>{
             <Header/>
             <div className="destiIntroWrapper">
             <div className="destinationIntro">
-                Hotels in {destination}
+                Hotels in {myContext.destination}
             </div>
             </div>
             <div className="filterSection">
@@ -166,7 +169,7 @@ const Results=({route, navigation})=>{
             </div>
             <div className="resultSection">
                 {displayData.length>0 && displayData.map((hotel, i) =>
-                        <HotelListing article={hotel} duration={duration} key={i}/>
+                        <HotelListing article={hotel} key={i}/>
                 )}
                 {displayData.length===0 && <h2>No matching result.</h2>}
             </div>

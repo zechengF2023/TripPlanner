@@ -13,12 +13,22 @@ import HotelToTrip from "./pages/HotelToTrip"
 import DestinationDescription from './pages/DestinationDescription';
 // import Landing from "./pages/Landing.js"
 import Filters from "./pages/Filters.js"
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import React from "react"
+import React,{useState} from "react"
+import AppContext from './AppContext';
 
 function App() {
+  const [destination, setDestination]=useState() //only New York in database
+  const [checkin, setCheckin] = useState(new Date())
+  const [checkout, setCheckout] = useState(new Date())
+  const [travelerNum, setTravelerNum]=useState()
+  const [duration, setDuration]=useState()
+  const [hotel, setHotel]=useState()
+  const tripSettings={
+    setCheckin,setCheckout,setDestination,setTravelerNum,setDuration,setHotel, destination,checkin,checkout, travelerNum, duration,hotel
+  }
   return (
+    <AppContext.Provider value={tripSettings}>
     <div className="App">
       <Router>
         <Routes>
@@ -39,6 +49,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    </AppContext.Provider>
   );
 }
 

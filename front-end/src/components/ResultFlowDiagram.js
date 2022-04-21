@@ -1,12 +1,15 @@
 import "../css/ResultFlowDiagram.css"
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 const ResultFlowDiagram=(props)=>{
     // Wikipedia link to be implemented
-    const HotelBox=(hotelData, isStart)=>{
+    const myContext=useContext(AppContext)
+    const HotelBox=(isStart)=>{
         return(
             <div className="hotelBox">
-                <img src={hotelData.image}/>
-                {isStart&&<text className="line"> Start from <a href={hotelData.link}> {hotelData.name}</a></text>}
-                {!isStart&&<text className="line"> End at <a href={hotelData.link}> {hotelData.name}</a></text>}
+                <img src={myContext.hotel.image} alt="img"/>
+                {isStart&&<text className="line"> Start from <a href={myContext.hotel.link}> {myContext.hotel.name}</a></text>}
+                {!isStart&&<text className="line"> End at <a href={myContext.hotel.link}> {myContext.hotel.name}</a></text>}
             </div>
         )
     }
@@ -33,18 +36,18 @@ const ResultFlowDiagram=(props)=>{
     }
     const RenderDiagram=()=>{
         const result=[]
-        result.push(HotelBox(props.hotelData, true))
+        result.push(HotelBox(true))
         for(let i=0;i<props.actiData.length;i++){
             result.push(TransBox(props.timeData[i]))
             result.push(ActiBox(props.actiData[i]))
         }
         result.push(TransBox(props.timeData[props.timeData.length-1]))
-        result.push(HotelBox(props.hotelData, false));
+        result.push(HotelBox(false));
         return result;
     }
     return(
         <div className="resultDiagram">
-            <RenderDiagram hotelData={props.hotelData} actiData={props.actiData} timeData={props.timeData}></RenderDiagram>
+            <RenderDiagram />
         </div>
     )
 }

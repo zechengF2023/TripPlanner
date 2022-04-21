@@ -4,6 +4,8 @@ import {Link} from "react-router-dom"
 import temporaryPhoto from "../assets/destination.jpeg"
 import { useNavigate } from "react-router"
 import { useState } from "react"
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 
@@ -15,6 +17,7 @@ const Buffer=require('buffer').Buffer;
     // const destination=state.destination
 
 const TripListing=({trip})=>{
+    const myContext=useContext(AppContext)
     const destination=trip.city
     const navigate=useNavigate()
     const [cover, setCover]=useState();
@@ -28,11 +31,12 @@ const TripListing=({trip})=>{
             console.log(error);
         }
     }
-    const fetchData=async()=>{
+    const viewTrip=async()=>{
         try{
             const hotelJson=await axios.post("http://localhost:3000/getHotel",{"name":trip.hotel})
             const hotelData=hotelJson.data[0]
             hotelData.image="data:image/jpeg;base64,".concat(Buffer.from(hotelData.image.data).toString("base64"))
+
             let actiData=[]
             trip.activities.forEach((element, idx2) => {
                 const activityOneDay=[]
@@ -45,7 +49,10 @@ const TripListing=({trip})=>{
                         actiData.push(activityOneDay)
                     }
                     if(actiData.length===trip.activities.length){
-                        navigate("/trip",{state:{hotelData, actiData, destination, duration:actiData.length}})
+                        myContext.setHotel(hotelData)
+                        myContext.setDestination(destination)
+                        myContext.setDuration(actiData.length)
+                        navigate("/trip",{state:{actiData}})
                     }
                 })
             })
@@ -58,7 +65,7 @@ const TripListing=({trip})=>{
         fetchCover()
     },[])
     return (
-        <div className="tripContent" onClick={()=>{fetchData()}}>
+        <div className="tripContent" onClick={()=>{viewTrip()}}>
             <h2 className="tripHeader"> Your trip to {trip.city}</h2>
             <img className="tripPhoto" src={cover} alt="tripPhoto"/>
             <h3 className="tripDates"> From {trip.startDate} to {trip.endDate}</h3>

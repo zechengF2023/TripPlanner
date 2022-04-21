@@ -2,16 +2,16 @@ import "../css/ArticleListing.css"
 import { useNavigate } from "react-router-dom";
 import React from "react"
 import { Link } from "@mui/material";
-import {useLocation} from "react-router-dom"
-
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 const ArticleListing=({article})=>{
-    const {state}=useLocation()
-    const {duration}=state
+    const myContext=useContext(AppContext)
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
     //   let path = `/results/${article.id}`; 
     //   navigate(path);
-        navigate("/hotel",{state:{article, duration, destination: article.city}})
+        myContext.setHotel(article)
+        navigate("/hotel")
     }
     return (
         <div className="articleBox" onClick={routeChange}>
