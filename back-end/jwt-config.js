@@ -1,7 +1,8 @@
 require("dotenv").config({ silent: true }) // load environmental variables from a hidden file named .env
 const passportJWT = require("passport-jwt")
+const passportLocal = require("passport-local")
 const ExtractJwt = passportJWT.ExtractJwt
-import {Strategy} from "passport-local"
+const {JwtStrategy} =  passportLocal.Strategy
 //const {JwtStrategy} = passportJWT.Strategy
 const _ = require("lodash") // the lodash module has some convenience functions for arrays that we use to sift through our mock user data... you don't need this if using a real database with user info
 const mongoose = require("mongoose")
@@ -15,7 +16,7 @@ jwtOptions.secretOrKey = process.env.JWT_SECRET // an arbitrary string used duri
 
 mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.yougi.mongodb.net/TripPlannerDB?retryWrites=true&w=majority`)
 
-const jwtStrategy = new Strategy(jwtOptions, function (jwt_payload, next) {
+const jwtStrategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
     // console.log("JWT payload received", jwt_payload) // debugging
 
     // load up some mock user data in an array... we only need this because we're mocking the data from a database
