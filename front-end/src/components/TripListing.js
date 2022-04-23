@@ -6,6 +6,7 @@ import { useNavigate } from "react-router"
 import { useState } from "react"
 import { useContext } from 'react';
 import AppContext from '../AppContext';
+import DeleteIcon from '@mui/icons-material/Delete';
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 
@@ -16,7 +17,7 @@ const Buffer=require('buffer').Buffer;
     // console.log(actiData)
     // const destination=state.destination
 
-const TripListing=({trip})=>{
+const TripListing=({trip, deleteTrip})=>{
     const myContext=useContext(AppContext)
     const destination=trip.city
     const navigate=useNavigate()
@@ -65,11 +66,15 @@ const TripListing=({trip})=>{
         fetchCover()
     },[])
     return (
-        <div className="tripContent" onClick={()=>{viewTrip()}}>
-            <h2 className="tripHeader"> Your trip to {trip.city}</h2>
-            <img className="tripPhoto" src={cover} alt="tripPhoto"/>
+        <div className="tripContent">
+            <div className="tripHeader">
+                <h2 onClick={()=>{viewTrip()}}> Your trip to {trip.city}</h2>
+                <DeleteIcon className="icon" style={{fontSize:25}} onClick={()=>deleteTrip(trip)}/>
+            </div>
+            <img className="tripPhoto" src={cover} alt="tripPhoto" onClick={()=>{viewTrip()}}/>
             <h3 className="tripDates"> From {trip.startDate} to {trip.endDate}</h3>
         </div>
+
     )
 }
 

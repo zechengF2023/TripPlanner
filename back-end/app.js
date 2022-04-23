@@ -114,6 +114,11 @@ app.post("/saveTrip", (req, res)=>{
     res.status(200)
 })
 
+app.post("/deleteTrip", async(req, res)=>{
+    await dbData.tripModel.deleteOne({_id:req.body.tripId})
+    res.status(200)
+})
+
 // signup page
 app.post("/signup", (req, res) => {
     const userData = {username: req.body.name, password: req.body.password}
