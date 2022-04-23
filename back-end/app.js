@@ -11,6 +11,15 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// jwt authentication
+const _ = require("lodash")
+const jwt = require("jsonwebtoken")
+const passport = require("passport")
+app.use(passport.initialize())
+
+const {jwtOptions, jwtStrategy} = require("./jwt-config.js")
+passport.use(jwtStrategy)
+
 const fs = require('fs')
 const users = require("./data/user.json")
 const dbData=require("./uploadData")
