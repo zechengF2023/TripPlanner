@@ -6,7 +6,18 @@
     font-weight:bold;
 }
 .tripHeader {
+    display: flex;
     margin-bottom: 2px; 
+    align-items: center;
+}
+.tripHeader h2{
+    display: flex;
+    margin-left:1vw;
+    justify-content: center;
+    width: 15vw;
+}
+.icon{
+    width: 3vw;
 }
 
 .tripPhoto {
