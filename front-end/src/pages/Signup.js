@@ -8,54 +8,17 @@ import {Navigate} from "react-router-dom";
 
 const axios = require("axios")
 
-/*
-const SignUp = () => {
-
-    return (
-        <div className="signupContainer">
-            <div className="card">
-                <div className='logoContainer'>
-                <img src={Logo}/>
-                </div>
-                <h1 className='heading'>Welcome to TripPlanner!</h1>
-                <div className="form-row">
-                    <label>First Name</label>
-                    <TextField style={{width:"75%"}} variant="standard" />
-                </div>
-                <div className="form-row">
-                    <label>Last Name</label>
-                    <TextField style={{width:"75%"}} variant="standard" />
-                </div>
-                <div className="form-row">
-                    <label>Email Address</label>
-                    <TextField style={{width:"100%"}} variant="standard" />
-                </div>
-                <div className="form-row">
-                    <label>Create a Password</label>
-                    <TextField style={{width:"100%"}} variant="standard" />
-                </div>
-                <Button style={{width:"100%", background: "grey"}} size="large" variant="contained" href="/login">Join</Button>
-                <div>
-                    <h3>Already a member?</h3>
-                    <h3><Link to="/login">Sign In</Link> using your TripPlanner account.</h3>
-                </div>
-            </div>
-        </div>
-    );
-}
-*/
-
 function SignUp() {
     const [first, setFirst]=useState('')
     const [last, setLast]=useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [signedIn, setSignedIn] = useState(false)
+    const [currentUser, setCurrentUser] = useState(null)
     const handleSubmit = async() =>{
         try{
             const res=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/signup`, {first, last, username, password})
             alert("Logged in!")
-            setSignedIn(true)
+            // setSignedIn(true)
         }
         catch(error){
             alert("Please enter valid username and password")
@@ -102,7 +65,7 @@ function SignUp() {
     return (
         <div className="signupContainer">
             <div className="login-form">
-                {signedIn ?<Navigate to = "/"/>: renderForm}
+                {currentUser ?<Navigate to = "/"/>: renderForm}
             </div>
         </div>
     );

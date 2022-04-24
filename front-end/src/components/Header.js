@@ -11,9 +11,12 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-
+import Login from '@mui/icons-material/Login';
+import { useContext } from 'react';
+import AppContext from '../AppContext';
+import { MenuItemUnstyled } from "@mui/base";
 const Header=()=>{
-
+    const myContext=useContext(AppContext)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -22,7 +25,10 @@ const Header=()=>{
     const handleClose = () => {
       setAnchorEl(null);
     };
-
+    const logOut=()=>{
+        alert("Logged out!")
+        myContext.setCurrentUser(null)
+    }
     return (
         <div className="header">
             {/* Logo will send user back to homepage */}
@@ -99,20 +105,32 @@ const Header=()=>{
                             <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Settings</h4>
                         </MenuItem>
                     </Link>
-                    <MenuItem>
-                    <Link to="/login">
-                        <ListItemIcon>
-                            <Logout fontSize="small"/>
-                        </ListItemIcon>
-                            {/* {loggedIn && (
-                                <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Login</h4>
-                            )}
-                            {!loggedIn && (
-                                <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
-                            )} */}
+                    {!myContext.currentUser && 
+                        <MenuItem>
+                        <Link to="/login">
+                            <ListItemIcon>
+                                <Logout fontSize="small"/>
+                            </ListItemIcon>
+                                {/* {loggedIn && (
+                                    <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Login</h4>
+                                )}
+                                {!loggedIn && (
+                                    <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
+                                )} */}
                             <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Login</h4>
                         </Link>
-                    </MenuItem>
+                        </MenuItem>
+                    }
+                    {myContext.currentUser && 
+                        <MenuItem>
+                        <Link to="/" onClick={()=>{logOut()}}>
+                        <ListItemIcon>
+                                <Login fontSize="small"/>
+                            </ListItemIcon>
+                        <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
+                        </Link>
+                        </MenuItem>
+                    }
                 </Menu>
                 </React.Fragment>
             </div>

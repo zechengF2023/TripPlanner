@@ -31,7 +31,6 @@ const cityData=require('./data/cities.json')
 const tripData=require('./data/trips.json')
 const mongoose=require("mongoose");
 const { stringify } = require('querystring');
-const {Schema}=mongoose;
 
 (async()=>{
 await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.yougi.mongodb.net/TripPlannerDB?retryWrites=true&w=majority`)
@@ -122,12 +121,12 @@ app.post("/saveTrip", (req, res)=>{
     const newTrip=[req.body]
     dbData.uploadTripData(newTrip)
     console.log("sent")
-    res.status(200)
+    res.status(200).end()
 })
 
 app.post("/deleteTrip", async(req, res)=>{
     await dbData.tripModel.deleteOne({_id:req.body.tripId})
-    res.status(200)
+    res.status(200).end()
 })
 
 // signup page
@@ -141,25 +140,21 @@ app.post("/signup", body("username").isEmail(),body("password").isLength({min:6}
     }
     else{
         (async()=>{
-        dbData.uploadUserData(userData)
-        res.status(200).end()
+            dbData.uploadUserData(userData)
+            res.status(200).end()
         })()
     }
 })
 
 // login page
-app.post("/login", (req, res) => {
-    let success = 0
-    const userData = {username: req.body.name, password: req.body.password}
-    console.log(userData)
-    users.map(user => {
-        if(user.username === userData.username && user.password === userData.password) {success=1}
-    })
-    if (success === 1) {
-        res.json(true)
+app.post("/login", async(req, res) => {
+    const userData = {username: req.body.username, password: req.body.password}
+    const userToLogin=await dbData.userModel.findOne({username: userData.username})
+    if (userToLogin && userToLogin.password===userData.password){
+        res.json(userToLogin).status(200).end()
     }
-    else {
-        res.json(false)
+    else{
+        res.status(400).end()
     }
 })
 
@@ -170,7 +165,7 @@ app.post("/contact",(req,res)=>{
     console.log(contactData)
     console.log(contactData.description)
     dbData.uploadProblemData(contactData)
-    res.sendStatus(200)
+    res.sendStatus(200).end()
 })
 
 module.exports = app

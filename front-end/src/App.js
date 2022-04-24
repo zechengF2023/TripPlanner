@@ -24,8 +24,9 @@ function App() {
   const [travelerNum, setTravelerNum]=useState()
   const [duration, setDuration]=useState()
   const [hotel, setHotel]=useState()
+  const [currentUser, setCurrentUser]=useState(null)
   const tripSettings={
-    setCheckin,setCheckout,setDestination,setTravelerNum,setDuration,setHotel, destination,checkin,checkout, travelerNum, duration,hotel
+    setCheckin,setCheckout,setDestination,setTravelerNum,setDuration,setHotel,setCurrentUser, destination,checkin,checkout, travelerNum, duration,hotel,currentUser
   }
   return (
     <AppContext.Provider value={tripSettings}>
