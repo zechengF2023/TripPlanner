@@ -2,7 +2,16 @@ const mongoose=require("mongoose");
 const {Schema}=mongoose;
 const fs=require("fs");
 const { stringify } = require("querystring");
-const { networkInterfaces } = require("os");
+
+// const { networkInterfaces } = require("os");
+// const passportLocalMongoose = require("passport-local-mongoose")
+// const userSchema = new Schema({
+//     username: {type: String, required: true},
+//     password: {type: String, required: true}
+// })
+//userSchema.plugin(passportLocalMongoose)
+//let userModel = mongoose.model('user', userSchema)
+
 const activitySchema=new Schema({
     id: Number,
     city: String,
