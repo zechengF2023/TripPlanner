@@ -98,7 +98,7 @@ app.post("/destinationDescription/getTop5", (req, res)=>{
 
 //user id to be added
 app.post("/profile/getAllTrips",async(req, res)=>{
-    const trip=await dbData.tripModel.find()
+    const trip=await dbData.tripModel.find({username: req.body.username})
     res.json(trip)
 })
 

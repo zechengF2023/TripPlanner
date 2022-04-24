@@ -23,6 +23,7 @@ const SaveModal=({toClose,actiData})=>{
             })
             activities.push(activitiesForDays)
         })
+        dataToUpload.username=myContext.currentUser.username
         dataToUpload.activities=activities
         dataToUpload.hotel=myContext.hotel.name
         dataToUpload.city=myContext.destination
