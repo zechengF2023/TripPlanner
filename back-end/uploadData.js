@@ -46,6 +46,7 @@ const citySchema=new Schema({
 })
 let cityModel=mongoose.model("cities", citySchema)
 const tripSchema=new Schema({
+    username: String,
     city: String,
     hotel: String,
     activities: [[String]],
@@ -121,6 +122,7 @@ function uploadCityData(cities){
 function uploadTripData(trips){
     trips.forEach(ele=>{
         let trip=new tripModel()
+        trip.username=ele.username
         trip.city=ele.city
         trip.hotel=ele.hotel
         trip.activities=ele.activities

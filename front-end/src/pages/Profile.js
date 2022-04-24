@@ -23,7 +23,7 @@ const Profile=()=> {
     const [trips, setTrips]=useState([])
     const [userName, setUsername]=useState("Username")
     const fetchTrip=async()=>{
-        const tripsFetched=await axios.post("http://localhost:3000/profile/getAllTrips")
+        const tripsFetched=await axios.post("http://localhost:3000/profile/getAllTrips", {username: myContext.currentUser.username})
         setTrips(tripsFetched.data)
     }
     const deleteTrip=(trip)=>{
@@ -35,7 +35,7 @@ const Profile=()=> {
     }
     useEffect(()=>{
         if(!myContext.currentUser){
-            alert("Please log in to view profile")
+            alert("Please log in to view saved trips")
             navigate("/")
         }
         fetchTrip()

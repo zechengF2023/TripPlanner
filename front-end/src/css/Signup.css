@@ -35,3 +35,12 @@
     font-weight: 700;
     margin-bottom: .5rem;
 }
+.requirements p{
+    font-weight:bold;
+    font-size: 1.7vh;
+    margin-top:0;
+    margin-bottom: 0;
+}
+.requirements{
+    margin-bottom: 1vh;
+}

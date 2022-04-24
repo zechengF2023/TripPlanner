@@ -98,7 +98,7 @@ app.post("/destinationDescription/getTop5", (req, res)=>{
 
 //user id to be added
 app.post("/profile/getAllTrips",async(req, res)=>{
-    const trip=await dbData.tripModel.find()
+    const trip=await dbData.tripModel.find({username: req.body.username})
     res.json(trip)
 })
 
@@ -130,18 +130,22 @@ app.post("/deleteTrip", async(req, res)=>{
 })
 
 // signup page
-app.post("/signup", body("username").isEmail(),body("password").isLength({min:6}), (req, res) => {
-    console.log("received")
+app.post("/signup", body("username").isEmail(),body("password").isLength({min:6}), body("last").isLength({min:1}), body("first").isLength({min:1}), (req, res) => {
     const userData = {first: req.body.first, last: req.body.last, username: req.body.username, password: req.body.password}
-    console.log(userData)
     const errors=validationResult(req)
     if(!errors.isEmpty()){
         res.status(400).end()
     }
     else{
         (async()=>{
-            dbData.uploadUserData(userData)
-            res.status(200).end()
+            const existingUser=await dbData.userModel.find({username: userData.username})
+            if(existingUser.length>0){
+                res.send("duplicate").end()
+            }
+            else{
+                dbData.uploadUserData(userData)
+                res.json(userData).end()
+            }
         })()
     }
 })

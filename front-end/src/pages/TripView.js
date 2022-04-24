@@ -52,8 +52,21 @@ const TripView=props=>{
         showEdit(true)
     }
     const handleSaveClick=()=>{
-        setModal(true)
-        document.body.style.overflow = 'hidden';
+        console.log("")
+        console.log("")
+        console.log("")
+        console.log("")
+        console.log("")
+        console.log("")
+
+        console.log(myContext.currentUser)
+        if(!myContext.currentUser){
+            alert("Please log in to save trips")
+        }
+        else{
+            setModal(true)
+            document.body.style.overflow = 'hidden';
+        }
     }
     const closeModal=()=>{
         setModal(false)

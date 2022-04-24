@@ -16,7 +16,6 @@ function Login() {
   
     useEffect(() => {
         setLoggedin(false)
-        console.log(loggedin)
     }, [loggedin])
   
     const handleSubmit = e => {
@@ -24,7 +23,7 @@ function Login() {
             try{
                 const res=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/login`, {username: name, password: password})
                 if(res.status===200){
-                    console.log(res)
+                    setName("")
                     setPassword('')
                     alert("Logged in!")
                     setLoggedin(true)
