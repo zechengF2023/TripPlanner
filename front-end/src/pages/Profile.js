@@ -6,10 +6,13 @@ import TripListing from "../components/TripListing"
 import "../css/Profile.css"
 import { useState } from "react"
 import { Navigate, useNavigate } from "react-router"
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 
 const Profile=()=> {
+    const myContext=useContext(AppContext)
     const navigate=useNavigate()
     // useEffect(()=>{
     //     window.onpopstate=()=>{
@@ -31,13 +34,17 @@ const Profile=()=> {
         counter++ //why not working
     }
     useEffect(()=>{
+        if(!myContext.currentUser){
+            alert("Please log in to view profile")
+            navigate("/")
+        }
         fetchTrip()
     },[counter])
     return (
         <div className="view">
             <Header/>
             <div className="secondaryContainer">
-                <p>Welcome, [{userName}]!</p>
+                {myContext.currentUser && <p>Welcome, [{myContext.currentUser.username}]!</p>}
                 <a href="/settings" className="linkToSettings">Settings</a>
             </div>
             <h2 className="subtitle">Your saved trips:</h2>

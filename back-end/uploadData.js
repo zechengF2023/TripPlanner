@@ -148,9 +148,9 @@ function uploadUserData(user){
     newUser.username=user.username
     newUser.password=user.password;
     (async()=>{
-        await newUser.save()
+        await newUser.save();
         console.log("User "+newUser.username+" uploaded")
-    })
+    })()
 }
 module.exports={
     uploadActivityData,
