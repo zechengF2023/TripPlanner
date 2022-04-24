@@ -35,7 +35,7 @@ const Profile=()=> {
     }
     useEffect(()=>{
         if(!myContext.currentUser){
-            alert("Please log in to view profile")
+            alert("Please log in to view saved trips")
             navigate("/")
         }
         fetchTrip()
