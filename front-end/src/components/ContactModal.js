@@ -4,7 +4,7 @@ const ContactModal=({toClose})=>{
     let navigate=useNavigate();
     const toHome=()=>{
         toClose();
-        navigate("/home")
+        navigate("/")
     }
     return(
         <div className="screen">

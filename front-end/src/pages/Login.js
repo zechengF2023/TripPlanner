@@ -8,40 +8,6 @@ import {Navigate} from "react-router-dom";
 
 const axios = require("axios")
 
-/*
-const Login=()=> {
-
-    // function logIn(e) {
-    //     e.preventDefault();
-    //     setLoggedIn(true); 
-    // }
-
-    return (
-       <div className="loginContainer">
-          <div className="card">
-             <div className='logoContainer'>
-                <img src={Logo} alt="logo"/>
-             </div>
-              <h1 className='heading'>Welcome back Traveler!</h1>
-              <div className="form-row">
-                  <label>User Name</label>
-                  <TextField style={{width:"100%"}} variant="standard" />
-              </div>
-              <div className="form-row">
-                  <label>Password</label>
-                  <TextField style={{width:"100%"}} variant="standard" />
-              </div>
-              <Button onClick="logIn()" style={{width:"100%", background: "grey"}} size="large" variant="contained" href="/">Login</Button>
-              <div>
-                  <h3>Not yet a member?</h3>
-                  <h3><Link to="/signup">Create an Account</Link>  here.</h3>
-              </div>
-          </div>
-       </div>
-    )
-} */
-
-
 function Login() {
     const [loggedin, setLoggedin] = useState(false)
     const [name, setName] = useState('')
@@ -56,7 +22,7 @@ function Login() {
         e.preventDefault()
         console.log(loggedin)
         axios
-            .post(`${process.env.REACT_APP_SERVER_HOSTNAME}/login`, {name: name, password: password})
+            .post(`${process.env.REACT_APP_SERVER_HOSTNAME}/login`, {username: name, password: password})
             .then((response) => {setLoggedin(response.data)})
             .catch(err => {console.log(`error! ${err}`)})
             setName('')

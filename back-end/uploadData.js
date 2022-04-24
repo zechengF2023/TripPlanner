@@ -2,6 +2,7 @@ const mongoose=require("mongoose");
 const {Schema}=mongoose;
 const fs=require("fs");
 const { stringify } = require("querystring");
+const { networkInterfaces } = require("os");
 const activitySchema=new Schema({
     id: Number,
     city: String,
@@ -43,6 +44,18 @@ const tripSchema=new Schema({
     endDate: String
 })
 let tripModel=mongoose.model("trips",tripSchema)
+const problemSchema=new Schema({
+    category: String,
+    description: String
+})
+let problemModel=mongoose.model("problems", problemSchema)
+const userSchema=new Schema({
+    first: String,
+    last: String,
+    username: String,
+    password: String
+})
+const userModel=mongoose.model("users", userSchema)
 function uploadActivityData(activities){
     activities.forEach(ele => {
         let activity=new activityModel();
@@ -110,13 +123,37 @@ function uploadTripData(trips){
         })()
     })
 }
+function uploadProblemData(problem){
+    let newProblem=new problemModel()
+    newProblem.category=problem.category
+    newProblem.description=problem.description;
+    (async()=>{
+        await newProblem.save();
+        console.log("Problem "+newProblem.category+" uploaded")
+    })()
+}
+function uploadUserData(user){
+    let newUser=new userModel()
+    newUser.first=user.first
+    newUser.last=user.last
+    newUser.username=user.username
+    newUser.password=user.password;
+    (async()=>{
+        await newUser.save()
+        console.log("User "+newUser.username+" uploaded")
+    })
+}
 module.exports={
     uploadActivityData,
     uploadHotelData, 
     uploadCityData,
     uploadTripData,
+    uploadProblemData,
+    uploadUserData,
     activityModel,
     hotelModel,
     cityModel,
-    tripModel
+    tripModel,
+    problemModel,
+    userModel
 }

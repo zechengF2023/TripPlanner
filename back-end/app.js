@@ -10,7 +10,7 @@ app.use(morgan('dev', {skip: (req, res) => process.env.NODE_ENV === 'test'}))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
+const { body, validationResult } = require('express-validator');
 const fs = require('fs')
 const users = require("./data/user.json")
 const dbData=require("./uploadData")
@@ -120,19 +120,20 @@ app.post("/deleteTrip", async(req, res)=>{
 })
 
 // signup page
-app.post("/signup", (req, res) => {
-    const userData = {username: req.body.name, password: req.body.password}
+app.post("/signup", body("username").isEmail(),body("password").isLength({min:6}), (req, res) => {
+    console.log("received")
+    const userData = {first: req.body.first, last: req.body.last, username: req.body.username, password: req.body.password}
     console.log(userData)
-    users.push(userData)
-    fs.writeFile("./data/user.json", JSON.stringify(users), (err) => {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            console.log("File written successfully\n");
-        }
-    })
-    res.json(users)
+    const errors=validationResult(req)
+    if(!errors.isEmpty()){
+        res.status(400).end()
+    }
+    else{
+        (async()=>{
+        dbData.uploadUserData(userData)
+        res.status(200).end()
+        })()
+    }
 })
 
 // login page
@@ -156,8 +157,9 @@ app.post("/login", (req, res) => {
 app.post("/contact",(req,res)=>{
     const contactData=req.body
     console.log(contactData)
-    res.sendStatus(200).end()
-    /*store in database*/
+    console.log(contactData.description)
+    dbData.uploadProblemData(contactData)
+    res.sendStatus(200)
 })
 
 module.exports = app
