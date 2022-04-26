@@ -43,9 +43,27 @@
     display: flex;
     font-size: 3vh;
     justify-content: right;
+    align-items: center;
     font-weight: bold;
     margin-right: 5vw;
 }
 .bookLink{
     margin-right: 3vw;
+    text-decoration: none;
+    font-size: 3vh;
+    font-weight:bold;
+    border: solid;
+    border-radius: 1vh;
+    color:black;
+    background-color: silver;
+}
+.tripLink:hover, .bookLink:hover{
+    cursor: pointer;
+}
+.tripLink{
+    font-size: 3vh;
+    font-weight:bold;
+    border: solid;
+    border-radius: 1vh;
+    background-color: silver;
 }

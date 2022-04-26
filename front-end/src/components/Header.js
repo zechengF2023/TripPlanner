@@ -12,11 +12,8 @@ import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Login from '@mui/icons-material/Login';
-import { useContext } from 'react';
-import AppContext from '../AppContext';
 import { MenuItemUnstyled } from "@mui/base";
 const Header=()=>{
-    const myContext=useContext(AppContext)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -26,8 +23,8 @@ const Header=()=>{
       setAnchorEl(null);
     };
     const logOut=()=>{
+        localStorage.removeItem("user")
         alert("Logged out!")
-        myContext.setCurrentUser(null)
     }
     return (
         <div className="header">
@@ -105,7 +102,7 @@ const Header=()=>{
                             <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Settings</h4>
                         </MenuItem>
                     </Link>
-                    {!myContext.currentUser && 
+                    {localStorage.getItem("user")==null && 
                         <MenuItem>
                         <Link to="/login">
                             <ListItemIcon>
@@ -121,14 +118,14 @@ const Header=()=>{
                         </Link>
                         </MenuItem>
                     }
-                    {myContext.currentUser && 
+                    {localStorage.getItem("user")!=null && 
                         <MenuItem>
-                        <Link to="/" onClick={()=>{logOut()}}>
+                        <div onClick={()=>{logOut()}}>
                         <ListItemIcon>
                                 <Login fontSize="small"/>
                             </ListItemIcon>
                         <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
-                        </Link>
+                        </div>
                         </MenuItem>
                     }
                 </Menu>

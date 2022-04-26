@@ -5,19 +5,15 @@ import '../css/Login.css';
 import {Link} from "react-router-dom"
 import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
-import { useContext } from 'react';
-import AppContext from '../AppContext';
+import { useNavigate } from 'react-router';
+
 const axios = require("axios")
 function Login() {
-    const myContext=useContext(AppContext)
     const [loggedin, setLoggedin] = useState(false)
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
-  
-    useEffect(() => {
-        setLoggedin(false)
-    }, [loggedin])
-  
+    const navigate=new useNavigate()
+    if(loggedin){navigate(-2)}
     const handleSubmit = e => {
         (async()=>{
             try{
@@ -26,8 +22,8 @@ function Login() {
                     setName("")
                     setPassword('')
                     alert("Logged in!")
-                    setLoggedin(true)
-                    myContext.setCurrentUser(res.data)
+                    localStorage.setItem("user", res.data.username)
+                    navigate(-1)
                 }
             }
             catch(error){
@@ -61,15 +57,15 @@ function Login() {
             </div>
        </div>
     )
-    if (true) {
-        return (
-            <div className="loginContainer">
-                <div className="form-row">
-                    {loggedin ?<Navigate to = "/"/>: renderForm}
-                </div>
+    
+    return (
+        <div className="loginContainer">
+            <div className="form-row">
+                {renderForm}
             </div>
-        )
-    }
+        </div>
+    )
+
 }
 
 export default Login

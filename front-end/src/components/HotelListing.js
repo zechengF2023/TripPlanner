@@ -1,17 +1,14 @@
 import "../css/ArticleListing.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams, createSearchParams } from "react-router-dom";
 import React from "react"
 import { Link } from "@mui/material";
-import { useContext } from 'react';
-import AppContext from '../AppContext';
+
 const ArticleListing=({article})=>{
-    const myContext=useContext(AppContext)
-    let navigate = useNavigate(); 
+    let navigate = useNavigate()
+    const [searchParams]=useSearchParams()
     const routeChange = () =>{ 
-    //   let path = `/results/${article.id}`; 
-    //   navigate(path);
-        myContext.setHotel(article)
-        navigate("/hotel")
+        const params={hotel: article.name, destination: searchParams.get("destination"), duration: searchParams.get("duration"), startDate: searchParams.get("startDate"), endDate: searchParams.get("endDate") }
+        navigate({pathname:"/hotel", search:`?${createSearchParams(params)}`})
     }
     return (
         <div className="articleBox" onClick={routeChange}>
@@ -26,7 +23,7 @@ const ArticleListing=({article})=>{
                 <textarea className="articleDescription" rows={5}>{article.blurb}</textarea>
                 <div className="bottomBar">
                 <h2 className="articleRating">Rating: {article.rating}/5</h2>
-                <Link to="/hotel" className="linkEle">Select to continue</Link>
+                <p className="linkEle">Select to continue</p>
                 </div>
             </div>
         </div>

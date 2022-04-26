@@ -82,6 +82,13 @@ app.get("/results/getHotelData",(req, res)=>{
     })()
 })
 
+app.post("/getSingleHotel", (req, res)=>{
+    (async()=>{
+        const hotel=await dbData.hotelModel.findOne(req.body)
+        res.json(hotel).end()
+    })()
+})
+
 app.post("/destinationDescription/getTop5", (req, res)=>{
     let activities=[]
     const top5=req.body.top5

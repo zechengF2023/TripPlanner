@@ -3,15 +3,14 @@ import {GoogleMap,Marker, withGoogleMap, withScriptjs,DirectionsRenderer } from 
 import { useContext } from 'react';
 import AppContext from '../AppContext';
 const ResultMap=(props)=>{
-  const myContext=useContext(AppContext)
   const MapComponent=()=>{
     return( 
       <GoogleMap
-        defaultCenter={new window.google.maps.LatLng(myContext.hotel.lat, myContext.hotel.lng)}
+        defaultCenter={new window.google.maps.LatLng(props.hotel.lat, props.hotel.lng)}
         defaultZoom={17}
         id="map"
       >
-      <Marker key={0} position={{lat:myContext.hotel.lat, lng:myContext.hotel.lng}} label={{text:myContext.hotel.name, fontSize:"18px", fontWeight:"bold"}}></Marker>
+      <Marker key={0} position={{lat:props.hotel.lat, lng:props.hotel.lng}} label={{text:props.hotel.name, fontSize:"18px", fontWeight:"bold"}}></Marker>
       {props.actiData.map((d, idx)=>(
         <Marker key={idx+1} position={{lat:d.lat, lng:d.lng}} label={{text:d.name, fontSize:"18px", fontWeight:"bold"}}></Marker>
       ))}

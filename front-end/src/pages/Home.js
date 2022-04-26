@@ -6,16 +6,16 @@ import RecommendationDestination from "../components/RecommendationDestination"
 import Header from "../components/Header"
 // import recData from '../components/recommendationData.json'
 import Footer from "../components/Footer"
-import { useContext } from 'react';
-import AppContext from '../AppContext';
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 const Home=()=>{
-    const myContext=useContext(AppContext)
     // state variables
-    myContext.setDestination("New York")
+    const [checkin, setCheckin]=useState(new Date())
+    const [checkout, setCheckout]=useState(new Date())
     const [activityData, setActivityData] = useState([]);
     const [destData, setDestData] = useState([]);
+    const [travelerNum, setTravelerNum]=useState();
+    const [destination, setDestination]=useState("New York");
     const fetchData = async() => {
         try{
             const activitiesReceived=await axios.get("http://localhost:3000/getRecommendedActivities")
@@ -41,7 +41,7 @@ const Home=()=>{
             <div className="imageSearch">
                 <Header/>
                 <div className="search">
-                    <Search />
+                    <Search checkin={checkin} checkout={checkout} setCheckin={setCheckin} setCheckout={setCheckout} travelerNum={travelerNum} setTravelerNum={setTravelerNum} destination={destination} setDestination={setDestination}/>
                 </div>
             </div>
             <h1 className="recTitle">
