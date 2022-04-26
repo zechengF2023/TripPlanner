@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom"
 import {useState} from "react"
 import "../css/SaveModal.css"
 import { useSearchParams } from "react-router-dom";
+import { useContext } from "react";
+import AppContext from "../AppContext";
 const axios=require("axios")
 
 const SaveModal=({toClose,actiData})=>{
+    const myContext=useContext(AppContext)
     const [searchParams]=useSearchParams()
     let navigate=useNavigate()
     const [isSaved, setSaved]=useState(false)    
@@ -38,6 +41,7 @@ const SaveModal=({toClose,actiData})=>{
     const toProfile=()=>{
         toClose();
         navigate("/profile")
+        myContext.setSaved(true)
     }
     return(
         <div className="screen">

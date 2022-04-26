@@ -12,7 +12,6 @@ import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Login from '@mui/icons-material/Login';
-import { MenuItemUnstyled } from "@mui/base";
 const Header=()=>{
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -108,12 +107,6 @@ const Header=()=>{
                             <ListItemIcon>
                                 <Logout fontSize="small"/>
                             </ListItemIcon>
-                                {/* {loggedIn && (
-                                    <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Login</h4>
-                                )}
-                                {!loggedIn && (
-                                    <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
-                                )} */}
                             <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Login</h4>
                         </Link>
                         </MenuItem>

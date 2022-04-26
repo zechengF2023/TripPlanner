@@ -1,6 +1,5 @@
 import "../css/TripListing.css"
 import React, { useEffect } from "react"
-import {Link} from "react-router-dom"
 import { useNavigate } from "react-router"
 import { useState } from "react"
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -10,7 +9,6 @@ const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 
 const TripListing=({trip, deleteTrip})=>{
-    // const myContext=useContext(AppContext)
     const destination=trip.city
     const navigate=useNavigate()
     const [cover, setCover]=useState();
@@ -26,9 +24,7 @@ const TripListing=({trip, deleteTrip})=>{
     }
     const viewTrip=async()=>{
         try{
-            // const hotelJson=await axios.post("http://localhost:3000/getHotel",{"name":trip.hotel})
-            // const hotelData=hotelJson.data[0]
-            // hotelData.image="data:image/jpeg;base64,".concat(Buffer.from(hotelData.image.data).toString("base64"))
+
             let actiData=[]
             trip.activities.forEach((element, idx2) => {
                 const activityOneDay=[]

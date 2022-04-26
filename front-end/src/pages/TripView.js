@@ -14,8 +14,6 @@ import {useLocation} from "react-router-dom"
 import { duration } from "@mui/material"
 import { useSearchParams } from "react-router-dom";
 const axios=require("axios")
-// import { useContext } from 'react';
-// import AppContext from '../AppContext';
 const Buffer=require('buffer').Buffer
 
 const TripView=props=>{
@@ -32,7 +30,6 @@ const TripView=props=>{
             console.log(i)
             console.log("rendering day")
             dayList.push(<Day dayNumber = {i} setDayNumber = {handleDayClick} className="dayIcon"/>)
-            // <button className="dayIcon" key={i} onClick={()=>handleDayClick(i)}>Day{i}</button>
         }
         return dayList
     }

@@ -18,15 +18,10 @@ import React,{useState} from "react"
 import AppContext from './AppContext';
 
 function App() {
-  const [destination, setDestination]=useState() //only New York in database
-  const [checkin, setCheckin] = useState(new Date())
-  const [checkout, setCheckout] = useState(new Date())
-  const [travelerNum, setTravelerNum]=useState()
-  const [duration, setDuration]=useState()
-  const [hotel, setHotel]=useState()
-  const [currentUser, setCurrentUser]=useState(null)
+  //for profile page routing purpose
+  const [isSaved, setSaved]=useState(false)
   const tripSettings={
-    setCheckin,setCheckout,setDestination,setTravelerNum,setDuration,setHotel,setCurrentUser, destination,checkin,checkout, travelerNum, duration,hotel,currentUser
+    isSaved, setSaved
   }
   return (
     <AppContext.Provider value={tripSettings}>
@@ -35,7 +30,6 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/signup" element={<SignUp />}/>
-        {/* <Route path="/home" element={<Home />}/> */}
         <Route path="/searchResults" element={<SearchResults/>}/>
         <Route path = "/hotel" element={<Hotel/>}></Route>
         <Route path="/about" element={<About />}/>

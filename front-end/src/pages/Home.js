@@ -6,10 +6,13 @@ import RecommendationDestination from "../components/RecommendationDestination"
 import Header from "../components/Header"
 // import recData from '../components/recommendationData.json'
 import Footer from "../components/Footer"
+import { useContext } from "react"
+import AppContext from "../AppContext"
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 const Home=()=>{
     // state variables
+    const myContext=useContext(AppContext)
     const [checkin, setCheckin]=useState(new Date())
     const [checkout, setCheckout]=useState(new Date())
     const [activityData, setActivityData] = useState([]);
@@ -34,6 +37,9 @@ const Home=()=>{
         }
     }
     useEffect(()=>{
+        myContext.setSaved(false)
+        console.log("is saved:")
+        console.log(myContext.isSaved)
         fetchData()
     },[])
     return (

@@ -10,10 +10,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import axios from "axios"
-
 import { useSearchParams } from "react-router-dom"
 const Results=()=>{
-    // const myContext=useContext(AppContext)
     let [searchParams]=useSearchParams()
     const destination=searchParams.get("destination")    
     const [sort, setSort] = React.useState('Default');
