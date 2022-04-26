@@ -2,13 +2,11 @@ import "../css/SingleResult.css"
 import React, {useEffect, useState}  from 'react'; 
 import Header from "../components/Header"; 
 import Footer from "../components/Footer"
-import { Paper, Button, touchRippleClasses, duration } from '@mui/material'
 
 import {GoogleMap,Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
 import { useSearchParams, createSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 const axios=require('axios')
-const Buffer=require('buffer').Buffer;
 function SingleResult(){
     const [searchParams]=useSearchParams()
     const [hotel, setHotel]=useState({})
@@ -58,9 +56,6 @@ function SingleResult(){
                 <a target="_blank" rel="noreferrer" href={hotel.link} className="bookLink">
                     Book a Room
                 </a>
-                {/* <Link to="/hotelToTrip" className="tripLink">
-                    Proceed to choose activities
-                </Link> */}
                 <div className="tripLink" onClick={()=>{toActivities()}}>Proceed to choose activities</div>
             </div>
             <Footer className="ftr"/>

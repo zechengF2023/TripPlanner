@@ -1,7 +1,5 @@
 import "../css/ResultMap.css"
 import {GoogleMap,Marker, withGoogleMap, withScriptjs,DirectionsRenderer } from 'react-google-maps'
-import { useContext } from 'react';
-import AppContext from '../AppContext';
 const ResultMap=(props)=>{
   const MapComponent=()=>{
     return( 

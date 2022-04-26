@@ -4,7 +4,6 @@ import Logo from '../assets/Logo.png';
 import '../css/Login.css';
 import {Link} from "react-router-dom"
 import React, {useEffect, useState} from "react";
-import {Navigate} from "react-router-dom";
 import { useNavigate } from 'react-router';
 
 const axios = require("axios")
