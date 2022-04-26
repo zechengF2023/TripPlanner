@@ -1,24 +1,16 @@
 import "../css/TripListing.css"
 import React, { useEffect } from "react"
 import {Link} from "react-router-dom"
-import temporaryPhoto from "../assets/destination.jpeg"
 import { useNavigate } from "react-router"
 import { useState } from "react"
-import { useContext } from 'react';
-import AppContext from '../AppContext';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {createSearchParams } from "react-router-dom";
+
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 
-//data requried in TripView: 
-    // const hotelData=state.hotelData
-    // const days=state.duration
-    // const actiData=state.actiData
-    // console.log(actiData)
-    // const destination=state.destination
-
 const TripListing=({trip, deleteTrip})=>{
-    const myContext=useContext(AppContext)
+    // const myContext=useContext(AppContext)
     const destination=trip.city
     const navigate=useNavigate()
     const [cover, setCover]=useState();
@@ -34,10 +26,9 @@ const TripListing=({trip, deleteTrip})=>{
     }
     const viewTrip=async()=>{
         try{
-            const hotelJson=await axios.post("http://localhost:3000/getHotel",{"name":trip.hotel})
-            const hotelData=hotelJson.data[0]
-            hotelData.image="data:image/jpeg;base64,".concat(Buffer.from(hotelData.image.data).toString("base64"))
-
+            // const hotelJson=await axios.post("http://localhost:3000/getHotel",{"name":trip.hotel})
+            // const hotelData=hotelJson.data[0]
+            // hotelData.image="data:image/jpeg;base64,".concat(Buffer.from(hotelData.image.data).toString("base64"))
             let actiData=[]
             trip.activities.forEach((element, idx2) => {
                 const activityOneDay=[]
@@ -50,10 +41,8 @@ const TripListing=({trip, deleteTrip})=>{
                         actiData.push(activityOneDay)
                     }
                     if(actiData.length===trip.activities.length){
-                        myContext.setHotel(hotelData)
-                        myContext.setDestination(destination)
-                        myContext.setDuration(actiData.length)
-                        navigate("/trip",{state:{actiData}})
+                        const params={hotel:trip.hotel, destination, duration: actiData.length, startDate: trip.startDate, endDate: trip.endDate }
+                        navigate({pathname: "/trip", search: `?${createSearchParams(params)}`},{state:{actiData}})
                     }
                 })
             })

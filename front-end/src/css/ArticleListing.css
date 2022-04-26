@@ -47,7 +47,11 @@
     align-items: center;
     margin-right: 1vw;
 }
+.linkEle:hover{cursor:pointer}
 .linkEle{
     font-size: 3vh;
     font-weight:bold;
+    border: solid;
+    border-radius: 1vh;
+    background-color: silver;
 }

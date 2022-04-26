@@ -9,15 +9,13 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
-import {useLocation} from "react-router-dom"
 import axios from "axios"
-import { useContext } from 'react';
-import AppContext from '../AppContext';
 
+import { useSearchParams } from "react-router-dom"
 const Results=()=>{
-    const myContext=useContext(AppContext)
-    const {state}=useLocation()
-    const {startDate, endDate}=state
+    // const myContext=useContext(AppContext)
+    let [searchParams]=useSearchParams()
+    const destination=searchParams.get("destination")    
     const [sort, setSort] = React.useState('Default');
     const [price, setPrice] = React.useState('Any');
     const [hotelData, setHotelData]=useState([]);
@@ -117,14 +115,13 @@ const Results=()=>{
     }
     useEffect(()=>{
         fetchHotelData()
-
     },[])
     return (
         <div>
             <Header/>
             <div className="destiIntroWrapper">
             <div className="destinationIntro">
-                Hotels in {myContext.destination}
+                Hotels in {destination}
             </div>
             </div>
             <div className="filterSection">
@@ -169,7 +166,7 @@ const Results=()=>{
             </div>
             <div className="resultSection">
                 {displayData.length>0 && displayData.map((hotel, i) =>
-                        <HotelListing article={hotel} key={i}/>
+                        <HotelListing article={hotel} key={i} />
                 )}
                 {displayData.length===0 && <h2>No matching result.</h2>}
             </div>

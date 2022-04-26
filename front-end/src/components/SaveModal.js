@@ -1,17 +1,17 @@
 import { useNavigate } from "react-router-dom"
 import {useState} from "react"
-import { useContext } from 'react';
-import AppContext from '../AppContext';
 import "../css/SaveModal.css"
+import { useSearchParams } from "react-router-dom";
 const axios=require("axios")
 
 const SaveModal=({toClose,actiData})=>{
-    const myContext=useContext(AppContext)
+    const [searchParams]=useSearchParams()
     let navigate=useNavigate()
     const [isSaved, setSaved]=useState(false)    
-    const dateToString=(dateObj)=>{
-        return dateObj.getFullYear()+"-"+dateObj.getMonth()+"-"+dateObj.getDate()
-    }
+    const destination=searchParams.get("destination")
+    const startDate=searchParams.get("startDate")
+    const endDate=searchParams.get("endDate")
+    const hotel=searchParams.get("hotel")
     const toSave=()=>{
         /*save operations*/
         let dataToUpload={}
@@ -23,12 +23,12 @@ const SaveModal=({toClose,actiData})=>{
             })
             activities.push(activitiesForDays)
         })
-        dataToUpload.username=myContext.currentUser.username
+        dataToUpload.username=localStorage.getItem("user")
         dataToUpload.activities=activities
-        dataToUpload.hotel=myContext.hotel.name
-        dataToUpload.city=myContext.destination
-        dataToUpload.startDate=dateToString(myContext.checkin)
-        dataToUpload.endDate=dateToString(myContext.checkout)
+        dataToUpload.hotel=hotel
+        dataToUpload.city=destination
+        dataToUpload.startDate=startDate
+        dataToUpload.endDate=endDate
         const res=axios.post("http://localhost:3000/saveTrip",dataToUpload).then(setSaved(true))
     }
     const toHome=()=>{

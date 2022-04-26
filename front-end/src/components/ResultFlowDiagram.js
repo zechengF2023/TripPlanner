@@ -3,13 +3,12 @@ import { useContext } from 'react';
 import AppContext from '../AppContext';
 const ResultFlowDiagram=(props)=>{
     // Wikipedia link to be implemented
-    const myContext=useContext(AppContext)
     const HotelBox=(isStart)=>{
         return(
             <div className="hotelBox">
-                <img src={myContext.hotel.image} alt="img"/>
-                {isStart&&<text className="line"> Start from <a href={myContext.hotel.link}> {myContext.hotel.name}</a></text>}
-                {!isStart&&<text className="line"> End at <a href={myContext.hotel.link}> {myContext.hotel.name}</a></text>}
+                <img src={props.hotel.image} alt="img"/>
+                {isStart&&<text className="line"> Start from <a href={props.hotel.link}> {props.hotel.name}</a></text>}
+                {!isStart&&<text className="line"> End at <a href={props.hotel.link}> {props.hotel.name}</a></text>}
             </div>
         )
     }

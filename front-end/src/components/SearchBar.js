@@ -1,46 +1,46 @@
 import "../css/Search.css"
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import moment from 'moment';
-import { useContext } from 'react';
-import AppContext from '../AppContext';
-const Search=()=>{
-    const myContext=useContext(AppContext)
-    let navigate = useNavigate(); 
-    const[travelerNum,setTravelerNum]=useState()
+
+
+const Search=(props)=>{
+    const navigate = useNavigate()
+
     const dateToString=(dateObj)=>{
         return dateObj.getFullYear()+"-"+dateObj.getMonth()+"-"+dateObj.getDate()
     }
     const beginSearch=(e)=>{
         e.preventDefault();
-        myContext.setDuration(moment.duration((moment(myContext.checkout).diff(moment(myContext.checkin)))).days()+1)
-        if (myContext.duration<=0){alert("invalid date!")}
+        const duration=moment.duration((moment(props.checkout).diff(moment(props.checkin)))).days()+1
+        if (duration<=0){alert("invalid date!")}
         //need to be modified
-        else if (myContext.destination!=="New York"){alert("invalid destination!")} 
+        else if (props.destination!=="New York"){alert("invalid destination!")} 
         else{
             try{
-                myContext.travelerNum=parseInt(myContext.travelerNum)
+                parseInt(props.travelerNum)
+                props.setTravelerNum(props.travelerNum)
             }
             catch{
                 alert("invalid traveler number!")
             }
-            if (myContext.travelerNum>0){
-                console.log(myContext)
-                navigate("/searchResults",{state:{startDate:dateToString(myContext.checkin), endDate:dateToString(myContext.checkout)}})
+            if (props.travelerNum>0){
+                const params={destination: props.destination, duration: duration, startDate: dateToString(props.checkin), endDate: dateToString(props.checkout) }
+                navigate({pathname:"/searchResults",search:`?${createSearchParams(params)}`})
             }
             else{alert("invalid traveler number!")}
         }
     }
     return (
         <form className="searchForm" onSubmit={beginSearch}>
-            <input className="destinationInput" type="text" placeholder="Search Destinations" name="destination" value={myContext.destination} onChange={e=>myContext.setDestination(e.target.value)}/>
+            <input className="destinationInput" type="text" placeholder="Search Destinations" name="destination" value={props.destination} onChange={e=>props.setDestination(e.target.value)}/>
             <div className="datePickers">
-            <DatePicker placeholderText = "Check In" selected = {myContext.checkin} onChange = {(date) => myContext.setCheckin(date)} />
-            <DatePicker placeholderText = "Check Out" selected = {myContext.checkout} onChange = {(date) => myContext.setCheckout(date)} />
+            <DatePicker placeholderText = "Check In" selected = {props.checkin} onChange = {(date) => props.setCheckin(date)} />
+            <DatePicker placeholderText = "Check Out" selected = {props.checkout} onChange = {(date) => props.setCheckout(date)} />
             </div>
-            <input className="travelerInput" type="text" placeholder="Number of Travelers" name="traveler" value={myContext.travelerNum} onChange={e=>myContext.setTravelerNum(e.target.value)}/>
+            <input className="travelerInput" type="text" placeholder="Number of Travelers" name="traveler" value={props.travelerNum} onChange={e=>props.setTravelerNum(e.target.value)}/>
             <button className="searchButton" type="submit">Search</button>
         </form>
     )

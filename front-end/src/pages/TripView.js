@@ -12,17 +12,25 @@ import DayView from "../components/DayView/DayView"
 import { useEffect, useState } from "react"
 import {useLocation} from "react-router-dom"
 import { duration } from "@mui/material"
-import { useContext } from 'react';
-import AppContext from '../AppContext';
+import { useSearchParams } from "react-router-dom";
+const axios=require("axios")
+// import { useContext } from 'react';
+// import AppContext from '../AppContext';
 const Buffer=require('buffer').Buffer
 
 const TripView=props=>{
-    const myContext=useContext(AppContext)
+    const [searchParams]=useSearchParams()
     const {state}=useLocation()
-    const actiData=state.actiData
-    const renderDays=()=>{
+    const {actiData}=state
+    const [hotel, setHotel]=useState()
+    const duration=searchParams.get("duration")
+    const destination=searchParams.get("destination")
+    const renderDays=(duration)=>{
         let dayList=[]
-        for (let i=1;i<myContext.duration+1;i++){
+        console.log("render starts")
+        for (let i=1;i<parseInt(duration)+1;i++){
+            console.log(i)
+            console.log("rendering day")
             dayList.push(<Day dayNumber = {i} setDayNumber = {handleDayClick} className="dayIcon"/>)
             // <button className="dayIcon" key={i} onClick={()=>handleDayClick(i)}>Day{i}</button>
         }
@@ -52,25 +60,17 @@ const TripView=props=>{
         showEdit(true)
     }
     const handleSaveClick=()=>{
-        console.log("")
-        console.log("")
-        console.log("")
-        console.log("")
-        console.log("")
-        console.log("")
-
-        console.log(myContext.currentUser)
-        if(!myContext.currentUser){
-            alert("Please log in to save trips")
+        if(localStorage.getItem("user")==null){
+            alert("Please log in to save trips") 
         }
         else{
             setModal(true)
-            document.body.style.overflow = 'hidden';
+            // document.body.style.overflow = 'hidden';
         }
     }
     const closeModal=()=>{
         setModal(false)
-        document.body.style.overflow="scroll";
+        // document.body.style.overflow="scroll";
     }
     const directionService=new window.google.maps.DirectionsService();
     const waypointsList=[]
@@ -94,13 +94,34 @@ const TripView=props=>{
     }
     function getRequest(idx, mode){
         let dirRequest={
-            origin: new window.google.maps.LatLng(myContext.hotel.lat, myContext.hotel.lng),
-            destination: new window.google.maps.LatLng(myContext.hotel.lat, myContext.hotel.lng),
+            origin: new window.google.maps.LatLng(hotel.lat, hotel.lng),
+            destination: new window.google.maps.LatLng(hotel.lat, hotel.lng),
             travelMode: mode,
             waypoints: waypointsList[idx]
         }
         return dirRequest
     }
+    
+    const displayContent=()=>{
+        if (displayMap){           
+            return <ResultMap dayNum={displayDay} dir={dir} actiData={actiData[displayDay-1]} timeData={timeL} hotel={hotel}></ResultMap>
+        }
+        else if (displayEdit){
+            return <p>This is edit</p>
+        }
+        else {
+            return <ResultFlowDiagram actiData={actiData[displayDay-1]} duration={duration} destination={destination} hotel={hotel} timeData={timeL}></ResultFlowDiagram>
+        }
+    }
+    const fetchData=async()=>{
+        const res=await axios.post("http://localhost:3000/getSingleHotel",{name:searchParams.get("hotel"), city: searchParams.get("destination")})
+        const hotelFetched=res.data
+        hotelFetched.image="data:image/jpeg;base64,".concat(Buffer.from(hotelFetched.image.data).toString("base64"))
+        setHotel(hotelFetched)
+    }
+    useEffect(()=>{
+        fetchData();
+    },[]);
     (async() => {
         const aDir=await getDir(getRequest(displayDay-1, mode))
         setDir(aDir)
@@ -111,26 +132,14 @@ const TripView=props=>{
         }
         setTimeL(timeData)
     })()
-    
-    const displayContent=()=>{
-        if (displayMap){           
-            return <ResultMap dayNum={displayDay} dir={dir} actiData={actiData[displayDay-1]} timeData={timeL}></ResultMap>
-        }
-        else if (displayEdit){
-            return <p>This is edit</p>
-        }
-        else {
-            return <ResultFlowDiagram actiData={actiData[displayDay-1]} timeData={timeL}></ResultFlowDiagram>
-        }
-    }
     return(
         <div>
             <Header />
             <div className="template">
-                <h1>Trip to {myContext.destination} </h1>
+                <h1>Trip to {destination} </h1>
                 <div className="subHeader">
                     <div className="dayIcons">
-                        {renderDays(myContext.duration)}
+                        {renderDays(duration)}
                     </div>
                     <div className="Icons">
                         <MapIcon className="Icon"  sx={{ fontSize: "5vh"}} onClick={handleMapClick} />
@@ -154,12 +163,11 @@ const TripView=props=>{
                         <p id="timeValue">{totalTime}</p>
                     </div> */}
                 </div>
-                {displayContent()}
-                {showModal && <Modal toClose={closeModal} actiData={actiData}/>}
+                {hotel && displayContent()}
+                {showModal && <Modal toClose={closeModal} actiData={actiData} />}
             </div>
             <Footer />
         </div>
     )
 }
-
 export default TripView
