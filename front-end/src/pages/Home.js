@@ -38,8 +38,6 @@ const Home=()=>{
     }
     useEffect(()=>{
         myContext.setSaved(false)
-        console.log("is saved:")
-        console.log(myContext.isSaved)
         fetchData()
     },[])
     return (

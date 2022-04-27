@@ -44,9 +44,14 @@
     font-weight: bold;
 }
 .title{
-    font-size:5vh;
+    padding-top:3vh;
+    padding-bottom: 3vh;
     height: 20vh;
     display:flex;
     justify-content: center;
     width: 40vw;
+}
+.title p{
+    font-size: 3vh;
+    font-weight:bold;
 }

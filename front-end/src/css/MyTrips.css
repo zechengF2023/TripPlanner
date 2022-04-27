@@ -1,0 +1,50 @@
+
+.secondaryContainer{
+    justify-content: space-between;
+    font-size: 2vh;
+    align-items: center;
+    display: flex;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-weight: bold;
+}
+.secondaryContainer p{
+    font-size:3vh;
+}
+.linkToSettings:link, .linkToSettings:visited{
+    color: black;
+    border: 2px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+
+}
+
+.linkToSettings:hover{
+    color: white;
+    background-color: black;
+}
+
+.subtitle{
+    text-align: center;
+    font-size:3vh;
+}
+
+.tripHolder{
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 5px;
+    row-gap: 15px;
+    width:80vw;
+}
+.noSavedTrip{
+    font-weight: bold;
+}

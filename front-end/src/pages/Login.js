@@ -8,11 +8,9 @@ import { useNavigate } from 'react-router';
 
 const axios = require("axios")
 function Login() {
-    const [loggedin, setLoggedin] = useState(false)
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const navigate=new useNavigate()
-    if(loggedin){navigate(-2)}
     const handleSubmit = e => {
         (async()=>{
             try{
@@ -22,6 +20,7 @@ function Login() {
                     setPassword('')
                     alert("Logged in!")
                     localStorage.setItem("user", res.data.username)
+                    localStorage.setItem("userFirst", res.data.first)
                     navigate(-1)
                 }
             }

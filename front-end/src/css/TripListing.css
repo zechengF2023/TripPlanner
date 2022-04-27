@@ -19,7 +19,9 @@
 .icon{
     width: 3vw;
 }
-
+.icon:hover{
+    cursor:pointer;
+}
 .tripPhoto {
     border-radius: 1vw; 
     height: 28vh; 

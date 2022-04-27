@@ -9,12 +9,15 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Login from '@mui/icons-material/Login';
+import { useNavigate } from "react-router";
 const Header=()=>{
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+    const navigate=useNavigate()
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -23,21 +26,36 @@ const Header=()=>{
     };
     const logOut=()=>{
         localStorage.removeItem("user")
+        localStorage.removeItem("userFirst")
         alert("Logged out!")
+    }
+    const toMyTrips=()=>{
+        if(localStorage.getItem("user")===null){
+            alert("Please log in to view saved trips")
+        }
+        else{
+            navigate("/myTrips")
+        }
+    }
+    const toProfile=()=>{
+        if(localStorage.getItem("user")===null){
+            alert("Please log in to view profile")
+        }
+        else{
+            navigate("/profile")
+        }
     }
     return (
         <div className="header">
-            {/* Logo will send user back to homepage */}
             <div className="headerLeft">
                 <Link to="/">
                     <img className="headerImage" alt="Logo" src={logo} />  
                 </Link>    
             </div>
-            
             <div className="headerRight">
                 <React.Fragment>
                 <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                    <Link to="/profile">Trips</Link>
+                    {/* <div onClick={()=>toMyTrips()}>Trips</div> */}
                     <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
@@ -47,9 +65,16 @@ const Header=()=>{
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>
-                            J
+                        {localStorage.getItem("userFirst")!=null &&
+                        <Avatar sx={{ width: 45, height: 45 }}>
+                            {localStorage.getItem("userFirst")}
                         </Avatar>
+                        }   
+                        {localStorage.getItem("userFirst")===null &&
+                        <Avatar sx={{ width: 45, height: 45, fontSize: 20 }}>
+                            Hello
+                        </Avatar>
+                        }   
                     </IconButton>
                     </Tooltip>
                 </Box>
@@ -88,38 +113,46 @@ const Header=()=>{
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <Link to="/profile">
+                    <div onClick={()=>toProfile()}>
                         <MenuItem>
                         <Avatar/> <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Profile</h4>
                         </MenuItem>
-                    </Link>
-                    <Link to="/settings">
+                    </div>
+                    {/* <Link to="/settings">
                         <MenuItem>
                         <ListItemIcon>
                             <Settings fontSize="small"/>
                         </ListItemIcon>
                             <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Settings</h4>
                         </MenuItem>
-                    </Link>
-                    {localStorage.getItem("user")==null && 
+                    </Link> */}
+                    <div onClick={()=>{toMyTrips()}}>
                         <MenuItem>
-                        <Link to="/login">
+                        <ListItemIcon>
+                                <EventAvailableIcon fontSize="medium"/>
+                        </ListItemIcon>
+                        <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>My Trips</h4>
+                        </MenuItem>
+                        </div>
+                    {localStorage.getItem("user")==null && 
+                        <Link to="/login" className="loginLink">
+                        <MenuItem>
                             <ListItemIcon>
-                                <Logout fontSize="small"/>
+                                <Login fontSize="medium"/>
                             </ListItemIcon>
                             <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Login</h4>
-                        </Link>
                         </MenuItem>
+                        </Link>
                     }
                     {localStorage.getItem("user")!=null && 
-                        <MenuItem>
                         <div onClick={()=>{logOut()}}>
+                        <MenuItem>
                         <ListItemIcon>
-                                <Login fontSize="small"/>
-                            </ListItemIcon>
+                                <Logout fontSize="medium"/>
+                        </ListItemIcon>
                         <h4 style={{textDecoration:`none`, margin:`0px`, color: `black`}}>Logout</h4>
-                        </div>
                         </MenuItem>
+                        </div>
                     }
                 </Menu>
                 </React.Fragment>

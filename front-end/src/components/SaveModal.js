@@ -38,9 +38,9 @@ const SaveModal=({toClose,actiData})=>{
         toClose();
         navigate("/")
     }
-    const toProfile=()=>{
+    const toMyTrips=()=>{
         toClose();
-        navigate("/profile")
+        navigate("/myTrips")
         myContext.setSaved(true)
     }
     return(
@@ -54,7 +54,7 @@ const SaveModal=({toClose,actiData})=>{
                     {!isSaved && <button className="continueBtn" onClick={()=>toClose()}>Continue editing</button>}
                     {!isSaved && <button className="saveBtn" onClick={()=>toSave()}>Save</button>}
                     {isSaved && <button className="homeBtn" onClick={()=>toHome()}>Return to home</button>}
-                    {isSaved && <button className="profileBtn" onClick={()=>toProfile()}>View in my trips</button>}
+                    {isSaved && <button className="profileBtn" onClick={()=>toMyTrips()}>View in my trips</button>}
                 </div>
             </div>
         </div>
