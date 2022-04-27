@@ -15,12 +15,12 @@ const MyTrips=()=> {
     const [counter, setCounter]=useState(0)
     const [trips, setTrips]=useState([])
     const fetchTrip=async()=>{
-        const tripsFetched=await axios.post("http://localhost:3000/myTrips/getAllTrips", {username: localStorage.getItem("user")})
+        const tripsFetched=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/myTrips/getAllTrips`, {username: localStorage.getItem("user")})
         setTrips(tripsFetched.data)
     }
     const deleteTrip=(trip)=>{
         (async()=>{
-            await axios.post("http://localhost:3000/deleteTrip", {tripId: trip._id})
+            await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/deleteTrip`, {tripId: trip._id})
         })()
         setCounter(counter+1)
     }

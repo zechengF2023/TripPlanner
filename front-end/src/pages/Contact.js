@@ -21,7 +21,7 @@ const Contact=e=>{
         }
         else{
             // setTimeout(()=>alert("Submit failed! Please try again later."),5000)
-            let res=await axios.post("http://localhost:3000/contact",{"category":issueCategory, "description":issueDescription})
+            let res=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/contact`,{"category":issueCategory, "description":issueDescription})
             if(res.status===200){
                 handleShow()
                 setCategory("")

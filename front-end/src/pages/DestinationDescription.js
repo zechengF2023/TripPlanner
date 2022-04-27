@@ -13,7 +13,7 @@ const DestinationDescription=()=>{
     const {destination}=state;
     const [activityData,setActivityData]=useState([])
     const fetchData=async()=>{
-        const activitiesReceived=await axios.post("http://localhost:3000/destinationDescription/getTop5",{"top5":destination.top5})
+        const activitiesReceived=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/destinationDescription/getTop5`,{"top5":destination.top5})
         activitiesReceived.data.forEach(item => {
             item[0].image="data:image/jpeg;base64,".concat(Buffer.from(item[0].image.data).toString("base64"))
             setActivityData(activityData=>[...activityData, item[0]])

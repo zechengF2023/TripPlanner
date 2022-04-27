@@ -100,7 +100,7 @@ const Results=()=>{
     };
     const fetchHotelData=async()=>{
         //to be modified
-        const hotelDataFetched=await axios.get("http://localhost:3000/results/getHotelData");
+        const hotelDataFetched=await axios.get(`${process.env.REACT_APP_SERVER_HOSTNAME}/results/getHotelData`);
         setHotelData([])
         setDisplayData([])
         setSort("Default")

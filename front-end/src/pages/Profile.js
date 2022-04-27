@@ -10,7 +10,7 @@ const Profile=()=>{
     const [username, setUsername]=useState()
     const navigate=useNavigate()
     const fetchUser=async()=>{
-        const user=await axios.post("http://localhost:3000/getUser",{"username":localStorage.getItem("user")})
+        const user=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/getUser`,{"username":localStorage.getItem("user")})
         console.log(user.data)
         setFirst(user.data.first)
         setLast(user.data.last)

@@ -31,7 +31,7 @@ const HotelToTrip=props=>{
     }
     const toTrips=async ()=>{
         try{
-            const activitiesReceived=await axios.post("http://localhost:3000/getDestinationActivities",{destination})
+            const activitiesReceived=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/getDestinationActivities`,{destination})
             const activities=activitiesReceived.data
             activities.forEach(item => {
                 item.image="data:image/jpeg;base64,".concat(Buffer.from(item.image.data).toString("base64"))
