@@ -10,7 +10,6 @@
   border-bottom: 3px solid black;
   background-color: white;
 }
-
 .header a {
   color: grey;
   font-size: 24px;
@@ -27,8 +26,9 @@
 }
 
 .headerImage{
-  height:50px;
-  width:175px;
+  align-self:center;
+  height:55px;
+  width:220;
 }
 #profileIcon{
   height: 30px;
@@ -39,4 +39,8 @@
 .headerRight{
   margin-top: 10px;  
   margin-right: 50px; 
+}
+
+.loginLink{
+  text-decoration: none;
 }

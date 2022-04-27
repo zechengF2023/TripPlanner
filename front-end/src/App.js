@@ -3,13 +3,14 @@ import Home from "./pages/Home.js"
 import SearchResults from "./pages/SearchResults"
 import Hotel from "./pages/SingleHotelResult.js"
 import About from "./pages/About.js"
-import Profile from "./pages/Profile.js"
+import MyTrips from "./pages/MyTrips.js"
 import Settings from "./pages/Settings.js"
 import Login from "./pages/Login.js"
 import Contact from "./pages/Contact.js"
 import SignUp from "./pages/Signup.js"
 import TripView from "./pages/TripView"
 import HotelToTrip from "./pages/HotelToTrip"
+import Profile from "./pages/Profile.js"
 import DestinationDescription from './pages/DestinationDescription';
 // import Landing from "./pages/Landing.js"
 import Filters from "./pages/Filters.js"
@@ -33,6 +34,7 @@ function App() {
         <Route path="/searchResults" element={<SearchResults/>}/>
         <Route path = "/hotel" element={<Hotel/>}></Route>
         <Route path="/about" element={<About />}/>
+        <Route path="/myTrips" element={<MyTrips />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/settings" element={<Settings />}/>
         <Route path="/login" element={<Login />}/>

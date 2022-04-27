@@ -1,20 +1,15 @@
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Logo from '../assets/Logo.png';
-import {Link} from "react-router-dom";
 import '../css/Signup.css';
 import React, {useState} from "react";
-import {Navigate} from "react-router-dom";
-import { useContext } from 'react';
-import AppContext from '../AppContext';
+import { useNavigate } from 'react-router';
 const axios = require("axios")
 function SignUp() {
-    const myContext=useContext(AppContext)
     const [first, setFirst]=useState('')
     const [last, setLast]=useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [currentUser, setCurrentUser] = useState(null)
+    const navigate=useNavigate()
     const handleSubmit = async() =>{
         try{
             const res=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/signup`, {first, last, username, password})
@@ -23,7 +18,9 @@ function SignUp() {
             }
             else{
                 alert("Logged in!")
-                myContext.setCurrentUser(res.data)
+                localStorage.setItem("user",res.data.username)
+                localStorage.setItem("userFirst", res.data.first)
+                navigate(-2)
             }
         }
         catch(error){
@@ -48,10 +45,6 @@ function SignUp() {
                         <label>Last Name</label>
                         <input type="text" value={last} required onChange={e => setLast(e.target.value)} />
                     </div>
-                    {/* <div className="form-row">
-                        <label>Email Address</label>
-                        <TextField style={{width:"75%"}} variant="standard" />
-                    </div> */}
                     <div className="form-row">
                         <label>Username</label>
                         <input type="text" value={username} required onChange={e => setUsername(e.target.value)} />
@@ -67,8 +60,9 @@ function SignUp() {
                     </div>
                     <Button style={{width:"100%", background: "grey"}} size="large" variant="contained" onClick={()=>{handleSubmit()}}>Join</Button>
                     <div>
-                        <h3>Already a member?</h3>
-                        <h3><Link to="/login">Sign In</Link> using your TripPlanner account.</h3>
+                        {/* disabled for routing purpose */}
+                        {/* <h3>Already a member?</h3>
+                        <h3><Link to="/login">Sign In</Link> using your TripPlanner account.</h3> */}
                     </div>
                 </form>
             </div>
@@ -77,7 +71,7 @@ function SignUp() {
     return (
         <div className="signupContainer">
             <div className="login-form">
-                {myContext.currentUser ?<Navigate to = "/"/>: renderForm}
+                {renderForm}
             </div>
         </div>
     );

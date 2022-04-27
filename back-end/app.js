@@ -28,7 +28,6 @@ const hotelData=require("./data/hotels.json")
 const cityData=require('./data/cities.json')
 const tripData=require('./data/trips.json')
 const mongoose=require("mongoose");
-const { stringify } = require('querystring');
 
 (async()=>{
 await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.yougi.mongodb.net/TripPlannerDB?retryWrites=true&w=majority`)
@@ -102,9 +101,15 @@ app.post("/destinationDescription/getTop5", (req, res)=>{
 })
 
 //user id to be added
-app.post("/profile/getAllTrips",async(req, res)=>{
+app.post("/myTrips/getAllTrips",async(req, res)=>{
     const trip=await dbData.tripModel.find({username: req.body.username})
     res.json(trip)
+})
+
+app.post("/getUser", async(req, res)=>{
+    const user=await dbData.userModel.findOne({"username":req.body.username})
+    console.log(user)
+    res.json(user).end()
 })
 
 app.post("/getActivity", async(req, res)=>{
