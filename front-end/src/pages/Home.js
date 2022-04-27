@@ -21,12 +21,12 @@ const Home=()=>{
     const [destination, setDestination]=useState("New York");
     const fetchData = async() => {
         try{
-            const activitiesReceived=await axios.get("http://localhost:3000/getRecommendedActivities")
+            const activitiesReceived=await axios.get(`${process.env.REACT_APP_SERVER_HOSTNAME}/getRecommendedActivities`)
             activitiesReceived.data.forEach((item)=>{
                 item.image="data:image/jpeg;base64,".concat(Buffer.from(item.image.data).toString("base64"))
                 setActivityData((activityData=>[...activityData, item]))
             })
-            const destinationsReceived=await axios.get("http://localhost:3000/getRecommendedDestinations")
+            const destinationsReceived=await axios.get(`${process.env.REACT_APP_SERVER_HOSTNAME}/getRecommendedDestinations`)
             destinationsReceived.data.forEach(item=>{
                 item.image="data:image/jpeg;base64,".concat(Buffer.from(item.image.data).toString("base64"))
                 setDestData((destData)=>[...destData,item])

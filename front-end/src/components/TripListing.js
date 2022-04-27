@@ -14,7 +14,7 @@ const TripListing=({trip, deleteTrip})=>{
     const [cover, setCover]=useState();
     const fetchCover=async()=>{
         try{
-            const cityFetched=await axios.post("http://localhost:3000/getCity", {"name":destination})
+            const cityFetched=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/getCity`, {"name":destination})
             const cityImg="data:image/jpeg;base64,".concat(Buffer.from(cityFetched.data[0].image.data).toString("base64"))
             setCover(cityImg)
         }
@@ -29,7 +29,7 @@ const TripListing=({trip, deleteTrip})=>{
             trip.activities.forEach((element, idx2) => {
                 const activityOneDay=[]
                 element.forEach(async(item, idx)=>{
-                    const activityJson=await axios.post("http://localhost:3000/getActivity",{"name":item})
+                    const activityJson=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/getActivity`,{"name":item})
                     const activityFormatted=activityJson.data[0]
                     activityFormatted.image="data:image/jpeg;base64,".concat(Buffer.from(activityFormatted.image.data).toString("base64"))
                     activityOneDay.push(activityFormatted)

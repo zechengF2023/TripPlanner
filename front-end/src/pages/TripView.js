@@ -111,7 +111,7 @@ const TripView=props=>{
         }
     }
     const fetchData=async()=>{
-        const res=await axios.post("http://localhost:3000/getSingleHotel",{name:searchParams.get("hotel"), city: searchParams.get("destination")})
+        const res=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/getSingleHotel`,{name:searchParams.get("hotel"), city: searchParams.get("destination")})
         const hotelFetched=res.data
         hotelFetched.image="data:image/jpeg;base64,".concat(Buffer.from(hotelFetched.image.data).toString("base64"))
         setHotel(hotelFetched)

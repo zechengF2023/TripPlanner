@@ -32,7 +32,7 @@ const SaveModal=({toClose,actiData})=>{
         dataToUpload.city=destination
         dataToUpload.startDate=startDate
         dataToUpload.endDate=endDate
-        const res=axios.post("http://localhost:3000/saveTrip",dataToUpload).then(setSaved(true))
+        const res=axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/saveTrip`,dataToUpload).then(setSaved(true))
     }
     const toHome=()=>{
         toClose();

@@ -12,7 +12,7 @@ function SingleResult(){
     const [hotel, setHotel]=useState({})
     const navigate=useNavigate()
     const getHotel=async()=>{
-        const res=await axios.post("http://localhost:3000/getSingleHotel",{name:searchParams.get("hotel"), city: searchParams.get("destination")})
+        const res=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/getSingleHotel`,{name:searchParams.get("hotel"), city: searchParams.get("destination")})
         const hotelFetched=res.data
         setHotel(hotelFetched)
     }
