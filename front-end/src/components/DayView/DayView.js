@@ -1,6 +1,7 @@
 import React from "react"
 
 import Assignment from "./Assignment/Assignment"
+import { Task } from "./Assignment/Task"
 
 export default function DayView(props) {
     function handleAssignments() {
@@ -13,7 +14,9 @@ export default function DayView(props) {
 
     return (
         <React.Fragment>
-            {handleAssignments()}
+            {/*handleAssignments()*/}
+            <Task dayNumber = {props.dayNumber}/>
+ 
         </React.Fragment>
     )
 }
