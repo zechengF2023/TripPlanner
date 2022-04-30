@@ -43,8 +43,9 @@ const DestinationDescription=()=>{
             </div>
             </div> 
             {/* end of content */}
-            <Link to="/" className="link">Plan a trip to {destination.name}</Link>
-            
+            <div className="linkDiv">
+            <Link to="/" className="planLink">Plan a trip to {destination.name}</Link>  
+            </div>
         </div>
         <Footer></Footer>
         </div>
