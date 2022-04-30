@@ -1,4 +1,4 @@
-import "../css/Results.css"
+import "../css/SearchResults.css"
 import React, { useEffect, useState } from "react"
 import Header from "../components/Header"
 import HotelListing from "../components/HotelListing.js"

@@ -1,4 +1,4 @@
-import "../css/ArticleListing.css"
+import "../css/HotelListing.css"
 import { useNavigate, useSearchParams, createSearchParams } from "react-router-dom";
 import React from "react"
 import { Link } from "@mui/material";
@@ -20,7 +20,7 @@ const ArticleListing=({article})=>{
                     <h1>{article.name}</h1>
                     <h1>${article.price}</h1>
                 </div>
-                <textarea className="articleDescription" rows={5}>{article.blurb}</textarea>
+                <textarea className="articleDescription" rows={3}>{article.blurb}</textarea>
                 <div className="bottomBar">
                 <h2 className="articleRating">Rating: {article.rating}/5</h2>
                 <p className="linkEle">Select to continue</p>
