@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import Header from "../components/Header.js"
 import Footer from "../components/Footer.js"
-import { Navigate, useNavigate } from "react-router"
-import "../css/Profile.css"
+import { Navigate, useNavigate } from "react-router";
+import "../css/Profile.css";
 const axios=require("axios")
 const Profile=()=>{
     const [first, setFirst]=useState()

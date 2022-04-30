@@ -17,7 +17,7 @@ import Filters from "./pages/Filters.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React,{useState} from "react"
 import AppContext from './AppContext';
-
+import {Helmet} from "react-helmet"
 function App() {
   //for profile page routing purpose
   const [isSaved, setSaved]=useState(false)
@@ -27,6 +27,10 @@ function App() {
   return (
     <AppContext.Provider value={tripSettings}>
     <div className="App">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>TripPlanner</title>
+      </Helmet>
       <Router>
         <Routes>
         <Route path="/" element={<Home />}/>

@@ -35,11 +35,17 @@ function SingleResult(){
         <div>
             <Header/>
             <div className="hotelDisplay">
+                <div className="topContent">
+                    <h2 className="price">{"Price: $"+hotel.price}</h2>
+                    <h2 className="rating">{"Rating: "+hotel.rating}</h2>
+                    <h1 className="singleName">{hotel.name}</h1>
+                </div>
+                <div className="bottomContent">
                 <div className="leftContent">
-                    <h2 className="priceRating">{"Price: $"+hotel.price+" Rating:"+hotel.rating}</h2>
-                    <h2 className="singleName">{hotel.name}</h2>
-                    <p className="singleBlurb">{hotel.blurb}</p>
-                    {hotel.amenity && <p> {"Amenities: "+hotel.amenity.join(", ")} </p>}
+                    <h2 className="description">Description: </h2>
+                    <p className="blurb">{hotel.blurb}</p>
+                    <h2 className="amenities">Amenities: </h2>
+                    {hotel.amenity && <p className="amenitiesContent"> {"Amenities   : "+hotel.amenity.join(", ")} </p>}
                 </div>
                 <div className="rightContent">
                     <div className="hotelMap" >
@@ -50,6 +56,7 @@ function SingleResult(){
                         mapElement={<div style={{ height: '100%' }} />}
                         />
                     </div> 
+                </div>
                 </div>
             </div>
             <div className="links">
