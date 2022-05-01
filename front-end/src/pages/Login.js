@@ -1,6 +1,6 @@
 //import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Logo from '../assets/Logo.png';
+import Logo from '../assets/logo_2.png';
 import '../css/Login.css';
 import {Link} from "react-router-dom"
 import React, {useEffect, useState} from "react";

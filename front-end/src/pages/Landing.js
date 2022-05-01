@@ -1,5 +1,5 @@
 import '../css/Landing.css';
-import Logo from '../assets/Logo.png';
+import Logo from '../assets/logo_2.png';
 import Button from '@mui/material/Button';
 
 const Landing=()=> {

@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import Logo from '../assets/Logo.png';
+import Logo from '../assets/logo_2.png';
 import '../css/Signup.css';
 import React, {useState} from "react";
 import { useNavigate } from 'react-router';
