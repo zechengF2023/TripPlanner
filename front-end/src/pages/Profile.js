@@ -28,7 +28,7 @@ const Profile=()=>{
     return(
         <div>
             <Header></Header>
-            <div className="content">
+            <div className="profileContent">
                 <p>Username: {username}</p>
                 <p>First name: {last}</p>
                 <p>Last name: {first}</p>

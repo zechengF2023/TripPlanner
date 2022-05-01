@@ -45,16 +45,32 @@
 }
 
 .rightContent{
+    display: flex;
+    flex-direction: column;
     height: 80vh;
+}
+.rightContentHeader{
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
 }
 .rightContent h2{
     height: 5vh;
+    width: 28vw;
     margin: 0;
 }
-
+.mapButtons{
+    border: solid;
+    width: 12vw;
+    font-weight:bold;
+    font-size:2vh;
+}
 
 .actiToChoose, .actiChosen{
     border: solid;
+    border-left:0;
+    border-right:0;
+    border-top:0;
     display:flex;
     flex-direction: row;
     align-items: center;
@@ -87,4 +103,7 @@
     font-size: 3vh;
     border-radius:1.5vh;
     align-self:center;
+}
+#day1{
+    border: pink 30vh;
 }

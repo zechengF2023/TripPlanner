@@ -7,6 +7,7 @@ import "../css/HotelToTrip.css"
 import Header from "../components/Header.js"
 import Footer from "../components/Footer.js"
 import {useLocation} from "react-router-dom"
+import {GoogleMap,Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
 const axios=require("axios")
 const Buffer=require('buffer').Buffer;
 
@@ -17,6 +18,7 @@ const HotelToTrip=props=>{
     const destination=searchParams.get("destination")
     const [activityData, setActivityData]=useState();
     const [day, setDay]=useState(1)
+    const [map, setMap]=useState(false)
     const [dataEachDay, setDataEachDay]=useState(()=>{
         const tmp=[]
         for(let i=0;i<duration;i++){
@@ -26,6 +28,7 @@ const HotelToTrip=props=>{
     })
     let navigate = useNavigate(); 
     const autoFill=()=>{
+        clear()
         let resultList=[]
         for(let i=0;i<duration;i++){
             resultList.push([])
@@ -50,12 +53,45 @@ const HotelToTrip=props=>{
     const DayIcons=()=>{
         const iconList=[]
         for(let i=1;i<duration+1;i++){
-            iconList.push(<button id={i} style={{height: "5vh", width:"5vw", border: "solid",fontSize:"1.8vh", fontWeight:"bold"}} onClick={()=>{setDay(i)}}>day{i}</button>)
+            const idVal="day"+i
+            iconList.push(<button id={idVal} style={{height: "5vh", width:"5vw", border: "solid",fontSize:"1.8vh", fontWeight:"bold"}} onClick={()=>{switchDay(i)}}>day{i}</button>)
                 // if (iconList.length==duration){
         }
         return iconList
     }
     
+    const switchDay=(i)=>{
+        if(i!=day){
+            const originBtn=document.getElementById("day"+day)
+            const newBtn=document.getElementById("day"+i)
+            originBtn.style.background=""
+            newBtn.style.background="grey"
+            setDay(i)
+        }
+        //for first render
+        else if(i===1){
+            const btn=document.getElementById("day"+1)
+            if(btn.style.background===""){
+                btn.style.background='grey'
+            }
+        }
+    }
+
+    const switchMap=()=>{
+        let originBtn, newBtn;
+        if(map){
+            originBtn=document.getElementById("mapIcon")
+            newBtn=document.getElementById("actiIcon")
+        }
+        else{
+            originBtn=document.getElementById("actiIcon")
+            newBtn=document.getElementById("mapIcon")
+        }
+        setMap(!map)
+        originBtn.style.background=""
+        newBtn.style.background='grey'
+    }
+
     //for clear button
     const clear=()=>{
         const tmp=[]
@@ -79,7 +115,6 @@ const HotelToTrip=props=>{
     }
 
     const deleteActi=(item)=>{
-        console.log(item.isChosen)
         item.isChosen=false
         const newDataEachDay=[]
         dataEachDay.forEach((subList, idx)=>{
@@ -110,6 +145,18 @@ const HotelToTrip=props=>{
         navigate({pathname:"/trip", search:`?${createSearchParams(params)}`}, {state:{actiData: dataEachDay}})
     }
 
+    //for map
+    const MapComponent=()=>{
+        return(
+          <GoogleMap
+            defaultCenter={new window.google.maps.LatLng(activityData[0].lat,activityData[0].lng)} defaultZoom={13} id="map">
+            {activityData.map((item, idx)=>
+                <Marker key={idx} position={{lat:item.lat, lng:item.lng}} label={{text:item.name, fontSize:"18px", fontWeight:"bold"}}></Marker>
+            )}
+          </GoogleMap> 
+    )}
+    const WrappedMap=withScriptjs(withGoogleMap(MapComponent));
+
     useEffect(()=>{(async()=>{
         const activitiesReceived=await axios.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/getDestinationActivities`,{destination})
         const activities=activitiesReceived.data
@@ -132,6 +179,7 @@ const HotelToTrip=props=>{
             })
         }
         setActivityData(activities)
+        switchDay(1)
         })()
     },[])
     return(
@@ -162,8 +210,12 @@ const HotelToTrip=props=>{
                 </div>
             </div>
             <div className="rightContent">
+                <div className="rightContentHeader">
                 <h2> Activities available: </h2>
-                <div className="actiDiv">
+                {!map && <button id="mapBtn" onClick={()=>switchMap()} className="mapButtons">show map</button>}
+                {map && <button id="actiBtn" onClick={()=>switchMap()} className="mapButtons">show activities</button>}
+                </div>
+                {!map && <div className="actiDiv">
                     {activityData!=null && activityData.map(item=>
                         !item.isChosen && <div className="actiToChoose">
                             <img src={item.image} alt="pic"></img>
@@ -173,7 +225,16 @@ const HotelToTrip=props=>{
                             </div>
                         </div>
                     )}
-                </div>
+                </div>}
+                {map && 
+                <div className="actiDiv">
+                    <WrappedMap
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}
+                    loadingElement={<div style={{ height: '100%' }} />}
+                    containerElement={<div style={{ height: '100%' }} />}
+                    mapElement={<div style={{ height: '100%' }} />}
+                    />
+                </div> }
             </div>
         </div>
         <button onClick={()=>generateTrip()} className="continueBtn">Generate My Trip</button>

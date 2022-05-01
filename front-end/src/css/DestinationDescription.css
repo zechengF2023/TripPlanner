@@ -1,9 +1,9 @@
-.view{
+.ddView{
     display:flex;
     flex-direction: column;
     justify-content: center;
 }
-.content{
+.ddContent{
     margin-top:0;
     display:flex;
     flex-direction: row;
@@ -11,20 +11,20 @@
     margin-left:10vw;
     margin-right:3vw;
 }
-.description{
+.ddDescription{
     display:flex;
     flex-direction: column; 
     width:50%;
     align-content:center;
 }
-.description h1{
+.ddDescription h1{
     font-size:4vh;
 }
-.descriptionContent{
+.ddDescriptionContent{
     font-weight: bold;
     font-size:2.5vh;;
 }
-.title{
+.ddTitle{
     height: 7vh;
     align-self: center;
     margin-bottom:0;
@@ -40,17 +40,17 @@
     font-size:4vh;
     align-self: center;
 }
-.activities{
+.ddActivities{
     align-self:center;
 }
-.linkDiv{
+.ddLinkDiv{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
     margin-bottom: 0;
 }
-.planLink{
+.ddLink{
     color: black;
     margin-top:2.5vh;
     font-size:3.5vh;
