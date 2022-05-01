@@ -26,6 +26,7 @@ const HotelToTrip=props=>{
     })
     let navigate = useNavigate(); 
     const autoFill=()=>{
+        clear()
         let resultList=[]
         for(let i=0;i<duration;i++){
             resultList.push([])
