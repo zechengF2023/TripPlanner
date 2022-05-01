@@ -41,13 +41,13 @@ function SingleResult(){
                     <h1 className="singleName">{hotel.name}</h1>
                 </div>
                 <div className="bottomContent">
-                <div className="leftContent">
+                <div className="leftContent1">
                     <h2 className="description">Description: </h2>
                     <p className="blurb">{hotel.blurb}</p>
                     <h2 className="amenities">Amenities: </h2>
                     {hotel.amenity && <p className="amenitiesContent"> {"Amenities   : "+hotel.amenity.join(", ")} </p>}
                 </div>
-                <div className="rightContent">
+                <div className="rightContent1">
                     <div className="hotelMap" >
                         <WrappedMap
                         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}

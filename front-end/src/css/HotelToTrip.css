@@ -1,0 +1,90 @@
+.viewDiv{
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+.viewDiv h1{
+    align-self:center;
+    margin-bottom: 3vh;
+}
+.actiDiv{
+    border: solid;
+    overflow: auto;
+    height: 90vh;
+    width: 40vw;
+}
+.actiChosenDiv{
+    border: solid;
+    overflow: auto;
+    height: 90vh;
+    width: 40vw;
+}
+
+.contentDiv{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.leftContent{
+    display:flex;
+    flex-direction: column;
+    margin-left: 3vw;
+    width: 40vw;
+    height: 80vh;
+    margin-right: 3vw;
+}
+
+.dayIcons{
+    display:flex;
+    flex-direction: row;
+    width: 35vw;
+}
+.daysAndClearBtn{
+    display: flex;
+    flex-direction: row;
+}
+
+.rightContent{
+    height: 80vh;
+}
+.rightContent h2{
+    height: 5vh;
+    margin: 0;
+}
+
+
+.actiToChoose, .actiChosen{
+    border: solid;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width: 40vw;
+    height: 12vh;
+}
+.actiToChoose img, .actiChosen img{
+    width: 10vw;
+    height: 12vh;
+}
+.actiContent{
+    margin-left: 1vw;
+    font-size: 3vh;
+    font-weight: bold;
+    width: 20vw;
+}
+.actiAddBtn, .actiDeleteBtn{
+    margin-left: 3vw;
+}
+.actiAddBtn, .actiDeleteBtn :hover{
+    cursor: pointer
+}
+
+.continueBtn{
+    font-weight: bold;
+    margin-top:3vh;
+    margin-bottom: 0;
+    border: solid;
+    width: 13vw;
+    font-size: 3vh;
+    border-radius:1.5vh;
+    align-self:center;
+}
