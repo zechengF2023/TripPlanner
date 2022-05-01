@@ -13,7 +13,7 @@ const Buffer=require('buffer').Buffer;
 const HotelToTrip=props=>{
     const [searchParams]=useSearchParams()
     const {state}=useLocation()
-    const duration=searchParams.get("duration")
+    const duration=parseInt(searchParams.get("duration"))
     const destination=searchParams.get("destination")
     const [activityData, setActivityData]=useState();
     const [day, setDay]=useState(1)
@@ -51,10 +51,9 @@ const HotelToTrip=props=>{
         const iconList=[]
         for(let i=1;i<duration+1;i++){
             iconList.push(<button id={i} style={{height: "5vh", width:"5vw", border: "solid",fontSize:"1.8vh", fontWeight:"bold"}} onClick={()=>{setDay(i)}}>day{i}</button>)
-                if (iconList.length==duration){
-                return iconList;
-            }
+                // if (iconList.length==duration){
         }
+        return iconList
     }
     
     //for clear button
