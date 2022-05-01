@@ -17,6 +17,7 @@
 .link{
     width:20vw;
     display: flex;
-    align-content: center;
-    justify-content: center;
+    align-self: center;
+    justify-content: left;
+    margin-left: 1vw;
 }

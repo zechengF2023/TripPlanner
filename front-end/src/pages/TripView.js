@@ -12,11 +12,13 @@ import DayView from "../components/DayView/DayView"
 import { useEffect, useState } from "react"
 import {useLocation} from "react-router-dom"
 import { duration } from "@mui/material"
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router"
+import { useSearchParams, createSearchParams } from "react-router-dom";
 const axios=require("axios")
 const Buffer=require('buffer').Buffer
 
 const TripView=props=>{
+    const navigate=useNavigate()
     const [searchParams]=useSearchParams()
     const {state}=useLocation()
     const {actiData}=state
@@ -25,37 +27,30 @@ const TripView=props=>{
     const destination=searchParams.get("destination")
     const renderDays=(duration)=>{
         let dayList=[]
-        console.log("render starts")
         for (let i=1;i<parseInt(duration)+1;i++){
-            console.log(i)
-            console.log("rendering day")
             dayList.push(<Day dayNumber = {i} setDayNumber = {handleDayClick} className="dayIcon"/>)
         }
         return dayList
     }
-
     const [showModal, setModal]=useState(false)
     const [displayMap, showMap]=useState(false);
     // handles the current day view - based on button pressed
     const [displayDay, setDisplayDay]=useState(1);
-    const [displayEdit, showEdit]=useState(false);
     const [dir, setDir]=useState([]);
     const [mode, setMode]=useState(window.google.maps.TravelMode.DRIVING);
     const [timeL, setTimeL] = useState([])
     // const [totalTime, setTotalTime]=useState(0) calculate total time functionality to be implemented.
     const handleDayClick=num=>{
         showMap(false)
-        showEdit(false)
         setDisplayDay(num)
     }
     const handleMapClick=()=>{
-        showEdit(false)
         showMap(true)
     }
     const handleEditClick=()=>{
         showMap(false)
-        showEdit(true)
-    }
+        const params={hotel: hotel.name, destination, duration, startDate: searchParams.get("startDate"), endDate: searchParams.get("endDate") }
+        navigate({pathname:"/hotelToTrip", search:`?${createSearchParams(params)}`}, {state:{dataEachDay: actiData}})}
     const handleSaveClick=()=>{
         if(localStorage.getItem("user")==null){
             alert("Please log in to save trips") 
@@ -102,9 +97,6 @@ const TripView=props=>{
     const displayContent=()=>{
         if (displayMap){           
             return <ResultMap dayNum={displayDay} dir={dir} actiData={actiData[displayDay-1]} timeData={timeL} hotel={hotel}></ResultMap>
-        }
-        else if (displayEdit){
-            return <p>This is edit</p>
         }
         else {
             return <ResultFlowDiagram actiData={actiData[displayDay-1]} duration={duration} destination={destination} hotel={hotel} timeData={timeL}></ResultFlowDiagram>

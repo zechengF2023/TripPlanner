@@ -22,7 +22,7 @@
     display:flex;
     flex-direction: row;
 }
-.leftContent {
+.leftContent1 {
     display: flex; 
     flex-direction: column; 
     width: 45vw;
@@ -40,7 +40,7 @@
     font-style: italic; 
     margin-bottom: 0; 
 }
-.rightContent{
+.rightContent1{
     display: flex;
     flex-direction: column;
     margin-left:3vw;

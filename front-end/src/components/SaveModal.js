@@ -51,7 +51,7 @@ const SaveModal=({toClose,actiData})=>{
                     {isSaved && <p>Your trip is saved!</p>}
                 </div>
                 <div className="btns">
-                    {!isSaved && <button className="continueBtn" onClick={()=>toClose()}>Continue editing</button>}
+                    {!isSaved && <button className="continueBtn2" onClick={()=>toClose()}>Continue editing</button>}
                     {!isSaved && <button className="saveBtn" onClick={()=>toSave()}>Save</button>}
                     {isSaved && <button className="homeBtn" onClick={()=>toHome()}>Return to home</button>}
                     {isSaved && <button className="profileBtn" onClick={()=>toMyTrips()}>View in my trips</button>}

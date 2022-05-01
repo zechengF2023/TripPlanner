@@ -45,7 +45,7 @@ app.post("/getDestinationActivities",(req, res)=>{
     let activityList;
     (async()=>{
         activityList=await dbData.activityModel.find({"city":"New York"})
-        res.json(activityList)
+        res.json(activityList).end()
     })() 
 })
 
