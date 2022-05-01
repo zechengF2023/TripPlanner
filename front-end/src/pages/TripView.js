@@ -28,7 +28,8 @@ const TripView=props=>{
     const renderDays=(duration)=>{
         let dayList=[]
         for (let i=1;i<parseInt(duration)+1;i++){
-            dayList.push(<Day dayNumber = {i} setDayNumber = {handleDayClick} className="dayIcon"/>)
+            const idVal="dayIc"+i
+            dayList.push(<button id={idVal} className = "dayIcon1" onClick = {() =>handleDayClick(i)}>Day{i}</button>)
         }
         return dayList
     }
@@ -41,11 +42,45 @@ const TripView=props=>{
     const [timeL, setTimeL] = useState([])
     // const [totalTime, setTotalTime]=useState(0) calculate total time functionality to be implemented.
     const handleDayClick=num=>{
-        showMap(false)
-        setDisplayDay(num)
+        switchMap(false)
+        if(displayDay!=num){
+            const originBtn=document.getElementById("dayIc"+displayDay)
+            const newBtn=document.getElementById("dayIc"+num)
+            originBtn.style.background=""
+            newBtn.style.background="grey"
+            setDisplayDay(num)
+        }
+        //for first render
+        else if(num===1){
+            const btn=document.getElementById("dayIc"+1)
+            if(btn.style.background===""){
+                btn.style.background='grey'
+            }
+        }
+    }  
+    const switchMap=(show)=>{
+        const mapIcon=document.getElementById("mapIc")
+        console.log(show)
+        if (show===undefined){
+            if(!displayMap){
+                mapIcon.style.background="grey"
+            }
+            else{
+                mapIcon.style.background="white"
+            }
+            showMap(!displayMap)
+        }
+        else if(show){
+            mapIcon.style.background='grey'
+            showMap(true)
+        }
+        else if(show===false){
+            mapIcon.style.background='white'
+            showMap(false)
+        }
     }
     const handleMapClick=()=>{
-        showMap(true)
+        switchMap()
     }
     const handleEditClick=()=>{
         showMap(false)
@@ -110,6 +145,7 @@ const TripView=props=>{
     }
     useEffect(()=>{
         fetchData();
+        handleDayClick(1)
     },[]);
     (async() => {
         const aDir=await getDir(getRequest(displayDay-1, mode))
@@ -131,7 +167,7 @@ const TripView=props=>{
                         {renderDays(duration)}
                     </div>
                     <div className="Icons">
-                        <MapIcon className="Icon"  sx={{ fontSize: "5vh"}} onClick={handleMapClick} />
+                        <MapIcon id="mapIc" className="Icon"  sx={{ fontSize: "5vh"}} onClick={handleMapClick} />
                         <EditIcon className="Icon" sx={{ fontSize: "5vh"}} onClick={handleEditClick}/>
                         <SaveIcon className="Icon" sx={{ fontSize: "5vh"}} onClick={handleSaveClick}/>
                     </div>

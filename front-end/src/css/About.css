@@ -1,4 +1,4 @@
-.content{
+.aboutContent{
     display: flex;
     flex-direction: column;
     font-weight: bold;
@@ -7,23 +7,25 @@
     margin-left: 10%;
     margin-top: 3vh;
 }
-.title{
+.aboutTitle{
+    align-self:center;
     font-size: 5vh;
+    margin-bottom: 2vh;
 }
-.body{
+.aboutBody{
     font-size:3vh;
     margin-bottom: 2vh;
 }
-.ending{
+.aboutEnding{
     margin-bottom: 2vh;
 }
-.footerDiv{
+.aboutFooterDiv{
     position: absolute;
     width: 100%;
     bottom: 0;
 }
 
-#logoImg{
+#aboutLogoImg{
     height: 10vh;
     width: 18vw;
 }

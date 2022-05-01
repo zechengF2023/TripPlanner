@@ -1,4 +1,6 @@
-.content{
+.profileContent{
     display:flex;
     flex-direction: column;
+    font-weight:bold;
+    margin-left: 5vw;
 }

@@ -21,7 +21,7 @@
     flex-basis: 70%;
     flex-direction: column;
     margin-left:2vw; 
-    height: 40vh;
+    height: 30vh;
 }
 
 .articleHeader {
@@ -29,6 +29,7 @@
     flex-direction: row; 
     justify-content: space-between;
     margin-right: 2vw;
+    height: 8vh;
 }
 
 .articleDescription {
@@ -36,10 +37,13 @@
     -webkit-line-clamp: 2;
     font-size: 3vh;
     font-family:Arial, Helvetica, sans-serif;
+    height: 14vh;
+    margin-right: 1vw;
 }
 
 .bottomBar{
     font-size: 2vh;
+    height: 6vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

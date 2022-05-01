@@ -61,7 +61,7 @@ const Contact=e=>{
                     <input type="submit" id="submit_button" name="button" value="submit"/>
                 </form>
                 <h2 className="support_num" >For further issue:</h2>
-                <h2 className="support_num">Support number: xxx-xxx-xxx</h2>
+                <h2 className="support_num">Support number: 347-738-8266</h2>
                 {show &&<Modal toClose={handleClose}/>}
             </div>
             <Footer />

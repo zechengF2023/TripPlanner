@@ -26,16 +26,16 @@ const DestinationDescription=()=>{
     return(
         <div>
         <Header></Header>
-        <div className="view">
-            <h1 className="title">{destination.name}</h1>
-            <div className="content">
-            <div className="description">
+        <div className="ddView">
+            <h1 className="ddTitle">{destination.name}</h1>
+            <div className="ddContent">
+            <div className="ddDescription">
                 <h1>Description</h1>
-                <p className="descriptionContent">{destination.description}</p>
+                <p className="ddDescriptionContent">{destination.description}</p>
             </div>
             <div className="top5">
                 <h1>Top 5 tourist attractions:</h1>
-                <div className="activities">
+                <div className="ddActivities">
                 {activityData.map((activity,i)=>(
                     <ActivityTop5 activity={activity} id={i}/>
                 ))}
@@ -43,8 +43,8 @@ const DestinationDescription=()=>{
             </div>
             </div> 
             {/* end of content */}
-            <div className="linkDiv">
-            <Link to="/" className="planLink">Plan a trip to {destination.name}</Link>  
+            <div className="ddLinkDiv">
+            <Link to="/" className="ddLink">Plan a trip to {destination.name}</Link>  
             </div>
         </div>
         <Footer></Footer>
