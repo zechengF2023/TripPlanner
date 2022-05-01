@@ -2,7 +2,7 @@ import "../css/About.css";
 import React from "react"
 import Footer from "../components/Footer.js"
 import Header from "../components/Header"
-import logo from "../assets/Logo.png"
+import logo from "../assets/logo_2.png"
 const About=()=>{
     return(
         <div>
