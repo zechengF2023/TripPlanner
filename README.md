@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/software-assignments-spring2022/final-project-tripplanner/tree/master.svg?style=shield)](https://circleci.com/gh/software-assignments-spring2022/final-project-tripplanner/tree/master)
 
+#Link to website: http://tripplanner.website:4000/
+
 # TripPlanner
 *The TripPlanner app aims to generate trip plans based on user inputs. The user inputs will include dates, preferred locations, and optionally the user is able to put preferences for activities (e.g. sightseeing, going to restaurants, nightlife etc.) It will then enable users to modify or save the generated results.*
 
